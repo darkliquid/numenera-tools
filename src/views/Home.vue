@@ -12,7 +12,7 @@
         you run your Numenera game.
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <mdl-button colored>Get Started</mdl-button>
+        <mdl-button colored @click.native="$store.commit('toggleDrawer')">Get Started</mdl-button>
       </div>
       <div class="mdl-card__menu">
         <mdl-button icon="share"></mdl-button>
@@ -22,7 +22,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>
 
 <style scoped>

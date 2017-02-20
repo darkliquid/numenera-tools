@@ -1,6 +1,15 @@
 <template>
-  <viewport :title="title">
+  <viewport :title="title" :sidenav="sidenav" :topnav="topnav">
     <router-view></router-view>
+    <footer class="mdl-mini-footer alt-footer" slot="footer">
+      <div class="mdl-mini-footer__right-section">
+        <ul class="mdl-mini-footer__link-list">
+          <li v-for="link in topnav">
+            <router-link :to="link.href">{{link.text}}</router-link>
+          </li>
+        </ul>
+      </div>
+    </footer>
   </viewport>
 </template>
 
@@ -13,7 +22,59 @@ export default {
   },
   data () {
     return {
-      title: 'Numenera Tools'
+      title: 'Numenera Tools',
+      sidenav: [
+        {
+          text: 'Characters',
+          href: '/characters',
+          icon: 'person'
+        },
+        {
+          text: 'Creatures',
+          href: '/creatures',
+          icon: 'bug_report'
+        },
+        {
+          text: 'Cyphers',
+          href: '/cyphers',
+          icon: 'build'
+        },
+        {
+          text: 'Names',
+          href: '/names',
+          icon: 'face'
+        },
+        {
+          text: 'Oddities',
+          href: '/oddities',
+          icon: 'help'
+        },
+        {
+          text: 'Rumours',
+          href: '/rumours',
+          icon: 'speaker_notes'
+        },
+        {
+          text: 'Philethis Phrases',
+          href: '/philethis',
+          icon: 'chat_bubble'
+        },
+        {
+          text: 'Rust Cyphers',
+          href: '/rust-cyphers',
+          icon: 'warning'
+        }
+      ],
+      topnav: [
+        {
+          text: 'About',
+          href: '/about'
+        },
+        {
+          text: 'Copyright',
+          href: '/copyright'
+        }
+      ]
     }
   },
   name: 'app'
@@ -21,9 +82,18 @@ export default {
 </script>
 
 <style lang="scss">
-$trim-color-classes: true;
-
 html, body {
   height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.is-small-screen .mdl-mini-footer.alt-footer {
+  display: flex;
+}
+
+.mdl-mini-footer.alt-footer {
+  display: none;
+  margin-top: auto;
 }
 </style>
