@@ -10,7 +10,7 @@ import 'material-design-lite/src/material-design-lite.scss'
 import 'material-design-lite/material'
 import 'material-design-icons-loader'
 
-// Import Vue MDL components
+// Import Vue2 MDL components
 import VueMdl from 'vue-mdl'
 Vue.use(VueMdl)
 

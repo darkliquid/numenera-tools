@@ -1,23 +1,29 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <viewport :title="title">
     <router-view></router-view>
-  </div>
+  </viewport>
 </template>
 
 <script>
+import Viewport from 'components/Viewport'
+
 export default {
+  components: {
+    Viewport
+  },
+  data () {
+    return {
+      title: 'Numenera Tools'
+    }
+  },
   name: 'app'
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+$trim-color-classes: true;
+
+html, body {
+  height: 100%;
 }
 </style>
