@@ -5,7 +5,7 @@
         <h2 class="mdl-card__title-text">Numenera Playground</h2>
       </header>
       <div class="mdl-card__media">
-        <img src="../assets/images/MCG-Numenera-Raster.jpg">
+
       </div>
       <div class="mdl-card__supporting-text">
         Welcome to my Numenera playground, full of tools and generators to help
@@ -38,10 +38,12 @@ export default {
 
 .mdl-card {
   flex: none;
-  max-width: 480px;
+  min-width: 50%;
 }
 
-.mdl-card__media img {
-  max-width: 100%;
+.mdl-card__media  {
+  width: 100%;
+  padding-bottom: 40%;
+  background: url('../assets/images/MCG-Numenera-Raster.jpg') center / cover;
 }
 </style>

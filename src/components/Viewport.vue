@@ -12,7 +12,7 @@
         </mdl-nav-router-link>
       </mdl-nav>
     </mdl-layout-header-row>
-    <mdl-layout-drawer :title="title" v-if="sidenav.length > 0">
+    <mdl-layout-drawer ref="drawer" :title="title" v-if="sidenav.length > 0">
       <mdl-nav>
         <mdl-nav-router-link
           v-for="link in sidenav"
@@ -55,10 +55,23 @@ export default {
       }
     }
   },
+  mounted () {
+    this._toggleDrawer = this.$el.MaterialLayout.toggleDrawer.bind(this.$el.MaterialLayout)
+    this.$el.MaterialLayout.toggleDrawer = () => {
+      this.$store.commit('toggleDrawer')
+    }
+  },
   computed: mapState(['drawerOpen']),
   watch: {
-    drawerOpen () {
-      this.$el.MaterialLayout.toggleDrawer()
+    '$route': function () {
+      if (this.drawerOpen) {
+        this.$store.commit('toggleDrawer')
+      }
+    },
+    drawerOpen (newVal) {
+      if (this._toggleDrawer) {
+        this._toggleDrawer()
+      }
     }
   }
 }

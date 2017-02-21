@@ -28,7 +28,7 @@ export default {
 
 .mdl-card {
   flex: none;
-  max-width: 480px;
+  min-width: 50%;
 }
 
 .mdl-card__media img {
