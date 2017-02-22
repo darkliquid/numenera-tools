@@ -11,42 +11,18 @@
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
             <span class="sentence-fragment">I am a</span>
-            <div class="mdl-selectfield">
-              <label for="descriptor">Descriptor</label>
-              <select id="descriptor" v-model="selectedDescriptor">
-                <option value="" hidden disabled>Descriptor</option>
-                <optgroup v-for="group in groupedDescriptors" :label="group.label">
-                  <option v-for="opt in group.options">{{ opt }}</option>
-                </optgroup>
-              </select>
-            </div>
+            <mdl-select-field id="descriptor" :value="selectedDescriptor" :options="groupedDescriptors" grouped />
           </div>
         </div>
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
-            <div class="mdl-selectfield">
-              <label for="type">Type</label>
-              <select id="type" v-model="selectedType">
-                <option value="" hidden disabled>Type</option>
-                <optgroup v-for="group in groupedTypes" :label="group.label">
-                  <option v-for="opt in group.options">{{ opt }}</option>
-                </optgroup>
-              </select>
-            </div>
+            <mdl-select-field id="type" :value="selectedType" :options="groupedTypes" grouped />
           </div>
         </div>
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
             <span class="sentence-fragment">who</span>
-            <div class="mdl-selectfield">
-              <label for="focus">Focus</label>
-              <select id="focus" v-model="selectedFocus">
-                <option value="" hidden disabled>Focus</option>
-                <optgroup v-for="group in groupedFoci" :label="group.label">
-                  <option v-for="opt in group.options">{{ opt }}</option>
-                </optgroup>
-              </select>
-            </div>
+            <mdl-select-field id="focus" :value="selectedFocus" :options="groupedFoci" grouped />
           </div>
         </div>
       </form>
@@ -55,6 +31,8 @@
 </template>
 
 <script>
+import MdlSelectField from 'components/MdlSelectField'
+
 import descriptors from 'data/chargen/descriptors'
 import foci from 'data/chargen/foci'
 import types from 'data/chargen/types'
@@ -63,9 +41,9 @@ function groupedOptions (arr) {
   var grouping = {}
   arr.forEach(function (item) {
     if (!grouping[item.sourcebook]) {
-      grouping[item.sourcebook] = [item.name]
+      grouping[item.sourcebook] = [{ label: item.name, value: item.name }]
     } else {
-      grouping[item.sourcebook].push(item.name)
+      grouping[item.sourcebook].push({ label: item.name, value: item.name })
     }
   })
 
@@ -79,6 +57,9 @@ function groupedOptions (arr) {
 }
 
 export default {
+  components: {
+    MdlSelectField
+  },
   data () {
     return {
       descriptors,
