@@ -100,7 +100,7 @@ export default {
       this.$store.commit('chargen/updateType', type)
     },
     nextCharacterStep () {
-      this.$store.commit('chargen/advance')
+      this.$store.commit('chargen/updateStep', 2)
     }
   },
   computed: {

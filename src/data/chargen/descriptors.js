@@ -1,10 +1,3 @@
-export default [
-  {
-    name: 'Intelligent',
-    sourcebook: 'Numenera Corebook'
-  },
-  {
-    name: 'Clumsy',
-    sourcebook: 'Numenera Player Options'
-  }
-]
+import { descriptors as corebook } from 'data/chargen/books/numenera-corebook'
+
+export default corebook

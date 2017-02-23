@@ -1,10 +1,3 @@
-export default [
-  {
-    name: 'Bears a Halo of Fire',
-    sourcebook: 'Numenera Corebook'
-  },
-  {
-    name: 'Masters Weaponry',
-    sourcebook: 'Numenera Corebook'
-  }
-]
+import { foci as corebook } from 'data/chargen/books/numenera-corebook'
+
+export default corebook

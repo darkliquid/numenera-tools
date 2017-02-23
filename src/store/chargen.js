@@ -4,6 +4,7 @@ export default {
     descriptor: '',
     type: '',
     focus: '',
+    step: 1,
     points: 0
   },
   mutations: {
@@ -15,6 +16,9 @@ export default {
     },
     updateType (state, type) {
       state.type = type
+    },
+    updateStep (state, step) {
+      state.step = step
     }
   }
 }
