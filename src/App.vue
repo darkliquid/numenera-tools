@@ -96,4 +96,8 @@ html, body {
   display: none;
   margin-top: auto;
 }
+
+.fr {
+  float: right;
+}
 </style>

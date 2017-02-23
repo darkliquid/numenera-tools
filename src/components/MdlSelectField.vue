@@ -1,7 +1,7 @@
 <template>
   <div class="mdl-selectfield">
     <label :for="id" v-if="label">{{ label }}</label>
-    <select :id="id" v-model="value">
+    <select :id="id" v-model="selected">
       <option value="" hidden disabled v-if="label">{{ label }}</option>
       <optgroup v-for="group in options" :label="group.label" v-if="grouped">
         <option v-for="opt in group.options" :value="opt.value">{{ opt.label }}</option>
@@ -13,13 +13,18 @@
 
 <script>
 export default {
+  data () {
+    return {
+      selected: this.value
+    }
+  },
   props: {
     id: {
       type: String,
       default: null
     },
     value: {
-      default: null
+      default: ''
     },
     label: {
       type: String
@@ -37,6 +42,9 @@ export default {
   },
   watch: {
     value (val) {
+      this.selected = val
+    },
+    selected (val) {
       this.$emit('input', val)
     }
   }
