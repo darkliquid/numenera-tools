@@ -4,7 +4,10 @@
       <h2 class="mdl-card__title-text">Numenera Character Generator</h2>
     </header>
     <form>
-      <h3>Pools</h3>
+      <h3>
+        Pools
+        <span class="fr" v-if="stats.points > 0">({{ stats.points }} remaining points)</span>
+      </h3>
       <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--4-col">
           <h4>Might</h4>
@@ -20,7 +23,10 @@
         </div>
       </div>
 
-      <h3>Edge</h3>
+      <h3>
+        Edge
+        <span class="fr" v-if="edges.points > 0">({{ edges.points }} remaining points)</span>
+      </h3>
       <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--4-col">
           <h4>Might</h4>
@@ -40,33 +46,59 @@
       <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--4-col">
           <h4>Practiced</h4>
-          <ul class="mdl-list">
-            <li class="mdl-list__item">a</li>
-            <li class="mdl-list__item">b</li>
-            <li class="mdl-list__item">c</li>
+          <ul class="mdl-list" v-if="allPracticeds.length > 0">
+            <li class="mdl-list__item" v-for="item in allPracticeds">{{ item }}</li>
           </ul>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <h4>Trained</h4>
+          <ul class="mdl-list" v-if="allSkills.length > 0">
+            <li class="mdl-list__item" v-for="item in allSkills">{{ item }}</li>
+          </ul>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <h4>Inability</h4>
+          <ul class="mdl-list" v-if="allInabilities.length > 0">
+            <li class="mdl-list__item" v-for="item in allInabilities">{{ item }}</li>
+          </ul>
         </div>
       </div>
 
       <h3>Equipment</h3>
       <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--6-col equipment-list mdl-cell--stretch">
-          Equipment List
+          <ul class="mdl-list" v-if="allEquipment.length > 0">
+            <li class="mdl-list__item" v-for="item in allEquipment">{{ item }}</li>
+          </ul>
         </div>
-        <div class="mdl-cell mdl-cell--6-col">
-          <h4>Shins</h4>
-          <h4>Cyphers</h4>
+        <div class="mdl-cell mdl-cell--6-col extras-list mdl-cell--stretch">
+          <h4>Shins: {{ totalShins }}</h4>
+          <h4>Cyphers <span class="fr">(Limit: {{ maxCyphers }})</span></h4>
+          <ul class="mdl-list cypher-list" v-if="allCyphers.length > 0">
+            <li class="mdl-list__item" v-for="item in allCyphers">{{ item }}</li>
+          </ul>
           <h4>Oddities</h4>
+          <ul class="mdl-list" v-if="allOddities.length > 0">
+            <li class="mdl-list__item" v-for="item in allOddities">{{ item }}</li>
+          </ul>
         </div>
       </div>
 
       <h3>Sourcebooks</h3>
+      <dl class="mdl-list">
+        <dt class="mdl-list__item">{{ descriptor.name }}</dt>
+        <dd class="mdl-list__item" v-for="src in allSources.descriptor">
+          {{ src.sourcebook }}, page {{ src.page }}
+        </dd>
+        <dt class="mdl-list__item">{{ type.name }}</dt>
+        <dd class="mdl-list__item" v-for="src in allSources.type">
+          {{ src.sourcebook }}, page {{ src.page }}
+        </dd>
+        <dt class="mdl-list__item">{{ focus.name }}</dt>
+        <dd class="mdl-list__item" v-for="src in allSources.focus">
+          {{ src.sourcebook }}, page {{ src.page }}
+        </dd>
+      </dl>
     </form>
     <div class="mdl-card__actions mdl-card--border">
       <mdl-button @click.native="prevCharacterStep">Back</mdl-button>
@@ -99,7 +131,17 @@ export default {
       'minIntellect',
       'minIntellectEdge',
       'totalStatPoints',
-      'totalEdgePoints'
+      'totalEdgePoints',
+      'totalShins',
+      'maxCyphers',
+      'allEquipment',
+      'allAbilities',
+      'allPracticeds',
+      'allSkills',
+      'allInabilities',
+      'allSources',
+      'allCyphers',
+      'allOddities'
     ])
   },
   methods: {
@@ -150,61 +192,21 @@ h4 {
 }
 
 .equipment-list {
-  padding: 4px 16px;
   border-bottom: 1px solid $card-border-color;
 }
 
-.stat-counter {
-  display: inline-block;
-  border-radius: 50%;
-  font-size: $button-fab-font-size;
-  font-weight: bold;
-  height: $button-fab-size;
-  margin: auto;
-  min-width: $button-fab-size;
-  width: $button-fab-size;
+.extras-list {
+  border-left: 1px solid $card-border-color;
+  border-bottom: 1px solid $card-border-color;
+}
+
+.mdl-list {
   padding: 0;
-  overflow: hidden;
-  background: $button-primary-color;
-  box-shadow: 0 1px 1.5px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.24);
-  position: relative;
-  line-height: $button-fab-size+4;
-  color: $text-color-primary;
-  text-align: center;
-  vertical-align: middle;
+  margin: 0;
 }
 
-.stat-counter.might {
-  background: unquote("rgb(#{$palette-red-500})");
-  color: $button-secondary-color-alt;
-}
-
-.stat-counter.speed {
-  background: unquote("rgb(#{$palette-green-500})");
-  color: $button-secondary-color-alt;
-}
-
-.stat-counter.intellect {
-  background: unquote("rgb(#{$palette-blue-500})");
-  color: $button-secondary-color-alt;
-}
-
-.pool-editor {
-  padding: 16px;
-
-  /* Firefox */
-  display:-moz-box;
-  -moz-box-pack:center;
-  -moz-box-align:center;
-
-  /* Safari and Chrome */
-  display:-webkit-box;
-  -webkit-box-pack:center;
-  -webkit-box-align:center;
-
-  display:box;
-  box-pack:center;
-  box-align:center
+.cypher-list {
+  border-bottom: 1px solid $card-border-color;
 }
 
 </style>

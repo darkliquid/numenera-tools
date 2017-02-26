@@ -1,26 +1,73 @@
 import op from 'object-path'
 
-function minPool (type, pool) {
+function sum (acc, val) {
+  return acc + (val || 0)
+}
+
+function combined (state, objpath, reducer, def) {
+  return [
+    op.get(state, `descriptor.${objpath}`),
+    op.get(state, `type.${objpath}`),
+    op.get(state, `focus.${objpath}`)
+  ].reduce(reducer, def)
+}
+
+function totaller (objpath) {
   return function (state) {
-    return [
-      op.get(state, `descriptor.${type}.${pool}`),
-      op.get(state, `type.${type}.${pool}`),
-      op.get(state, `focus.${type}.${pool}`)
-    ].reduce((acc, val) => {
-      return acc + (val || 0)
-    }, 0)
+    return combined(
+      state,
+      objpath,
+      sum,
+      0
+    )
+  }
+}
+
+function collection (objpath) {
+  return function (state) {
+    return combined(
+      state,
+      objpath,
+      (acc, val) => { return val ? acc.concat(val) : acc },
+      []
+    )
   }
 }
 
 const getters = {
-  minMight: minPool('stats', 'might'),
-  minSpeed: minPool('stats', 'speed'),
-  minIntellect: minPool('stats', 'intellect'),
-  minMightEdge: minPool('edge', 'might'),
-  minSpeedEdge: minPool('edge', 'speed'),
-  minIntellectEdge: minPool('edge', 'intellect'),
-  totalStatPoints: minPool('stats', 'points'),
-  totalEdgePoints: minPool('edge', 'points')
+  minMight: totaller('stats.might'),
+  minSpeed: totaller('stats.speed'),
+  minIntellect: totaller('stats.intellect'),
+  minMightEdge: totaller('edges.might'),
+  minSpeedEdge: totaller('edges.speed'),
+  minIntellectEdge: totaller('edges.intellect'),
+  totalStatPoints: totaller('stats.points'),
+  totalEdgePoints: totaller('edges.points'),
+  totalShins: totaller('shins'),
+  maxCyphers: totaller('cypherlimit'),
+  allEquipment: collection('equipment'),
+  allAbilities: collection('abilities'),
+  allPracticeds: collection('skills.practiced'),
+  allSkills: collection('skills.trained'),
+  allInabilities: collection('skills.inability'),
+  allCyphers: collection('cyphers'),
+  allOddities: collection('oddities'),
+  allSources: function (state) {
+    var sources = {
+      descriptor: [{ sourcebook: state.descriptor.sourcebook, page: state.descriptor.page }],
+      type: [{ sourcebook: state.type.sourcebook, page: state.type.page }],
+      focus: [{ sourcebook: state.focus.sourcebook, page: state.focus.page }]
+    }
+
+    for (var key in sources) {
+      var alt = op.get(state, `${key}.sources`)
+      if (alt && alt.length > 0) {
+        sources[key].concat(...alt)
+      }
+    }
+
+    return sources
+  }
 }
 
 export default {
@@ -41,7 +88,11 @@ export default {
       speed: 0,
       intellect: 0,
       points: 0
-    }
+    },
+    shins: 0,
+    cyphers: [],
+    oddities: [],
+    cypherlimit: 0
   },
   getters,
   mutations: {

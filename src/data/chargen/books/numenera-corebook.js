@@ -355,13 +355,13 @@ var types = [
     sources: [
       { sourcebook: 'Players Guide', page: 16 }
     ],
-    edge: {
+    edges: {
       might: 1,
       speed: 1,
       points: 1
     },
     shins: 5,
-    cyphers: 2,
+    cypherlimit: 2,
     abilities: [
       'Bash',
       'No Need For Weapons',
@@ -374,7 +374,7 @@ var types = [
         'One of: Balancing, Climbing, Jumping, Swimming'
       ],
       practiced: [
-        'Armor',
+        'Using All Armor',
         'All Weapons'
       ]
     },
@@ -382,8 +382,12 @@ var types = [
       'Clothing',
       'Two weapons (or one weapon and a shield)',
       'Light or medium armor',
-      'An explorer’s pack',
-      'Two cyphers (chosen for you by the GM)',
+      'An explorer’s pack'
+    ],
+    cyphers: [
+      'Two cyphers (chosen for you by the GM)'
+    ],
+    oddities: [
       'One oddity (chosen for you by the GM)'
     ]
   },
