@@ -53,11 +53,11 @@ function groupedOptions (arr) {
       options.push({
         label: item,
         options: grouping[item].sort(function (a, b) {
-          if (a.name < b.name) {
+          if (a.label < b.label) {
             return -1
           }
 
-          if (a.name > b.name) {
+          if (a.label > b.label) {
             return 1
           }
 
