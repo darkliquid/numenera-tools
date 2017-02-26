@@ -357,7 +357,8 @@ var types = [
     ],
     edge: {
       might: 1,
-      speed: 1
+      speed: 1,
+      points: 1
     },
     shins: 5,
     cyphers: 2,

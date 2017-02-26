@@ -42,15 +42,28 @@ function groupedOptions (arr) {
     var grouping = {}
     this[arr].forEach(function (item) {
       if (!grouping[item.sourcebook]) {
-        grouping[item.sourcebook] = [{ label: item.name, value: item.name }]
+        grouping[item.sourcebook] = [{ label: item.name, value: item }]
       } else {
-        grouping[item.sourcebook].push({ label: item.name, value: item.name })
+        grouping[item.sourcebook].push({ label: item.name, value: item })
       }
     })
 
     var options = []
     Object.keys(grouping).sort().forEach(function (item) {
-      options.push({ label: item, options: grouping[item].sort() })
+      options.push({
+        label: item,
+        options: grouping[item].sort(function (a, b) {
+          if (a.name < b.name) {
+            return -1
+          }
+
+          if (a.name > b.name) {
+            return 1
+          }
+
+          return 0
+        })
+      })
     })
 
     return options
@@ -86,9 +99,9 @@ export default {
   },
   methods: {
     randomSelection () {
-      this.updateDescriptor(this.descriptors[Math.floor(Math.random() * this.descriptors.length)].name)
-      this.updateType(this.types[Math.floor(Math.random() * this.types.length)].name)
-      this.updateFocus(this.foci[Math.floor(Math.random() * this.foci.length)].name)
+      this.updateDescriptor(this.descriptors[Math.floor(Math.random() * this.descriptors.length)])
+      this.updateType(this.types[Math.floor(Math.random() * this.types.length)])
+      this.updateFocus(this.foci[Math.floor(Math.random() * this.foci.length)])
     },
     updateFocus (focus) {
       this.$store.commit('chargen/updateFocus', focus)
