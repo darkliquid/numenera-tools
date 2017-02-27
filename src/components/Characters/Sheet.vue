@@ -6,7 +6,7 @@
     <form>
       <h3>
         Pools
-        <span class="fr" v-if="stats.points > 0">({{ stats.points }} remaining points)</span>
+        <span class="points" v-if="stats.points > 0">({{ stats.points }} remaining points)</span>
       </h3>
       <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--4-col">
@@ -25,7 +25,7 @@
 
       <h3>
         Edge
-        <span class="fr" v-if="edges.points > 0">({{ edges.points }} remaining points)</span>
+        <span class="points" v-if="edges.points > 0">({{ edges.points }} remaining points)</span>
       </h3>
       <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--4-col">
@@ -172,6 +172,7 @@ export default {
   flex: none;
   min-width: 50%;
   overflow: initial;
+  margin-bottom: 4em;
 }
 
 h3 {
@@ -207,6 +208,11 @@ h4 {
 
 .cypher-list {
   border-bottom: 1px solid $card-border-color;
+}
+
+.points {
+  font-size: 75%;
+  float: right;
 }
 
 </style>

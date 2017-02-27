@@ -137,6 +137,7 @@ export default {
   flex: none;
   min-width: 50%;
   overflow: initial;
+  margin-bottom: 4em;
 }
 
 .mdl-card__media img {
