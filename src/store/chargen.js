@@ -44,6 +44,7 @@ const getters = {
   totalStatPoints: totaller('stats.points'),
   totalEdgePoints: totaller('edges.points'),
   totalShins: totaller('shins'),
+  totalArmor: totaller('armor'),
   maxCyphers: totaller('cypherlimit'),
   allEquipment: collection('equipment'),
   allAbilities: collection('abilities'),
@@ -52,6 +53,7 @@ const getters = {
   allInabilities: collection('skills.inability'),
   allCyphers: collection('cyphers'),
   allOddities: collection('oddities'),
+  allArtifacts: collection('artifacts'),
   allSources: function (state) {
     var sources = {
       descriptor: [{ sourcebook: state.descriptor.sourcebook, page: state.descriptor.page }],
@@ -62,7 +64,7 @@ const getters = {
     for (var key in sources) {
       var alt = op.get(state, `${key}.sources`)
       if (alt && alt.length > 0) {
-        sources[key].concat(...alt)
+        sources[key] = sources[key].concat(alt)
       }
     }
 

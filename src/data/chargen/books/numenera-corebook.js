@@ -357,8 +357,7 @@ var types = [
     ],
     edges: {
       might: 1,
-      speed: 1,
-      points: 1
+      speed: 1
     },
     shins: 5,
     cypherlimit: 2,
@@ -394,12 +393,97 @@ var types = [
   {
     name: 'Nano',
     sourcebook: 'Numenera Corebook',
-    page: 32
+    page: 32,
+    stats: {
+      might: 7,
+      speed: 9,
+      intellect: 12,
+      points: 6
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 21 }
+    ],
+    edges: {
+      intellect: 1
+    },
+    shins: 4,
+    cypherlimit: 3,
+    abilities: [
+      'Hedge Magic',
+      'Onslaught',
+      'Push',
+      'Scan',
+      'Ward'
+    ],
+    skills: {
+      trained: [
+        'Understanding and identifying numenera'
+      ],
+      practiced: [
+        'Light Weapons'
+      ]
+    },
+    equipment: [
+      'Clothing',
+      'One weapon',
+      'A book about the numenera'
+    ],
+    cyphers: [
+      'Three cyphers (chosen for you by the GM)'
+    ],
+    oddities: [
+      'One oddity (chosen for you by the GM)'
+    ]
   },
   {
     name: 'Jack',
     sourcebook: 'Numenera Corebook',
-    page: 40
+    page: 40,
+    stats: {
+      might: 10,
+      speed: 10,
+      intellect: 10,
+      points: 6
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 28 }
+    ],
+    edges: {
+      points: 1
+    },
+    shins: 8,
+    cypherlimit: 2,
+    abilities: [
+      'Flex Skill',
+      'Bash',
+      'Hedge Magic',
+      'Pierce',
+      'Practiced in Armour',
+      'Skill With Defense',
+      'Thrust',
+      'Trained Without Armour'
+    ],
+    skills: {
+      trained: [
+        'Any one non-attack/defense task of your choosing'
+      ],
+      practiced: [
+        'Light and Medium Weapons'
+      ]
+    },
+    equipment: [
+      'Clothing',
+      'Two weapons',
+      'Light Armor',
+      'An explorers pack',
+      'A pack of light tools'
+    ],
+    cyphers: [
+      'Two cyphers (chosen for you by the GM)'
+    ],
+    oddities: [
+      'One oddity (chosen for you by the GM)'
+    ]
   }
 ]
 
@@ -414,147 +498,462 @@ var foci = [
     abilities: [
       'Fire esoteries: you esoteries have a firey quality to them',
       'Shroud of Flame'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 38 }
     ]
   },
   {
     name: 'Carries a Quiver',
     sourcebook: 'Numenera Corebook',
-    page: 54
+    page: 54,
+    equipment: [
+      'A well-made bow',
+      'Two-dozen arrows'
+    ],
+    abilities: [
+      'Archer'
+    ],
+    skills: {
+      trained: [
+        'Making arrows'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 40 }
+    ]
   },
   {
     name: 'Commands Mental Powers',
     sourcebook: 'Numenera Corebook',
-    page: 54
+    page: 54,
+    equipment: [
+      'Psionic Crystal/Jewel artifact. +1 Int when worn, -5 Int when without it'
+    ],
+    skills: {
+      trained: [
+        'Mind Control esoteries',
+        'Mind Reading esoteries'
+      ]
+    },
+    abilities: [
+      'Telepathic'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 41 }
+    ]
   },
   {
     name: 'Controls Beasts',
     sourcebook: 'Numenera Corebook',
-    page: 55
+    page: 55,
+    equipment: [
+      '3 days of animal feed',
+      'Animal harness/collar/etc'
+    ],
+    abilities: [
+      'Beast Companion'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 41 }
+    ]
   },
   {
     name: 'Controls Gravity',
     sourcebook: 'Numenera Corebook',
-    page: 56
+    page: 56,
+    oddities: [
+      'Pen-sized oddity that displays the weight of objects it is pointed at in symbols only you can read'
+    ],
+    abilities: [
+      'Hover'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 42 }
+    ]
   },
   {
     name: 'Crafts Illusions',
     sourcebook: 'Numenera Corebook',
-    page: 57
+    page: 57,
+    oddities: [
+      'Oddity that looks like a clear glass panel. Manipulating switches on it shows strange, moving images'
+    ],
+    abilities: [
+      'Psychedelic Esoteries: esoteries you perform have flamboyant visual and auditory qualities of your choosing',
+      'Minor Illusion'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 43 }
+    ]
   },
   {
     name: 'Crafts Unique Objects',
     sourcebook: 'Numenera Corebook',
-    page: 58
+    page: 58,
+    equipment: [
+      'A bag of light tools',
+      'Tools required to make the two kinds of items you know how to make',
+      'Any normal level 1 or 2 item you are able to make'
+    ],
+    oddities: [
+      'An oddity chosen by the GM'
+    ],
+    skills: {
+      trained: [
+        'Creating 2 types of items',
+        'Identifying the function of any kind of device'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 44 }
+    ]
   },
   {
     name: 'Employs Magnetism',
     sourcebook: 'Numenera Corebook',
-    page: 59
+    page: 59,
+    abilities: [
+      'Move Metal'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 45 }
+    ]
   },
   {
     name: 'Entertains',
     sourcebook: 'Numenera Corebook',
-    page: 60
+    page: 60,
+    equipment: [
+      'A musical instrument or tools you need to perform'
+    ],
+    abilities: [
+      'When resting, allies gain +1 to recovery rolls'
+    ],
+    skills: {
+      trained: [
+        'All social interactions except coercion or intimidation'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 46 }
+    ]
   },
   {
     name: 'Exists Partially Out of Phase',
     sourcebook: 'Numenera Corebook',
-    page: 60
+    page: 60,
+    abilities: [
+      'Walk Through Walls'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 46 }
+    ]
   },
   {
     name: 'Explores Dark Places',
     sourcebook: 'Numenera Corebook',
-    page: 61
+    page: 61,
+    equipment: [
+      'An explorers pack or the following: 50ft rope, 2 days rations, two minor glowglobes'
+    ],
+    abilities: [
+      'Dark esoteries'
+    ],
+    skills: {
+      trained: [
+        'Searching',
+        'Listening',
+        'Climbing',
+        'Balancing',
+        'Jumping'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 47 }
+    ]
   },
   {
     name: 'Fights with Panache',
     sourcebook: 'Numenera Corebook',
-    page: 62
+    page: 62,
+    equipment: [
+      'Extremely stylish clothing',
+      'A jeweled weapon'
+    ],
+    abilities: [
+      'Attack Flourish'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 47 }
+    ]
   },
   {
     name: 'Focuses Mind over Matter',
     sourcebook: 'Numenera Corebook',
-    page: 63
+    page: 63,
+    abilities: [
+      'Deflect Attacks'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 48 }
+    ]
   },
   {
     name: 'Fuses Flesh and Steel',
     sourcebook: 'Numenera Corebook',
-    page: 64
+    page: 64,
+    stats: {
+      might: 3,
+      speed: 3
+    },
+    armor: 1,
+    equipment: [
+      'A bag of light tools',
+      'Parts to repair yourself with'
+    ],
+    abilities: [
+      'Special Healing'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 49 }
+    ]
   },
   {
     name: 'Howls at the Moon',
     sourcebook: 'Numenera Corebook',
-    page: 64
+    page: 64,
+    artifacts: [
+      'A chronometer artifact that lets you know when the next change is coming'
+    ],
+    abilities: [
+      'Beast Form'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 50 }
+    ]
   },
   {
     name: 'Hunts with Great Skill',
     sourcebook: 'Numenera Corebook',
-    page: 65
+    page: 65,
+    equipment: [
+      'Boots that muffle footsteps, granting +1 the sneaky tasks'
+    ],
+    skills: {
+      trained: [
+        'Following and identifying tracks',
+        'All types of movement tasks'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 50 }
+    ]
   },
   {
     name: 'Leads',
     sourcebook: 'Numenera Corebook',
-    page: 66
+    page: 66,
+    artifacts: [
+      'A device that can tag up to 7 followers and show their relative distance and direction from you'
+    ],
+    skills: {
+      trained: [
+        'Social interactions'
+      ]
+    },
+    abilities: [
+      'Good advice: When making a suggestion on a characters next course of action, they are trained in that action for one round'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 51 }
+    ]
   },
   {
     name: 'Lives in the Wilderness',
     sourcebook: 'Numenera Corebook',
-    page: 67
+    page: 67,
+    equipment: [
+      'A directional compass'
+    ],
+    skills: {
+      trained: [
+        'Climbing',
+        'Swimming',
+        'Wilderness navigation',
+        'Identifying plants and creatures'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 52 }
+    ]
   },
   {
     name: 'Masters Defense',
     sourcebook: 'Numenera Corebook',
-    page: 68
+    page: 68,
+    equipment: [
+      'A shield'
+    ],
+    abilities: [
+      'Shield Master: when using a shield you are trained in speed defense but using that benefit makes attacks 1 step more difficult'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 52 }
+    ]
   },
   {
     name: 'Masters Weaponry',
     sourcebook: 'Numenera Corebook',
-    page: 69
+    page: 69,
+    equipment: [
+      'A high-quality weapon of your choosing'
+    ],
+    abilities: [
+      'Weapon Esoteries: esoteries performed look like your chosen weapon',
+      'Weapon Master: +1 damage with chosen weapon'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 53 }
+    ]
   },
   {
     name: 'Murders',
     sourcebook: 'Numenera Corebook',
-    page: 70
+    page: 70,
+    equipment: [
+      'A disguise kit',
+      'Three doses of a level 2 blade poison that deals 5 damage'
+    ],
+    abilities: [
+      'Surprise Attack'
+    ],
+    skills: {
+      trained: [
+        'Stealth and disguise'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 54 }
+    ]
   },
   {
     name: 'Rages',
     sourcebook: 'Numenera Corebook',
-    page: 71
+    page: 71,
+    abilities: [
+      'Frenzy'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 54 }
+    ]
   },
   {
     name: 'Rides the Lightning',
     sourcebook: 'Numenera Corebook',
-    page: 71
+    page: 71,
+    equipment: [
+      'A bag of misc power cells'
+    ],
+    abilities: [
+      'Electrical esoteries: esoteries performed take on an electrical effect and appearance',
+      'Shock',
+      'Charge'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 55 }
+    ]
   },
   {
     name: 'Talks to Machines',
     sourcebook: 'Numenera Corebook',
-    page: 72
+    page: 72,
+    equipment: [
+      'A bag of small tools'
+    ],
+    abilities: [
+      'Distant Activation'
+    ],
+    skills: {
+      trained: [
+        'All tasks involving electrical machines'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 56 }
+    ]
   },
   {
     name: 'Wears a Sheen of Ice',
     sourcebook: 'Numenera Corebook',
-    page: 73
+    page: 73,
+    equipment: [
+      'A bladed weapon made of stronglass which looks like ice'
+    ],
+    abilities: [
+      'Ice Armor',
+      'Ice Esoteries: esoteries performed have cold and ice effects'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 57 }
+    ]
   },
   {
     name: 'Wields Power with Precision',
     sourcebook: 'Numenera Corebook',
-    page: 74
+    page: 74,
+    stats: {
+      intellect: 5
+    },
+    equipment: [
+      'A book on the numenera'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 57 }
+    ]
   },
   {
     name: 'Wields Two Weapons at Once',
     sourcebook: 'Numenera Corebook',
-    page: 75
+    page: 75,
+    equipment: [
+      'A light melee weapon'
+    ],
+    abilities: [
+      'Dual Light Wield'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 58 }
+    ]
   },
   {
     name: 'Works Miracles',
     sourcebook: 'Numenera Corebook',
-    page: 75
+    page: 75,
+    abilities: [
+      'Healing Touch'
+    ],
+    sources: [
+      { sourcebook: 'Players Guide', page: 59 }
+    ]
   },
   {
     name: 'Works the Back Alleys',
     sourcebook: 'Numenera Corebook',
-    page: 76
+    page: 76,
+    equipment: [
+      'A bag of light tools'
+    ],
+    skills: {
+      trained: [
+        'Sneaking',
+        'Pickpocketing',
+        'Lockpicking'
+      ]
+    },
+    sources: [
+      { sourcebook: 'Players Guide', page: 60 }
+    ]
   }
 ]
 

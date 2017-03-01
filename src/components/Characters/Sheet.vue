@@ -72,12 +72,17 @@
           </ul>
         </div>
         <div class="mdl-cell mdl-cell--6-col extras-list mdl-cell--stretch">
+          <h4 v-if="totalArmor > 0">Armor: {{ totalArmor }}</h4>
           <h4>Shins: {{ totalShins }}</h4>
           <h4>Cyphers <span class="fr">(Limit: {{ maxCyphers }})</span></h4>
           <ul class="mdl-list cypher-list" v-if="allCyphers.length > 0">
             <li class="mdl-list__item" v-for="item in allCyphers">{{ item }}</li>
           </ul>
-          <h4>Oddities</h4>
+          <h4 v-if="allArtifacts.length > 0">Artifacts</h4>
+          <ul class="mdl-list" v-if="allArtifacts.length > 0">
+            <li class="mdl-list__item" v-for="item in allArtifacts">{{ item }}</li>
+          </ul>
+          <h4 v-if="allOddities.length > 0">Oddities</h4>
           <ul class="mdl-list" v-if="allOddities.length > 0">
             <li class="mdl-list__item" v-for="item in allOddities">{{ item }}</li>
           </ul>
@@ -141,7 +146,9 @@ export default {
       'allInabilities',
       'allSources',
       'allCyphers',
-      'allOddities'
+      'allOddities',
+      'totalArmor',
+      'allArtifacts'
     ])
   },
   methods: {
