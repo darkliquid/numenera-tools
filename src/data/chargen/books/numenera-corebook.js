@@ -12,7 +12,7 @@ var descriptors = [
     shins: 10,
     skills: {
       trained: [
-        'All tasks involving involving positive or pleasant social interaction',
+        'Positive or pleasant social interactions',
         'Using esoteries or abilities to influence the minds of others'
       ],
       inability: [
@@ -164,9 +164,12 @@ var descriptors = [
     ],
     skills: {
       trained: [
-        'All tasks involving swimming, climbing, jumping and running',
-        'All tasks involving training, riding or placating natural animals',
-        'All tasks involving identifying or using natural plants'
+        'Swimming',
+        'Climbing',
+        'Jumping',
+        'Running',
+        'Training, riding or placating natural animals',
+        'Identifying or using natural plants'
       ],
       inability: [
         'Any tasks involving charm, persuasion, etiquette or deception'
@@ -287,7 +290,7 @@ var descriptors = [
     name: 'Mutant',
     sourcebook: 'Numenera Corebook',
     page: 123,
-    special: 'Requires the Numenera Corebook to select mutations'
+    extras: 'Requires the Numenera Corebook to select mutations'
   },
   {
     name: 'Varjellan',
@@ -308,8 +311,8 @@ var descriptors = [
       ]
     },
     abilities: [
-      'Reforging: Take an hour to rearrange stat pools as desired',
-      'Slow to recover: -1 to recovery rolls'
+      'Reforging',
+      'Slow to recover'
     ]
   },
   {
@@ -320,7 +323,7 @@ var descriptors = [
       might: 4
     },
     abilities: [
-      'Change state: once per hour change between Fugue, Bursk or Neem state'
+      'Change state'
     ],
     skills: {
       trained: [
@@ -496,7 +499,7 @@ var foci = [
       'An artifact that sprays inanimate objects to make them fire-resistant'
     ],
     abilities: [
-      'Fire esoteries: you esoteries have a firey quality to them',
+      'Fire esoteries',
       'Shroud of Flame'
     ],
     sources: [
@@ -580,7 +583,7 @@ var foci = [
       'Oddity that looks like a clear glass panel. Manipulating switches on it shows strange, moving images'
     ],
     abilities: [
-      'Psychedelic Esoteries: esoteries you perform have flamboyant visual and auditory qualities of your choosing',
+      'Psychedelic esoteries',
       'Minor Illusion'
     ],
     sources: [
@@ -628,7 +631,7 @@ var foci = [
       'A musical instrument or tools you need to perform'
     ],
     abilities: [
-      'When resting, allies gain +1 to recovery rolls'
+      'Levity'
     ],
     skills: {
       trained: [
@@ -763,7 +766,7 @@ var foci = [
       ]
     },
     abilities: [
-      'Good advice: When making a suggestion on a characters next course of action, they are trained in that action for one round'
+      'Good advice'
     ],
     sources: [
       { sourcebook: 'Players Guide', page: 51 }
@@ -796,7 +799,7 @@ var foci = [
       'A shield'
     ],
     abilities: [
-      'Shield Master: when using a shield you are trained in speed defense but using that benefit makes attacks 1 step more difficult'
+      'Shield Master'
     ],
     sources: [
       { sourcebook: 'Players Guide', page: 52 }
@@ -810,8 +813,8 @@ var foci = [
       'A high-quality weapon of your choosing'
     ],
     abilities: [
-      'Weapon Esoteries: esoteries performed look like your chosen weapon',
-      'Weapon Master: +1 damage with chosen weapon'
+      'Weapon Esoteries',
+      'Weapon Master'
     ],
     sources: [
       { sourcebook: 'Players Guide', page: 53 }
@@ -856,7 +859,7 @@ var foci = [
       'A bag of misc power cells'
     ],
     abilities: [
-      'Electrical esoteries: esoteries performed take on an electrical effect and appearance',
+      'Electrical esoteries',
       'Shock',
       'Charge'
     ],
@@ -892,7 +895,7 @@ var foci = [
     ],
     abilities: [
       'Ice Armor',
-      'Ice Esoteries: esoteries performed have cold and ice effects'
+      'Ice Esoteries'
     ],
     sources: [
       { sourcebook: 'Players Guide', page: 57 }

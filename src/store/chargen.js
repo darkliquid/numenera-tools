@@ -47,13 +47,13 @@ const getters = {
   totalArmor: totaller('armor'),
   maxCyphers: totaller('cypherlimit'),
   allEquipment: collection('equipment'),
-  allAbilities: collection('abilities'),
   allPracticeds: collection('skills.practiced'),
   allSkills: collection('skills.trained'),
   allInabilities: collection('skills.inability'),
   allCyphers: collection('cyphers'),
   allOddities: collection('oddities'),
   allArtifacts: collection('artifacts'),
+  allExtras: collection('extras'),
   allSources: function (state) {
     var sources = {
       descriptor: [{ sourcebook: state.descriptor.sourcebook, page: state.descriptor.page }],
@@ -68,7 +68,51 @@ const getters = {
       }
     }
 
+    state.abilities.forEach(function (ability) {
+      var src = { sourcebook: ability.sourcebook, page: ability.page }
+      if (!sources['type'].find(x => x.sourcebook === src.sourcebook && x.page === src.page)) {
+        sources['type'].push(src)
+      }
+    })
+
     return sources
+  },
+  allAbilities: function (state) {
+    // Get our list of fixed abilities here
+    var fixed = (op.get(state, 'focus.abilities') || []).concat(op.get(state, 'descriptor.abilities') || [])
+    fixed = [...new Set(fixed)]
+
+    // Get our list of 'pick two' abilities
+    var choices = []
+    state.type.abilities.forEach(function (ability) {
+      if (!fixed.includes(ability)) {
+        choices.push({
+          sourcebook: state.type.sourcebook,
+          page: state.type.page,
+          ability: ability
+        })
+      }
+    })
+
+    // Now a special case to handle extensions (from player options, etc)
+    if (state.type.hasOwnProperty('extensions')) {
+      state.type.extensions.forEach(function (ext) {
+        if (ext.hasOwnProperty('abilities')) {
+          ext.abilities.forEach(function (ability) {
+            choices.push({
+              sourcebook: ext.sourcebook,
+              page: ext.page,
+              ability: ability
+            })
+          })
+        }
+      })
+    }
+
+    return {
+      fixed,
+      choices
+    }
   }
 }
 
@@ -94,6 +138,7 @@ export default {
     shins: 0,
     cyphers: [],
     oddities: [],
+    abilities: [],
     cypherlimit: 0
   },
   getters,
@@ -131,6 +176,12 @@ export default {
         state.edges[pool] += edges[pool]
         state.edges.points -= edges[pool]
       })
+    },
+    addAbility (state, choice) {
+      state.abilities.push(choice)
+    },
+    removeAbility (state, choice) {
+      state.abilities.splice(state.abilities.findIndex((val) => val === choice), 1)
     }
   }
 }

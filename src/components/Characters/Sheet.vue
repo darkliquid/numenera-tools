@@ -64,14 +64,47 @@
         </div>
       </div>
 
+      <h3>Abilities</h3>
+      <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--6-col left-list mdl-cell--stretch">
+          <h4>Fixed abilities</h4>
+          <div class="padded" v-if="allAbilities.fixed.length > 0">
+            <mdl-chip v-for="item in allAbilities.fixed">{{ item }}</mdl-chip>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col right-list mdl-cell--stretch">
+          <h4>
+            Chosen abilities
+            <span class="fr" v-if="abilities.length < 2">(choose {{ 2-abilities.length }})</span>
+          </h4>
+          <div class="padded" v-if="abilities.length < 2">
+            <mdl-chip
+              v-for="choice in availableAbilities"
+              delete-icon="check_circle"
+              @delete="addAbility(choice)"
+            >
+              {{ choice.ability }}
+            </mdl-chip>
+          </div>
+          <div class="padded" v-if="abilities.length > 0">
+            <mdl-chip
+              v-for="choice in abilities"
+              @delete="removeAbility(choice)"
+            >
+              {{ choice.ability }}
+            </mdl-chip>
+          </div>
+        </div>
+      </div>
+
       <h3>Equipment</h3>
       <div class="mdl-grid mdl-grid--no-spacing">
-        <div class="mdl-cell mdl-cell--6-col equipment-list mdl-cell--stretch">
+        <div class="mdl-cell mdl-cell--6-col left-list mdl-cell--stretch">
           <ul class="mdl-list" v-if="allEquipment.length > 0">
             <li class="mdl-list__item" v-for="item in allEquipment">{{ item }}</li>
           </ul>
         </div>
-        <div class="mdl-cell mdl-cell--6-col extras-list mdl-cell--stretch">
+        <div class="mdl-cell mdl-cell--6-col right-list mdl-cell--stretch">
           <h4 v-if="totalArmor > 0">Armor: {{ totalArmor }}</h4>
           <h4>Shins: {{ totalShins }}</h4>
           <h4>Cyphers <span class="fr">(Limit: {{ maxCyphers }})</span></h4>
@@ -85,6 +118,15 @@
           <h4 v-if="allOddities.length > 0">Oddities</h4>
           <ul class="mdl-list" v-if="allOddities.length > 0">
             <li class="mdl-list__item" v-for="item in allOddities">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Extra Notes</h3>
+      <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--12-col">
+          <ul class="mdl-list" v-if="allExtras.length > 0">
+            <li class="mdl-list__item" v-for="item in allExtras">{{ item }}</li>
           </ul>
         </div>
       </div>
@@ -126,7 +168,8 @@ export default {
       'edges',
       'descriptor',
       'type',
-      'focus'
+      'focus',
+      'abilities'
     ]),
     ...mapGetters('chargen', [
       'minMight',
@@ -148,8 +191,12 @@ export default {
       'allCyphers',
       'allOddities',
       'totalArmor',
-      'allArtifacts'
-    ])
+      'allArtifacts',
+      'allExtras'
+    ]),
+    availableAbilities () {
+      return this.allAbilities.choices.filter(x => !this.abilities.includes(x))
+    }
   },
   methods: {
     incStat (pool) {
@@ -163,6 +210,12 @@ export default {
     },
     decEdge (pool) {
       this.$store.commit('chargen/updateEdges', {[pool]: -1})
+    },
+    addAbility (choice) {
+      this.$store.commit('chargen/addAbility', choice)
+    },
+    removeAbility (choice) {
+      this.$store.commit('chargen/removeAbility', choice)
     },
     prevCharacterStep () {
       this.$store.commit('chargen/updateStep', 1)
@@ -199,11 +252,11 @@ h4 {
   padding: 0 16px;
 }
 
-.equipment-list {
+.left-list {
   border-bottom: 1px solid $card-border-color;
 }
 
-.extras-list {
+.right-list {
   border-left: 1px solid $card-border-color;
   border-bottom: 1px solid $card-border-color;
 }
@@ -217,9 +270,22 @@ h4 {
   border-bottom: 1px solid $card-border-color;
 }
 
+.padded {
+  padding: 16px;
+}
+
+.mdl-chip {
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
 .points {
   font-size: 75%;
   float: right;
+}
+
+.mdl-chip__action {
+  background: unquote("rgb($palette-red-500)");
 }
 
 </style>
