@@ -122,7 +122,7 @@
         </div>
       </div>
 
-      <h3>Extra Notes</h3>
+      <h3 v-if="allExtras.length > 0">Extra Notes</h3>
       <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--12-col">
           <ul class="mdl-list" v-if="allExtras.length > 0">
