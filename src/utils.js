@@ -6,15 +6,29 @@ function randItem (arr) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
-const matcher = /\{\{([a-z_]+)\}\}/g
+const matcher = /\{\{([a-z]+)(\.([a-z]+))?\}\}/gi
 
 function randomlyInterpolate (template, startKey) {
   var phrase = randItem(template[startKey])
-  var replacer = function (match, key) {
+  var replacer = function (match, key, _, subkey) {
     if (key && template.hasOwnProperty(key)) {
-      return randItem(template[key]).replace(matcher, replacer)
+      var item = randItem(template[key])
+
+      if (typeof item === 'string') {
+        if (subkey) {
+          return match
+        }
+
+        return item.replace(matcher, replacer)
+      }
+
+      if (subkey && item.hasOwnProperty(subkey) && item[subkey]) {
+        return item[subkey].replace(matcher, replacer)
+      }
+
+      return item[key].replace(matcher, replacer)
     }
-    return 'ERROR'
+    return match
   }
 
   return phrase.replace(matcher, replacer)
@@ -25,7 +39,9 @@ function capitalise (str) {
 }
 
 function cleanSentence (str) {
-  return capitalise(str.replace(/\sa\s([aeiou])/gi, ' an $1'))
+  return capitalise(str.replace(/.*?[.?!]/g, function (match) {
+    return capitalise(match)
+  })).replace(/\sa\s([aeiou])/gi, ' an $1')
 }
 
 function arrayToSentence (arr) {

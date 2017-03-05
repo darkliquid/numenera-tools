@@ -5,6 +5,7 @@ import Home from 'views/Home'
 import Characters from 'views/Characters'
 import Oddities from 'views/Oddities'
 import RustCyphers from 'views/RustCyphers'
+import Philethis from 'views/Philethis'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ const router = new Router({
       path: '/oddities',
       name: 'Oddities',
       component: Oddities
+    },
+    {
+      path: '/philethis',
+      name: 'Philethis',
+      component: Philethis
     },
     {
       path: '/rust-cyphers',
