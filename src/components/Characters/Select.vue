@@ -133,13 +133,6 @@ export default {
 </script>
 
 <style scoped>
-.mdl-card {
-  flex: none;
-  min-width: 50%;
-  overflow: initial;
-  margin-bottom: 4em;
-}
-
 .mdl-card__media img {
   max-width: 100%;
 }

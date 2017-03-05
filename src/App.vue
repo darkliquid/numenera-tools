@@ -26,53 +26,53 @@ export default {
       sidenav: [
         {
           text: 'Characters',
-          href: '/characters',
+          href: pathPrefix + 'characters',
           icon: 'person'
         },
         {
           text: 'Creatures',
-          href: '/creatures',
+          href: pathPrefix + 'creatures',
           icon: 'bug_report'
         },
         /* {
           text: 'Cyphers',
-          href: '/cyphers',
+          href: pathPrefix + 'cyphers',
           icon: 'build'
         }, */
         {
           text: 'Names',
-          href: '/names',
+          href: pathPrefix + 'names',
           icon: 'face'
         },
         {
           text: 'Oddities',
-          href: '/oddities',
+          href: pathPrefix + 'oddities',
           icon: 'help'
         },
         {
           text: 'Rumours',
-          href: '/rumours',
+          href: pathPrefix + 'rumours',
           icon: 'speaker_notes'
         },
         {
           text: 'Philethis Phrases',
-          href: '/philethis',
+          href: pathPrefix + 'philethis',
           icon: 'chat_bubble'
         },
         {
           text: 'Rust Cyphers',
-          href: '/rust-cyphers',
+          href: pathPrefix + 'rust-cyphers',
           icon: 'warning'
         }
       ],
       topnav: [
         {
           text: 'About',
-          href: '/about'
+          href: pathPrefix + 'about'
         },
         {
           text: 'Copyright',
-          href: '/copyright'
+          href: pathPrefix + 'copyright'
         }
       ]
     }
@@ -99,5 +99,17 @@ html, body {
 
 .fr {
   float: right;
+}
+
+.mdl-card {
+  flex: none;
+  min-width: 50%;
+  overflow: initial;
+  margin-bottom: 4em;
+}
+
+.description {
+  font-size: 150%;
+  min-height: 50px;
 }
 </style>

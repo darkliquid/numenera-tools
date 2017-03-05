@@ -228,13 +228,6 @@ export default {
 @import "../../../node_modules/material-design-lite/src/variables";
 @import "../../../node_modules/material-design-lite/src/color-definitions";
 
-.mdl-card {
-  flex: none;
-  min-width: 50%;
-  overflow: initial;
-  margin-bottom: 4em;
-}
-
 h3 {
   font-size: 20px;
   border-bottom: 1px solid $card-border-color;

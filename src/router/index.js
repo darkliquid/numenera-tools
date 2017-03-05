@@ -9,6 +9,8 @@ import Philethis from 'views/Philethis'
 import Rumours from 'views/Rumours'
 import Names from 'views/Names'
 import Creatures from 'views/Creatures'
+import About from 'views/About'
+import Copyright from 'views/Copyright'
 
 Vue.use(Router)
 
@@ -16,56 +18,66 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: pathPrefix,
       name: 'Home',
       component: Home
     },
     {
-      path: '/characters',
+      path: pathPrefix + 'characters',
       name: 'Characters',
       component: Characters
     },
     {
-      path: '/creatures',
+      path: pathPrefix + 'creatures',
       name: 'Creatures',
       component: Creatures
     },
     {
-      path: '/rumours',
+      path: pathPrefix + 'rumours',
       name: 'Rumours',
       component: Rumours
     },
     {
-      path: '/oddities',
+      path: pathPrefix + 'oddities',
       name: 'Oddities',
       component: Oddities
     },
     {
-      path: '/philethis',
+      path: pathPrefix + 'philethis',
       name: 'Philethis',
       component: Philethis
     },
     {
-      path: '/names',
+      path: pathPrefix + 'names',
       name: 'Names',
       component: Names
     },
     {
-      path: '/rust-cyphers',
+      path: pathPrefix + 'rust-cyphers',
       name: 'Rust Cyphers',
       component: RustCyphers
     },
     {
+      path: pathPrefix + 'about',
+      name: 'About',
+      component: About
+    },
+    {
+      path: pathPrefix + 'copyright',
+      name: 'Copyright',
+      component: Copyright
+    },
+    {
       path: '*',
-      redirect: '/'
+      redirect: pathPrefix
     }
   ]
 })
 
 Vue.use(Analytics, {
-  appName: '<app_name>',
-  appVersion: '<app_version>',
-  trackingId: '<your_tracking_id>',
+  appName: 'numenera-tools',
+  appVersion: '1',
+  trackingId: process.env.GA_TRACKING_CODE,
   debug: process.env.NODE_ENV !== 'production',
   vueRouter: router
 })

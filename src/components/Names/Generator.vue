@@ -36,17 +36,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.mdl-card {
-  flex: none;
-  min-width: 50%;
-  overflow: initial;
-  margin-bottom: 4em;
-}
-
-.description {
-  font-size: 200%;
-  min-height: 50px;
-}
-</style>

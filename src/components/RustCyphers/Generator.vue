@@ -97,13 +97,6 @@ export default {
 </script>
 
 <style scoped>
-.mdl-card {
-  flex: none;
-  min-width: 50%;
-  overflow: initial;
-  margin-bottom: 4em;
-}
-
 h4 {
   margin-top: 0;
 }

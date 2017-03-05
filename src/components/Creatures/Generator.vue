@@ -143,12 +143,6 @@ export default {
 </script>
 
 <style scoped>
-.mdl-card {
-  flex: none;
-  min-width: 50%;
-  overflow: initial;
-  margin-bottom: 4em;
-}
 table {
   margin-left: auto;
   margin-right: auto;
