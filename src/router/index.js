@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Analytics from 'vue-ua'
 import Home from 'views/Home'
 import Characters from 'views/Characters'
+import Oddities from 'views/Oddities'
+import RustCyphers from 'views/RustCyphers'
 
 Vue.use(Router)
 
@@ -18,6 +20,16 @@ const router = new Router({
       path: '/characters',
       name: 'Characters',
       component: Characters
+    },
+    {
+      path: '/oddities',
+      name: 'Oddities',
+      component: Oddities
+    },
+    {
+      path: '/rust-cyphers',
+      name: 'Rust Cyphers',
+      component: RustCyphers
     },
     {
       path: '*',
