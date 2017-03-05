@@ -51,11 +51,23 @@ function arrayToSentence (arr) {
   return arr.slice(0, arr.length - 1).join(', ') + ' and ' + arr.slice(-1)
 }
 
+function shuffle (a) {
+  for (let i = a.length; i; i--) {
+    let j = Math.floor(Math.random() * i)
+    let x = a[i - 1]
+    a[i - 1] = a[j]
+    a[j] = x
+  }
+
+  return a
+}
+
 export default {
   randItem,
   randomlyInterpolate,
   cleanSentence,
   capitalise,
   randNum,
-  arrayToSentence
+  arrayToSentence,
+  shuffle
 }

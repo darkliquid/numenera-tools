@@ -8,6 +8,7 @@ import RustCyphers from 'views/RustCyphers'
 import Philethis from 'views/Philethis'
 import Rumours from 'views/Rumours'
 import Names from 'views/Names'
+import Creatures from 'views/Creatures'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ const router = new Router({
       path: '/characters',
       name: 'Characters',
       component: Characters
+    },
+    {
+      path: '/creatures',
+      name: 'Creatures',
+      component: Creatures
     },
     {
       path: '/rumours',

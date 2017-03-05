@@ -4,8 +4,8 @@
       <h2 class="mdl-card__title-text">Numenera Rumour Generator</h2>
     </header>
     <div class="mdl-card__supporting-text">
-      <p class="description">{{ phrase }}</p>
-      <p class="description">{{ aside }}</p>
+      <p class="description">{{ phrase }}.</p>
+      <p class="description">{{ aside }}.</p>
     </div>
     <div class="mdl-card__actions">
       <mdl-button colored @click.native="generate">Random</mdl-button>
