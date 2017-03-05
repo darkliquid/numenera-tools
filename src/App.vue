@@ -34,11 +34,11 @@ export default {
           href: '/creatures',
           icon: 'bug_report'
         },
-        {
+        /* {
           text: 'Cyphers',
           href: '/cyphers',
           icon: 'build'
-        },
+        }, */
         {
           text: 'Names',
           href: '/names',

@@ -4,43 +4,46 @@
       <h2 class="mdl-card__title-text">Numenera Creature Generator</h2>
     </header>
     <div class="mdl-card__supporting-text">
-      <p class="image">
-        <a :href="imgLink"><img :src="imgSrc"></a>
-      </p>
-      <p class="attribution">
-        <a :href="imgLink">{{ name }}</a>
-        by
-        <a :href="authorLink">{{ author }}</a>
-      </p>
-      <p class="powers">{{ powers }}</p>
-      <table>
-        <tbody>
-          <tr>
-            <th>Level</th>
-            <td>{{ level }}</td>
-          </tr>
-          <tr>
-            <th>Armour</th>
-            <td>{{ armour }}</td>
-          </tr>
-          <tr>
-            <th>Health</th>
-            <td>{{ health }}</td>
-          </tr>
-          <tr>
-            <th>Primary Attack</th>
-            <td>{{ primaryAttack }}</td>
-          </tr>
-          <tr>
-            <th>Power Attack</th>
-            <td>{{ powerAttack }}</td>
-          </tr>
-          <tr>
-            <th>Maneuvering Attack</th>
-            <td>{{ maneuveringAttack }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <mdl-progress :indeterminate="true" v-if="loading"></mdl-progress>
+      <template v-if="!loading">
+        <p class="image">
+          <a :href="imgLink"><img :src="imgSrc"></a>
+        </p>
+        <p class="attribution">
+          <a :href="imgLink">{{ name }}</a>
+          by
+          <a :href="authorLink">{{ author }}</a>
+        </p>
+        <p class="powers">{{ powers }}</p>
+        <table>
+          <tbody>
+            <tr>
+              <th>Level</th>
+              <td>{{ level }}</td>
+            </tr>
+            <tr>
+              <th>Armour</th>
+              <td>{{ armour }}</td>
+            </tr>
+            <tr>
+              <th>Health</th>
+              <td>{{ health }}</td>
+            </tr>
+            <tr>
+              <th>Primary Attack</th>
+              <td>{{ primaryAttack }}</td>
+            </tr>
+            <tr>
+              <th>Power Attack</th>
+              <td>{{ powerAttack }}</td>
+            </tr>
+            <tr>
+              <th>Maneuvering Attack</th>
+              <td>{{ maneuveringAttack }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
     </div>
     <div class="mdl-card__actions">
       <mdl-button colored @click.native="generate">Random</mdl-button>
@@ -75,7 +78,8 @@ export default {
       health: 0,
       primaryAttack: 0,
       powerAttack: 0,
-      maneuveringAttack: 0
+      maneuveringAttack: 0,
+      loading: true
     }
   },
   mounted () {
@@ -83,6 +87,7 @@ export default {
   },
   methods: {
     loadVisualArtsImage () {
+      this.loading = true
       var tag = utils.randItem(tags)
       return axios.get(`http://crossorigin.me/http://www.visualart.me/search/index?type=tags&q=${tag}`)
       .then((response) => {
@@ -103,10 +108,10 @@ export default {
           var creature = creatures.eq(utils.randNum(creatures.length))
           this.imgSrc = creature.find('img').eq(0).prop('src')
           var title = creature.find('.info .left a').first()
-          this.name = title.text()
+          this.name = title.text().trim()
           this.imgLink = title.prop('href')
           var author = creature.find('.info .left a').last()
-          this.author = author.text()
+          this.author = author.text().trim()
           this.authorLink = author.prop('href')
         })
       })
@@ -127,9 +132,10 @@ export default {
       )
     },
     generate () {
+      this.generateStats()
+      this.generatePowers()
       this.loadVisualArtsImage().then(() => {
-        this.generateStats()
-        this.generatePowers()
+        this.loading = false
       })
     }
   }
