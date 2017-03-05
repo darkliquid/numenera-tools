@@ -3801,6 +3801,13 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
+ngram-word-generator@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/ngram-word-generator/-/ngram-word-generator-1.2.0.tgz#5476c4d4feb664d121bf7af5d0181317f6853ad4"
+  dependencies:
+    minimist "^1.2.0"
+    uniq "^1.0.1"
+
 nightwatch@^0.9.12:
   version "0.9.12"
   resolved "https://registry.yarnpkg.com/nightwatch/-/nightwatch-0.9.12.tgz#5b4a66b26a770db871ef091f484c9eba10e0d260"

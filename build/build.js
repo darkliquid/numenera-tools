@@ -3,6 +3,8 @@ require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
+require('./gen-names')
+
 var ora = require('ora')
 var path = require('path')
 var chalk = require('chalk')
