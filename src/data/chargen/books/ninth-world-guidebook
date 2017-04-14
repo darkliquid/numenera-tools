@@ -1,0 +1,227 @@
+var descriptors = [
+  {
+    name: 'Coraoan',
+    sourcebook: 'Ninth World Guidebook',
+    page: 215,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 215 }
+    ],
+    stats: {
+      speed: 3
+    },
+    shins: 10,
+    skills: {
+      trained: [
+        'All tasks related to the history of Corao and the surrounding regions',
+        'All tasks having to do with the numenera'
+      ]
+    }
+  },
+  {
+    name: 'Desert-Dwelling',
+    sourcebook: 'Ninth World Guidebook',
+    page: 215,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 215 }
+    ],
+    stats: {
+      might: 4
+    },
+    shins: 10,
+    skills: {
+      trained: [
+        'Any task involving resisting damage from heat',
+        'All tasks having to do with finding food or water'
+      ],
+      inability: [
+        'Any task involving resisting damage from cold, and you have +2 to Armor that applies only to damage from heat',
+        'Any task involving swimming or handling watercraft'
+      ]
+    },
+    extras: [
+      'Long-suffering: You can go twice as long without food and water as another human.'
+    ]
+  },
+  {
+    name: 'Devout',
+    sourcebook: 'Ninth World Guidebook',
+    page: 216,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 216 }
+    ],
+    stats: {
+      intellect: 3
+    },
+    shins: 10,
+    extras: [
+      'Steadfast: Your faith gives you the foundation to deal with stress. When something would alter the difficulty of your action to your detriment, you can negate one step of the modification. Once you use this ability, you cannot use it again until after your next ten-hour recovery roll.'
+    ]
+  },
+  {
+    name: 'Echryni',
+    sourcebook: 'Ninth World Guidebook',
+    page: 216,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 216 }
+    ],
+    shins: 10,
+    skills: {
+      trained: [
+        'All tasks involving positive social interactions'
+      ],
+      inability: [
+        ' If you go more than 28 hours without switching between water breathing and air breathing, you gain an inability in movement-related tasks, including running, jumping, and climbing. The inability persists until you make the switch between environments for at least a few minutes.'
+      ]
+    },
+    extras: [
+      'Gregarious: Despite your unusual appearance, your social skills charm even the most standoffish of creatures. You are trained in all tasks involving positive social interactions.',
+      'Waterwielder: If sufficient water is available, you can use it to craft mundane items that typically cost no more than 5 shins, such as standard weapons, armor, and equipment. Items must be no larger than what you can carry on your person, and they last up to 28 hours or until they are not in contact with you for more than a round. As a general rule, crafting a mundane object takes one to ten minutes, depending on its size and complexity. You cannot craft complicated items such as cyphers, artifacts, or special equipment'
+    ]
+  },
+  {
+    name: 'Elychnious',
+    sourcebook: 'Ninth World Guidebook',
+    page: 217,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 217 }
+    ],
+    stats: {
+      intellect: 4
+    },
+    shins: 10,
+    skills: {
+      trained: [
+        'Tasks involving botany, zoology, or biology',
+        'Climbing'
+      ],
+      inability: [
+        'Understanding or using powered numenera, including ray projectors, automatons, force fields, vehicles, and so on—anything requiring a nonliving power source'
+      ]
+    }
+  },
+  {
+    name: 'Frostborn',
+    sourcebook: 'Ninth World Guidebook',
+    page: 217,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 217 }
+    ],
+    stats: {
+      might: 2
+    },
+    shins: 10,
+    skills: {
+      trained: [
+        'Any task involving moving (walking, running, jumping, or climbing) in conditions that would otherwise be more difficult due to ice or snow',
+        'Any task involving resisting damage from cold, and you have +2 to Armor that applies only to damage from cold',
+        'Handling euriegs and driving a eurieg-pulled sledge'
+      ],
+      inability: [
+        'Any task involving resisting damage from heat'
+      ]
+    }
+  },
+  {
+    name: 'Gaian',
+    sourcebook: 'Ninth World Guidebook',
+    page: 218,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 218 }
+    ],
+    stats: {
+      intellect: 2,
+      speed: 2
+    },
+    shins: 10,
+    skills: {
+      trained: [
+        'Any task having to do with interacting with, caring for, or training animals'
+      ]
+    }
+  },
+  {
+    name: 'Proxima',
+    sourcebook: 'Ninth World Guidebook',
+    page: 219,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 219 }
+    ],
+    stats: {
+      might: 4
+    },
+    shins: 10,
+    skills: {
+      trained: [
+        'Tasks related to intimidating humans'
+      ],
+      inability: [
+        'Positive social interactions with humans'
+      ]
+    }
+    extras: [
+      'Quick Recovery: Your ten-minute recovery only takes one action'
+    ]
+  },
+  {
+    name: 'Rayskelan',
+    sourcebook: 'Ninth World Guidebook',
+    page: 219,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 219 }
+    ],
+    stats: {
+      speed: 4
+    },
+    shins: 10,
+    extras: [
+      'Pliant: You are at home on both water and land, adept at switching between the two. At the beginning of each day, you can choose to be trained either in running and jumping, or in swimming and sailing'
+    ],
+    equipment: [
+      'You carry a unique token that you found on the shore of your home island long ago, as well as a dozen airels.'
+    ]
+  },
+  {
+    name: 'Vralkan',
+    sourcebook: 'Ninth World Guidebook',
+    page: 219,
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 219 }
+    ],
+    stats: {
+      might: 4
+    },
+    shins: 10,
+    skills: {
+      trained: [
+        'Any task involving finding food or water'
+      ],
+      inability: [
+        'All pleasant social interactions'
+      ]
+    },
+    extras: [
+      'Bloodthirsty: If you are fighting a wounded foe, you deal 1 additional point of damage'
+    ]
+  }
+]
+
+var foci = [
+  {
+    name: 'Lives on the Road',
+    sourcebook: 'Ninth World Guidebook',
+    page: 220,
+    stats: [
+      might: 4
+    ],
+    equipment: [
+      'An explorer’s Pack, or an extra change of clothes, 2 days rations, and 2 minor glowglobes'
+    ],
+    abilities: [
+      'Multilingual',
+      'Connection'
+    ],
+    sources: [
+      { sourcebook: 'Ninth World Guidebook', page: 220 }
+    ]
+  }
+]
