@@ -35,7 +35,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ## Data Files
 
-There are a number of data files that are used to generate all the information the generators use. These are all JSON but there are a few different structures dependant on the generator the data is for. There a 2 main formats, plus a third one which is generated using the gen-names task mentioned above which wont be covered here. For more information on that, see the documentation for [ngram-word-generator][1].
+There are a number of data files that are used to generate all the information the generators use. These are all simple javascript but there are a few different structures dependant on the generator the data is for. There a 2 main formats, plus a third one which is generated using the gen-names task mentioned above which wont be covered here. For more information on that, see the documentation for [ngram-word-generator][1].
 
 ### Character Generator Data
 
