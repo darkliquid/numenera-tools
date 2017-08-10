@@ -89,7 +89,7 @@ export default {
     loadVisualArtsImage () {
       this.loading = true
       var tag = utils.randItem(tags)
-      return axios.get(`http://crossorigin.me/http://www.visualart.me/search/index?type=tags&q=${tag}`)
+      return axios.get(`//crossorigin.me/http://www.visualart.me/search/index?type=tags&q=${tag}`)
       .then((response) => {
         var $ = cheerio.load(response.data)
         var lastPageLink = $('#pagination .pages li:not([class])').last().find('a').prop('href')
@@ -101,7 +101,7 @@ export default {
 
         var page = utils.randNum(pageCount) + 1
 
-        return axios.get(`http://crossorigin.me/http://www.visualart.me/search/index?type=tags&q=${tag}&page=${page}`)
+        return axios.get(`//crossorigin.me/http://www.visualart.me/search/index?type=tags&q=${tag}&page=${page}`)
         .then((response) => {
           var $ = cheerio.load(response.data)
           var creatures = $('#main .browse .photo .thumb')
