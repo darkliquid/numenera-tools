@@ -20,7 +20,7 @@
     "material-design-lite": "^1.3.0",
     "ngram-word-generator": "^1.2.0",
     "node-sass": "^4.13.1",
-    "object-path": "^0.11.3",
+    "object-path": "^0.11.5",
     "vue": "^2.1.10",
     "vue-mdl": "^1.1.0",
     "vue-router": "^2.2.0",
