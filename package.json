@@ -14,7 +14,7 @@
     "gen-names": "node build/gen-names.js"
   },
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.21.1",
     "cheerio": "^0.22.0",
     "material-design-icons-loader": "^1.0.2",
     "material-design-lite": "^1.3.0",
