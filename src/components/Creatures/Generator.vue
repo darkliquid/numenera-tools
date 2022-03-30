@@ -1,10 +1,10 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Creature Generator</h2>
+  <div class="v-card">
+    <header class="v-card__title">
+      <h2 class="v-card__title-text">Numenera Creature Generator</h2>
     </header>
-    <div class="mdl-card__supporting-text">
-      <mdl-progress :indeterminate="true" v-if="loading"></mdl-progress>
+    <div class="v-card__supporting-text">
+      <v-progress :indeterminate="true" v-if="loading"></v-progress>
       <template v-if="!loading">
         <p class="image">
           <a :href="imgLink"><img :src="imgSrc"></a>
@@ -45,8 +45,8 @@
         </table>
       </template>
     </div>
-    <div class="mdl-card__actions">
-      <mdl-button colored @click.native="generate">Random</mdl-button>
+    <div class="v-card__actions">
+      <v-btn colored @click.native="generate">Random</v-btn>
     </div>
   </div>
 </template>

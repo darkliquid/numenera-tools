@@ -1,13 +1,13 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Philethis Phrase Generator</h2>
+  <div class="v-card">
+    <header class="v-card__title">
+      <h2 class="v-card__title-text">Numenera Philethis Phrase Generator</h2>
     </header>
-    <div class="mdl-card__supporting-text">
+    <div class="v-card__supporting-text">
       <p class="description">{{ phrase }}</p>
     </div>
-    <div class="mdl-card__actions">
-      <mdl-button colored @click.native="generate">Random</mdl-button>
+    <div class="v-card__actions">
+      <v-btn colored @click.native="generate">Random</v-btn>
     </div>
   </div>
 </template>

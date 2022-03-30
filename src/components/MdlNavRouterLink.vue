@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="to" class="mdl-navigation__link">
+  <router-link :to="to" class="v-app-barigation__link">
     <i class="material-icons" v-if="icon">{{ icon }}</i>
     <slot></slot>
   </router-link>

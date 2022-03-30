@@ -1,9 +1,9 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Rust Cypher Generator</h2>
+  <div class="v-card">
+    <header class="v-card__title">
+      <h2 class="v-card__title-text">Numenera Rust Cypher Generator</h2>
     </header>
-    <div class="mdl-card__supporting-text">
+    <div class="v-card__supporting-text">
       <h4>A level {{ level }} rust cypher that targets {{ typedesc }}</h4>
       <dl>
         <dt>Description</dt>
@@ -14,8 +14,8 @@
         <dd>{{ operation }}</dd>
       </dl>
     </div>
-    <div class="mdl-card__actions">
-      <mdl-button colored @click.native="generate">Random</mdl-button>
+    <div class="v-card__actions">
+      <v-btn colored @click.native="generate">Random</v-btn>
     </div>
   </div>
 </template>

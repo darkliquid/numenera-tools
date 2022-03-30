@@ -1,20 +1,14 @@
-// Import material design lite
-import 'material-design-lite/src/material-design-lite.scss'
-import 'material-design-lite/material'
-import 'material-design-icons-loader'
-
-// Import Vue2 MDL components
-import VueMdl from 'vue-mdl'
-
-// App
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
 
-const app = createApp(App)
+loadFonts()
 
-app.use(router)
-app.use(store)
-app.use(VueMdl)
-app.mount('#app')
+createApp(App)
+  .use(router)
+  .use(store)
+  .use(vuetify)
+  .mount('#app')

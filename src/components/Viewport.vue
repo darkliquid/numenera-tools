@@ -1,33 +1,33 @@
 <template>
-  <mdl-layout class="viewport" :transparent-header="true">
-    <mdl-layout-header-row slot="header" :title="title">
-      <mdl-layout-spacer />
-      <mdl-nav v-if="topnav.length > 0">
-        <mdl-nav-router-link
+  <v-layout class="viewport" :transparent-header="true">
+    <v-layout-header-row slot="header" :title="title">
+      <v-layout-spacer />
+      <v-app-bar v-if="topnav.length > 0">
+        <v-app-bar-router-link
           v-for="link in topnav"
           :to="link.href"
           :icon="link.icon"
         >
           {{ link.text }}
-        </mdl-nav-router-link>
-      </mdl-nav>
-    </mdl-layout-header-row>
-    <mdl-layout-drawer ref="drawer" :title="title" v-if="sidenav.length > 0">
-      <mdl-nav>
-        <mdl-nav-router-link
+        </v-app-bar-router-link>
+      </v-app-bar>
+    </v-layout-header-row>
+    <v-layout-drawer ref="drawer" :title="title" v-if="sidenav.length > 0">
+      <v-app-bar>
+        <v-app-bar-router-link
           v-for="link in sidenav"
           :to="link.href"
           :icon="link.icon"
         >
           {{ link.text }}
-        </mdl-nav-router-link>
-      </mdl-nav>
-    </mdl-layout-drawer>
-    <mdl-layout-content>
+        </v-app-bar-router-link>
+      </v-app-bar>
+    </v-layout-drawer>
+    <v-layout-content>
       <slot></slot>
-    </mdl-layout-content>
+    </v-layout-content>
     <slot name="footer"></slot>
-  </mdl-layout>
+  </v-layout>
 </template>
 
 <script>
@@ -84,11 +84,11 @@ export default {
   background: url('../assets/images/MCG-Numenera-Obelisk-of-the-Water-God.jpg') center / cover;
 }
 
-.mdl-navigation__link i {
+.v-app-barigation__link i {
   margin-right: 0.5em;
 }
 
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link.router-link-active {
+.v-layout__drawer .v-app-barigation .v-app-barigation__link.router-link-active {
   color: $text-link-color;
 }
 </style>

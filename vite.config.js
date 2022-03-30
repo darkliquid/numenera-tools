@@ -1,26 +1,38 @@
-import { fileURLToPath, URL } from 'url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
+import vuetify from '@vuetify/vite-plugin'
+
+const path = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  define: { "__GA_TRACKING_CODE__" : `"UA-1209898-1"` },
-  plugins: [vue(), viteCommonjs()],
+  plugins: [
+    vue(),
+    // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
+    vuetify({
+      autoImport: true,
+    }),
+  ],
+  define: { 
+    'process.env': {},
+    '__GA_TRACKING_CODE__': '"UA-6075745-1"'
+  },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      plugins: [
-        // Solves:
-        // https://github.com/vitejs/vite/issues/5308
-        // add the name of your package
-        esbuildCommonjs(['material-design-lite']),
-      ],
+      '@': path.resolve(__dirname, 'src'),
     },
-  }
+  },
+  /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
+  resolve: {
+    extensions: [
+      '.js',
+      '.json',
+      '.jsx',
+      '.mjs',
+      '.ts',
+      '.tsx',
+      '.vue',
+    ]
+  },
+  */
 })

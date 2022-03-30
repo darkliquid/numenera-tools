@@ -1,33 +1,33 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Character Generator</h2>
+  <div class="v-card">
+    <header class="v-card__title">
+      <h2 class="v-card__title-text">Numenera Character Generator</h2>
     </header>
-    <div class="mdl-card__supporting-text">
+    <div class="v-card__supporting-text">
       Choose your Descriptor, Type and Focus
     </div>
     <form>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
+      <div class="v-grid">
+        <div class="v-cell v-cell--12-col">
           <span class="sentence-fragment">I am a</span>
           <mdl-select-field id="descriptor" :value="descriptor" :options="groupedDescriptors" grouped label="Choose a Descriptor" @input="updateDescriptor"/>
         </div>
       </div>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
+      <div class="v-grid">
+        <div class="v-cell v-cell--12-col">
           <mdl-select-field id="type" :value="type" :options="groupedTypes" grouped label="Choose a Type" @input="updateType"/>
         </div>
       </div>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
+      <div class="v-grid">
+        <div class="v-cell v-cell--12-col">
           <span class="sentence-fragment">who</span>
           <mdl-select-field id="focus" :value="focus" :options="groupedFoci" grouped label="Choose a Focus" @input="updateFocus"/>
         </div>
       </div>
     </form>
-    <div class="mdl-card__actions">
-      <mdl-button @click.native="randomSelection">Random</mdl-button>
-      <mdl-button class="fr" colored @click.native="nextCharacterStep" :disabled="!allSelected">Next</mdl-button>
+    <div class="v-card__actions">
+      <v-btn @click.native="randomSelection">Random</v-btn>
+      <v-btn class="fr" colored @click.native="nextCharacterStep" :disabled="!allSelected">Next</v-btn>
     </div>
   </div>
 </template>
@@ -133,7 +133,7 @@ export default {
 </script>
 
 <style scoped>
-.mdl-card__media img {
+.v-card__media img {
   max-width: 100%;
 }
 

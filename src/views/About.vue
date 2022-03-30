@@ -1,10 +1,10 @@
 <template>
   <div id="about">
-    <div class="mdl-card">
-      <header class="mdl-card__title">
-        <h2 class="mdl-card__title-text">About</h2>
+    <div class="v-card">
+      <header class="v-card__title">
+        <h2 class="v-card__title-text">About</h2>
       </header>
-      <div class="mdl-card__supporting-text">
+      <div class="v-card__supporting-text">
         <p>
           Hello, my name is <strong>darkliquid</strong> and I made all these tools
           to help me, and you, run games of Numenera, one of my favourite table-top
