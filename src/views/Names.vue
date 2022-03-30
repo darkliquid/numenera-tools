@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import NameGenerator from 'components/Names/Generator'
+import NameGenerator from '../components/Names/Generator.vue'
 
 export default {
   components: {

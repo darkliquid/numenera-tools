@@ -2,6 +2,8 @@
   <div id="characters">
     <transition :name="transitionName">
       <character-select :types="types" :foci="foci" :descriptors="descriptors" v-if="step === 1"/>
+    </transition>  
+    <transition :name="transitionName">
       <character-sheet v-if="step === 2"/>
     </transition>
   </div>
@@ -10,12 +12,12 @@
 <script>
 import { mapState } from 'vuex'
 
-import CharacterSelect from 'components/Characters/Select'
-import CharacterSheet from 'components/Characters/Sheet'
+import CharacterSelect from '../components/Characters/Select.vue'
+import CharacterSheet from '../components/Characters/Sheet.vue'
 
-import descriptors from 'data/chargen/descriptors'
-import foci from 'data/chargen/foci'
-import types from 'data/chargen/types'
+import descriptors from '../data/chargen/descriptors'
+import foci from '../data/chargen/foci'
+import types from '../data/chargen/types'
 
 export default {
   components: {

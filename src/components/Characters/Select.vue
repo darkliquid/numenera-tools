@@ -29,13 +29,13 @@
       <mdl-button @click.native="randomSelection">Random</mdl-button>
       <mdl-button class="fr" colored @click.native="nextCharacterStep" :disabled="!allSelected">Next</mdl-button>
     </div>
-  </mdl-card>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
-import MdlSelectField from 'components/MdlSelectField'
+import MdlSelectField from '../MdlSelectField.vue'
 
 function groupedOptions (arr) {
   return function () {

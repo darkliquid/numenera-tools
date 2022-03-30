@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import RumourGenerator from 'components/Rumours/Generator'
+import RumourGenerator from '../components/Rumours/Generator.vue'
 
 export default {
   components: {

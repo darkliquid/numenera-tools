@@ -17,6 +17,7 @@
         </p>
         <p>
           If you care to follow along with the things I'm doing, you can <a href="http://darkliquid.co.uk">read my blog</a> or <a href="http://twitter.com/darkliquid">follow me on twitter</a>.
+        </p>
       </div>
     </div>
   </div>

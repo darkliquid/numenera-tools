@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import model from 'data/names/names.json'
+import model from '../../data/names/names.json'
 import makeGenerator from 'ngram-word-generator'
-import utils from 'utils'
+import utils from '../../utils'
 
 export default {
   data () {

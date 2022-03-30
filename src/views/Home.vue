@@ -14,7 +14,7 @@
       <div class="mdl-card__actions mdl-card--border">
         <mdl-button colored @click.native="$store.commit('toggleDrawer')">Get Started</mdl-button>
       </div>
-    </mdl-card>
+    </div>
   </div>
 </template>
 

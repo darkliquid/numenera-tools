@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import phrase from 'data/oddities/phrases'
-import effect from 'data/oddities/effects'
-import material from 'data/oddities/materials'
-import trigger from 'data/oddities/triggers'
-import object from 'data/oddities/objects'
-import utils from 'utils'
+import phrase from '../../data/oddities/phrases'
+import effect from '../../data/oddities/effects'
+import material from '../../data/oddities/materials'
+import trigger from '../../data/oddities/triggers'
+import object from '../../data/oddities/objects'
+import utils from '../../utils'
 
 var templates = {
   phrase,

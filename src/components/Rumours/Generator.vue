@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import aside from 'data/rumours/asides'
-import effect from 'data/rumours/effects'
-import creature from 'data/rumours/creatures'
-import location from 'data/rumours/locations'
-import job from 'data/rumours/jobs'
-import phrase from 'data/rumours/phrases'
-import object from 'data/rumours/objects'
-import place from 'data/rumours/places'
-import utils from 'utils'
+import aside from '../../data/rumours/asides'
+import effect from '../../data/rumours/effects'
+import creature from '../../data/rumours/creatures'
+import location from '../../data/rumours/locations'
+import job from '../../data/rumours/jobs'
+import phrase from '../../data/rumours/phrases'
+import object from '../../data/rumours/objects'
+import place from '../../data/rumours/places'
+import utils from '../../utils'
 
 var templates = {
   aside,

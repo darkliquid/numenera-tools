@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import abilities from 'data/rust-cyphers/abilities'
-import appearances from 'data/rust-cyphers/appearances'
-import operations from 'data/rust-cyphers/operations'
-import utils from 'utils'
+import abilities from '../../data/rust-cyphers/abilities'
+import appearances from '../../data/rust-cyphers/appearances'
+import operations from '../../data/rust-cyphers/operations'
+import utils from '../../utils'
 
 export default {
   computed: {

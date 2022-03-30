@@ -14,7 +14,9 @@
 </template>
 
 <script>
-import Viewport from 'components/Viewport'
+import Viewport from './components/Viewport.vue'
+
+const pathPrefix = import.meta.env.BASE_URL;
 
 export default {
   components: {

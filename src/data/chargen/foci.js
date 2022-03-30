@@ -1,5 +1,5 @@
-import { foci as corebook } from 'data/chargen/books/numenera-corebook'
-import { foci as guidebook } from 'data/chargen/books/ninth-world-guidebook'
+import { foci as corebook } from './books/numenera-corebook'
+import { foci as guidebook } from './books/ninth-world-guidebook'
 
 export default [
   ...corebook,

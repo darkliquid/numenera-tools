@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import RustCypherGenerator from 'components/RustCyphers/Generator'
+import RustCypherGenerator from '../components/RustCyphers/Generator.vue'
 
 export default {
   components: {

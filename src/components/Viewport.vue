@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import MdlNavRouterLink from './MdlNavRouterLink'
+import MdlNavRouterLink from './MdlNavRouterLink.vue'
 import { mapState } from 'vuex'
 
 export default {

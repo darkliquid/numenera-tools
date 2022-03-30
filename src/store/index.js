@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import chargen from './chargen'
+import { createStore } from 'vuex'
 
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
+// Create a new store instance.
+const store = createStore({
   strict: process.env.NODE_ENV !== 'production',
-  state: {
-    drawerOpen: false
+  state() {
+    return {
+      drawerOpen: false
+    }
   },
   mutations: {
     toggleDrawer (state) {

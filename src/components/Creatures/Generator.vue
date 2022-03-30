@@ -54,8 +54,8 @@
 <script>
 import axios from 'axios'
 import cheerio from 'cheerio'
-import powers from 'data/creatures/powers'
-import utils from 'utils'
+import powers from '../../data/creatures/powers'
+import utils from '../../utils'
 
 const tags = [
   'creature',

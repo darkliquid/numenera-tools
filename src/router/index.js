@@ -1,21 +1,20 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Analytics from 'vue-ua'
-import Home from 'views/Home'
-import Characters from 'views/Characters'
-import Oddities from 'views/Oddities'
-import RustCyphers from 'views/RustCyphers'
-import Philethis from 'views/Philethis'
-import Rumours from 'views/Rumours'
-import Names from 'views/Names'
-import Creatures from 'views/Creatures'
-import About from 'views/About'
-import Copyright from 'views/Copyright'
+import Home from '../views/Home.vue'
+import Characters from '../views/Characters.vue'
+import Oddities from '../views/Oddities.vue'
+import RustCyphers from '../views/RustCyphers.vue'
+import Philethis from '../views/Philethis.vue'
+import Rumours from '../views/Rumours.vue'
+import Names from '../views/Names.vue'
+import Creatures from '../views/Creatures.vue'
+import About from '../views/About.vue'
+import Copyright from '../views/Copyright.vue'
 
-Vue.use(Router)
+import { createRouter, createWebHistory } from 'vue-router'
 
-const router = new Router({
-  mode: 'history',
+const pathPrefix = import.meta.env.BASE_URL;
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: pathPrefix,
@@ -68,18 +67,10 @@ const router = new Router({
       component: Copyright
     },
     {
-      path: '*',
+      path: '/:catchAll(.*)',
       redirect: pathPrefix
     }
   ]
-})
-
-Vue.use(Analytics, {
-  appName: 'numenera-tools',
-  appVersion: '1',
-  trackingId: process.env.GA_TRACKING_CODE,
-  debug: process.env.NODE_ENV !== 'production',
-  vueRouter: router
 })
 
 export default router

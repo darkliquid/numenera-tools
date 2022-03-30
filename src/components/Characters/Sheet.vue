@@ -150,13 +150,13 @@
     <div class="mdl-card__actions mdl-card--border">
       <mdl-button @click.native="prevCharacterStep">Back</mdl-button>
     </div>
-  </mdl-card>
+  </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
 
-import Stat from 'components/Characters/Stat'
+import Stat from './Stat.vue'
 
 export default {
   components: {

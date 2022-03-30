@@ -13,16 +13,16 @@
 </template>
 
 <script>
-import action from 'data/philethis/actions'
-import adjective from 'data/philethis/adjectives'
-import creature from 'data/philethis/creatures'
-import location from 'data/philethis/locations'
-import mass from 'data/philethis/mass'
-import path from 'data/philethis/paths'
-import phrase from 'data/philethis/phrases'
-import thing from 'data/philethis/things'
-import time from 'data/philethis/times'
-import utils from 'utils'
+import action from '../../data/philethis/actions'
+import adjective from '../../data/philethis/adjectives'
+import creature from '../../data/philethis/creatures'
+import location from '../../data/philethis/locations'
+import mass from '../../data/philethis/mass'
+import path from '../../data/philethis/paths'
+import phrase from '../../data/philethis/phrases'
+import thing from '../../data/philethis/things'
+import time from '../../data/philethis/times'
+import utils from '../../utils'
 
 var templates = {
   action,
