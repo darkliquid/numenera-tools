@@ -1,10 +1,10 @@
 <template>
-  <div class="v-card">
-    <header class="v-card__title">
-      <h2 class="v-card__title-text">Numenera Rust Cypher Generator</h2>
-    </header>
-    <div class="v-card__supporting-text">
-      <h4>A level {{ level }} rust cypher that targets {{ typedesc }}</h4>
+  <v-card>
+    <v-card-header-text>
+      <v-card-title>Rust Cypher Generator</v-card-title>
+    </v-card-header-text>
+    <v-card-text>
+      <h3>A level {{ level }} rust cypher that targets {{ typedesc }}</h3>
       <dl>
         <dt>Description</dt>
         <dd>{{ description }}</dd>
@@ -13,11 +13,11 @@
         <dt>Operation</dt>
         <dd>{{ operation }}</dd>
       </dl>
-    </div>
-    <div class="v-card__actions">
-      <v-btn colored @click.native="generate">Random</v-btn>
-    </div>
-  </div>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn colored @click="generate">Random</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
@@ -97,8 +97,13 @@ export default {
 </script>
 
 <style scoped>
-h4 {
+h3 {
   margin-top: 0;
+  margin-bottom: 1em;
+}
+
+dt {
+  font-weight: bold;
 }
 
 dd {

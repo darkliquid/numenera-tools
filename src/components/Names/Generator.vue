@@ -1,15 +1,15 @@
 <template>
-  <div class="v-card">
-    <header class="v-card__title">
-      <h2 class="v-card__title-text">Numenera Name Generator</h2>
-    </header>
-    <div class="v-card__supporting-text">
-      <p class="description">{{ name }}</p>
-    </div>
-    <div class="v-card__actions">
-      <v-btn colored @click.native="generate">Random</v-btn>
-    </div>
-  </div>
+  <v-card>
+    <v-card-header-text>
+      <v-card-title>Name Generator</v-card-title>
+    </v-card-header-text>
+    <v-card-text>
+      {{ name }}
+    </v-card-text>
+    <v-card-actions>
+      <v-btn colored @click="generate">Random</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>

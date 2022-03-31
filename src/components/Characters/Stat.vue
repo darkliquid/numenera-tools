@@ -1,8 +1,8 @@
 <template>
   <div class="stat-editor">
-    <v-btn colored icon="remove" @click.stop.prevent="remove" :disabled="!removable"/>
+    <v-btn size="x-small" colored icon="mdi-minus" @click.stop.prevent="remove" :disabled="!removable"/>
     <div :class="classes">{{ value }}</div>
-    <v-btn colored icon="add" @click.stop.prevent="add" :disabled="!addable"/>
+    <v-btn size="x-small" colored icon="mdi-plus" @click.stop.prevent="add" :disabled="!addable"/>
   </div>
 </template>
 
@@ -59,5 +59,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+.stat-editor .v-btn {
+  display: inline-block;
+}
+.stat-counter {
+  display: inline-block;
+  margin: 0 5px;
+}
 </style>
