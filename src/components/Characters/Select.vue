@@ -127,17 +127,20 @@ export default {
   },
   methods: {
     randomSelection () {
-      this.descriptor = Math.floor(Math.random() * this.descriptors.length)
-      this.type = Math.floor(Math.random() * this.types.length)
-      this.focus = Math.floor(Math.random() * this.foci.length)
+      this.updateDescriptor(Math.floor(Math.random() * this.descriptors.length))
+      this.updateType(Math.floor(Math.random() * this.types.length))
+      this.updateFocus(Math.floor(Math.random() * this.foci.length))
     },
     updateFocus (focus) {
+      this.focus = focus
       this.$store.commit('chargen/updateFocus', this.foci[focus])
     },
     updateDescriptor (descriptor) {
+      this.descriptor = descriptor
       this.$store.commit('chargen/updateDescriptor', this.descriptors[descriptor])
     },
     updateType (type) {
+      this.type = type
       this.$store.commit('chargen/updateType', this.types[type])
     },
     nextCharacterStep () {
