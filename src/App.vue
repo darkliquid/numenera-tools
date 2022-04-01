@@ -7,8 +7,6 @@
 <script>
 import Viewport from './components/Viewport.vue'
 
-const pathPrefix = import.meta.env.BASE_URL;
-
 export default {
   components: {
     Viewport
@@ -19,53 +17,53 @@ export default {
       sidenav: [
         {
           text: 'Characters',
-          href: pathPrefix + 'characters',
+          href: 'characters',
           icon: 'person'
         },
         {
           text: 'Creatures',
-          href: pathPrefix + 'creatures',
+          href: 'creatures',
           icon: 'bug_report'
         },
         /* {
           text: 'Cyphers',
-          href: pathPrefix + 'cyphers',
+          href: 'cyphers',
           icon: 'build'
         }, */
         {
           text: 'Names',
-          href: pathPrefix + 'names',
+          href: 'names',
           icon: 'face'
         },
         {
           text: 'Oddities',
-          href: pathPrefix + 'oddities',
+          href: 'oddities',
           icon: 'help'
         },
         {
           text: 'Rumours',
-          href: pathPrefix + 'rumours',
+          href: 'rumours',
           icon: 'speaker_notes'
         },
         {
           text: 'Philethis Phrases',
-          href: pathPrefix + 'philethis',
+          href: 'philethis',
           icon: 'chat_bubble'
         },
         {
           text: 'Rust Cyphers',
-          href: pathPrefix + 'rust-cyphers',
+          href: 'rust-cyphers',
           icon: 'warning'
         }
       ],
       topnav: [
         {
           text: 'About',
-          href: pathPrefix + 'about'
+          href: 'about'
         },
         {
           text: 'Copyright',
-          href: pathPrefix + 'copyright'
+          href: 'copyright'
         }
       ]
     }
@@ -75,7 +73,8 @@ export default {
 </script>
 
 <style>
-html, body, #app {
-  height: 100%;
+html {
+  background: url('./assets/images/MCG-Numenera-Obelisk-of-the-Water-God.jpg') center / cover;
+  background-attachment: fixed;
 }
 </style>

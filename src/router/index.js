@@ -17,52 +17,52 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: pathPrefix,
+      path: '/',
       name: 'Home',
       component: Home
     },
     {
-      path: pathPrefix + 'characters',
+      path: '/characters',
       name: 'Characters',
       component: Characters
     },
     {
-      path: pathPrefix + 'creatures',
+      path: '/creatures',
       name: 'Creatures',
       component: Creatures
     },
     {
-      path: pathPrefix + 'rumours',
+      path: '/rumours',
       name: 'Rumours',
       component: Rumours
     },
     {
-      path: pathPrefix + 'oddities',
+      path: '/oddities',
       name: 'Oddities',
       component: Oddities
     },
     {
-      path: pathPrefix + 'philethis',
+      path: '/philethis',
       name: 'Philethis',
       component: Philethis
     },
     {
-      path: pathPrefix + 'names',
+      path: '/names',
       name: 'Names',
       component: Names
     },
     {
-      path: pathPrefix + 'rust-cyphers',
+      path: '/rust-cyphers',
       name: 'Rust Cyphers',
       component: RustCyphers
     },
     {
-      path: pathPrefix + 'about',
+      path: '/about',
       name: 'About',
       component: About
     },
     {
-      path: pathPrefix + 'copyright',
+      path: '/copyright',
       name: 'Copyright',
       component: Copyright
     },

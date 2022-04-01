@@ -1,5 +1,5 @@
 <template>
-  <v-app id="viewport" fill-height>
+  <v-app id="viewport">
     <v-app-bar app v-if="topnav.length > 0">
       <v-app-bar-nav-icon @click.stop="toggleDrawer"></v-app-bar-nav-icon>
       <v-app-bar-title>Numenera Playground</v-app-bar-title>
@@ -24,8 +24,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main fill-height>
-      <v-container fluid fill-height>
+    <v-main>
+      <v-container fluid>
         <slot></slot>
       </v-container>
     </v-main>
@@ -76,8 +76,6 @@ export default {
 
 <style lang="scss">
 #viewport {
-  background: url('../assets/images/MCG-Numenera-Obelisk-of-the-Water-God.jpg') center / cover;
-  background-attachment: fixed;
-  height: 100%;
+  background: none;
 }
 </style>

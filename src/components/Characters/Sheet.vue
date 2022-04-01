@@ -5,12 +5,11 @@
     </v-card-header-text>
     <v-card-text>
       <v-form>
-        <v-expansion-panels>
-          <v-expansion-panel>
-            <v-expansion-panel-title>
+          <v-card variant="plain">
+            <v-card-title>
               Pools <template v-if="stats.points > 0"> ({{ stats.points }} remaining points)</template>
-            </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            </v-card-title>
+            <v-card-text>
               <v-row no-gutters>
                 <v-col>
                   <h4 class="text-center">Might</h4>
@@ -25,13 +24,13 @@
                   <stat class="d-flex justify-center" :min="minIntellect" :points="stats.points" pool="intellect" @add="incStat" @remove="decStat"/>
                 </v-col>
               </v-row>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-title>
+            </v-card-text>
+          </v-card>
+          <v-card variant="plain">
+            <v-card-title>
               Edge <template v-if="edges.points > 0"> ({{ edges.points }} remaining points)</template>
-            </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            </v-card-title>
+            <v-card-text>
               <v-row>
                 <v-col>
                   <h4 class="text-center">Might</h4>
@@ -46,11 +45,11 @@
                   <stat class="d-flex justify-center" :min="minIntellectEdge" :points="edges.points" pool="intellect" @add="incEdge" @remove="decEdge"/>
                 </v-col>
               </v-row>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-title>Skills</v-expansion-panel-title>
-            <v-expansion-panel-text>
+            </v-card-text>
+          </v-card>
+          <v-card variant="plain">
+            <v-card-title>Skills</v-card-title>
+            <v-card-text>
               <v-row>
                 <v-col v-if="allPracticeds.length > 0">
                   <h4>Practiced</h4>
@@ -71,11 +70,11 @@
                   </v-list>
                 </v-col>
               </v-row>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-title>Abilities</v-expansion-panel-title>
-            <v-expansion-panel-text>
+            </v-card-text>
+          </v-card>
+          <v-card variant="plain">
+            <v-card-title>Abilities</v-card-title>
+            <v-card-text>
               <v-row>
                 <v-col v-if="allAbilities.fixed.length > 0">
                   <h4>Fixed abilities</h4>
@@ -102,11 +101,11 @@
                   </v-chip>
                 </v-col>
               </v-row>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-title>Equipment</v-expansion-panel-title>
-            <v-expansion-panel-text>
+            </v-card-text>
+          </v-card>
+          <v-card variant="plain">
+            <v-card-title>Equipment</v-card-title>
+            <v-card-text>
               <v-row>
                 <v-col>
                   <v-list v-if="allEquipment.length > 0">
@@ -135,11 +134,11 @@
                   </v-list>
                 </v-col>
               </v-row>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
-          <v-expansion-panel v-if="allExtras.length > 0">
-            <v-expansion-panel-title>Extra Notes</v-expansion-panel-title>
-            <v-expansion-panel-text>
+            </v-card-text>
+          </v-card>
+          <v-card variant="plain" v-if="allExtras.length > 0">
+            <v-card-title>Extra Notes</v-card-title>
+            <v-card-text>
               <v-row>
                 <v-col>
                   <v-list v-if="allExtras.length > 0">
@@ -147,11 +146,11 @@
                   </v-list>
                 </v-col>
               </v-row>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-title>Sourcebooks</v-expansion-panel-title>
-            <v-expansion-panel-text>
+            </v-card-text>
+          </v-card>
+          <v-card variant="plain">
+            <v-card-title>Sourcebooks</v-card-title>
+            <v-card-text>
               <v-list>
                 <v-list-subheader>{{ descriptor.name }}</v-list-subheader>
                 <v-list-item v-for="src in allSources.descriptor" :key="src">
@@ -166,9 +165,8 @@
                     {{ src.sourcebook }}, page {{ src.page }}
                 </v-list-item>
               </v-list>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
-        </v-expansion-panels>
+            </v-card-text>
+          </v-card>
       </v-form>
     </v-card-text>
     <v-card-actions>
