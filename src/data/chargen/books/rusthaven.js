@@ -7,11 +7,11 @@ var descriptors = [{
     },
     skills: {
       trained: [
-        'Any knowledge tasks related to your bitterness.'
+        'Any knowledge tasks related to your bitterness'
       ],
       inability: [
-        'Pleasant social interactions.',
-        'The GM gets free intrusions when invoking the source of your bitterness.'
+        'Pleasant social interactions',
+        'The GM gets free intrusions when invoking the source of your bitterness'
       ]
     },
   },
@@ -24,11 +24,11 @@ var descriptors = [{
     },
     skills: {
       trained: [
-        'Intimidation.'
+        'Intimidation'
       ]
     },
     extras: [
-      'You have a scar or deformity that acts as an asset for intimidating others.'
+      'You have a scar or deformity that acts as an asset for intimidating others'
     ]
   },
   {
@@ -37,14 +37,14 @@ var descriptors = [{
     page: 50,
     skills: {
       trained: [
-        'Intellect defence.'
+        'Intellect defence'
       ],
       inability: [
-        'All pleasant social interactions.'
+        'All pleasant social interactions'
       ]
     },
     extras: [
-      'As a minor effect on pleasant social tasks, you gain an asset if the target finds your grumpiness endearing.'
+      'As a minor effect on pleasant social tasks, you gain an asset if the target finds your grumpiness endearing'
     ]
   },
   {
@@ -58,11 +58,11 @@ var descriptors = [{
     page: 46,
     skills: {
       trained: [
-        'Intellect defense and resisting persuasion.',
-        'Any action taken in aid of utterly destroying something.'
+        'Intellect defense and resisting persuasion',
+        'Any action taken in aid of utterly destroying something'
       ],
       inability: [
-        'Pleasant social interactions are two steps more difficult.'
+        'Pleasant social interactions are two steps more difficult'
       ]
     },
   },
@@ -75,15 +75,15 @@ var descriptors = [{
     },
     skills: {
       trained: [
-        'Resisting temptation and coercion.'
+        'Resisting temptation and coercion'
       ],
       inability: [
-        'Anything related to avoiding or defending against the Iron Wind.'
+        'Anything related to avoiding or defending against the Iron Wind'
       ]
     },
     extras: [
-      'Inspiring: When helping others, you grant two assets instead of one.',
-      'Iron Blessing: The Wind left its mark upon you. Take a cosmetic corrosion.'
+      'Inspiring: When helping others, you grant two assets instead of one',
+      'Iron Blessing: The Wind left its mark upon you. Take a cosmetic corrosion'
     ]
   },
   {
@@ -97,17 +97,17 @@ var descriptors = [{
     },
     skills: {
       trained: [
-        'Pleasant social interactions with untained humans.'
+        'Pleasant social interactions with untained humans'
       ],
       inability: [
-        'Tasks that risk ruining your appearance.'
+        'Tasks that risk ruining your appearance'
       ]
     },
     equipment: [
-      'A hand mirror and a set of cosmetic paints and dyes.'
+      'A hand mirror and a set of cosmetic paints and dyes'
     ],
     extras: [
-      'Androgeny: You can pass as either a male or a female with no difficulty.'
+      'Androgeny: You can pass as either a male or a female with no difficulty'
     ]
   },
   {
@@ -116,10 +116,10 @@ var descriptors = [{
     page: 50,
     skills: {
       trained: [
-        'Resisting fear and doubt.'
+        'Resisting fear and doubt'
       ],
       inability: [
-        'When confronted with the Iron Wind the GM can use intrusions on you for free.'
+        'When confronted with the Iron Wind the GM can use intrusions on you for free'
       ]
     },
   },
@@ -133,12 +133,12 @@ var descriptors = [{
     shins: 10,
     skills: {
       trained: [
-        'Resisting fear and intimidation.',
-        'Speed defence actions.'
+        'Resisting fear and intimidation',
+        'Speed defence actions'
       ],
       inability: [
-        'All tasks relating to identifying danger.',
-        'Gaining the trust of others.'
+        'All tasks relating to identifying danger',
+        'Gaining the trust of others'
       ]
     },
   },
@@ -151,13 +151,13 @@ var descriptors = [{
     },
     skills: {
       inability: [
-        'Pleasant social interactions.',
-        'You have given yourself to the Riders and must obey their commands (which often come in the form of GM intrusions.) Disobedience makes any task two steps more difficult and causes your maximum Might Pool to reduce by 4 points until you atone.'
+        'Pleasant social interactions',
+        'You have given yourself to the Riders and must obey their commands (which often come in the form of GM intrusions.) Disobedience makes any task two steps more difficult and causes your maximum Might Pool to reduce by 4 points until you atone'
       ]
     },
     extras: [
-      'Factory: Your body grows terrible growths which occasionally bud off into level 2 creatures. These creatures are not hostile to you and are not under your control, but may be convinced to assist you on a single task.',
-      'Advice: The creatures within advise you on courses of action or provide knowledge you otherwise couldn\'t easily obtain.Once per session you can ask a question about your current situation and get an answer.'
+      'Factory: Your body grows terrible growths which occasionally bud off into level 2 creatures. These creatures are not hostile to you and are not under your control, but may be convinced to assist you on a single task',
+      'Advice: The creatures within advise you on courses of action or provide knowledge you otherwise couldn\'t easily obtain.Once per session you can ask a question about your current situation and get an answer'
     ]
   },
   {
@@ -166,13 +166,13 @@ var descriptors = [{
     page: 47,
     skills: {
       trained: [
-        'Might defense.'
+        'Might defense'
       ],
     },
     extras: [
-      'Born Different: Your strange heritage is plain to see - roll for two cosmetic mutations.',
-      'Stormsense: When you focus, you can sense the direction of the nearest Iron Wind storm long before it is detectable by normal means. Once per session you can ask the GM about the Iron Wind and be told the direction of the nearest one within 10 miles.',
-      'Changed: You were born with one beneficial and one harmful mutation. For each one, roll 1d100, for results below 51, refer to the mutations tables in the core rulebook, for 51+, select a corrosion from the beneficial corrosions table on page 51 or the harmful corrosions table on page 53  of Rusthaven respectively.'
+      'Born Different: Your strange heritage is plain to see - roll for two cosmetic mutations',
+      'Stormsense: When you focus, you can sense the direction of the nearest Iron Wind storm long before it is detectable by normal means. Once per session you can ask the GM about the Iron Wind and be told the direction of the nearest one within 10 miles',
+      'Changed: You were born with one beneficial and one harmful mutation. For each one, roll 1d100, for results below 51, refer to the mutations tables in the core rulebook, for 51+, select a corrosion from the beneficial corrosions table on page 51 or the harmful corrosions table on page 53  of Rusthaven respectively'
     ]
   },
   {
@@ -184,16 +184,16 @@ var descriptors = [{
     },
     skills: {
       trained: [
-        'Disguise tasks related to your mark.',
-        'Remaining unnoticed and out-of-sight.'
+        'Disguise tasks related to your mark',
+        'Remaining unnoticed and out-of-sight'
       ],
       inability: [
-        'If discovered, all social interaction tasks are two steps more difficult for you and anyone known to associate with you.',
-        'Your mark is very obvious and by default a difficulty 0 task to notice without any disguise or other means of obscuring it.'
+        'If discovered, all social interaction tasks are two steps more difficult for you and anyone known to associate with you',
+        'Your mark is very obvious and by default a difficulty 0 task to notice without any disguise or other means of obscuring it'
       ]
     },
     equipment: [
-      'Simple disguise kit for covering your mark.'
+      'Simple disguise kit for covering your mark'
     ]
   }
 ]
@@ -203,7 +203,7 @@ var foci = [{
     sourcebook: 'Rusthaven',
     page: 63,
     oddities: [
-      'A unique object that reacts in some way when placed near a cypher, artifact or oddity.'
+      'A unique object that reacts in some way when placed near a cypher, artifact or oddity'
     ],
   },
   {
@@ -211,7 +211,7 @@ var foci = [{
     sourcebook: 'Rusthaven',
     page: 64,
     equipment: [
-      '2 weeks of rations. Generating all this additional biomass is hungry work.'
+      '2 weeks of rations. Generating all this additional biomass is hungry work'
     ]
   },
   {
@@ -224,7 +224,7 @@ var foci = [{
     sourcebook: 'Rusthaven',
     page: 61,
     equipment: [
-      'A small hand-mirror so you can see what you look like.'
+      'A small hand-mirror so you can see what you look like'
     ]
   },
   {
@@ -232,7 +232,7 @@ var foci = [{
     sourcebook: 'Rusthaven',
     page: 60,
     equipment: [
-      'A pair of black, synth gloves.'
+      'A pair of black, synth gloves'
     ]
   },
   {
@@ -240,7 +240,7 @@ var foci = [{
     sourcebook: 'Rusthaven',
     page: 62,
     equipment: [
-      'An indestructible oddity that had a major role in you discovering your immortality. It never seems to be far from your grasp, even when you awake from total destruction.'
+      'An indestructible oddity that had a major role in you discovering your immortality. It never seems to be far from your grasp, even when you awake from total destruction'
     ]
   }
 ]

@@ -1,5 +1,5 @@
 import op from 'object-path'
-import isEqual from 'lodash/isEqual';
+import isEqual from 'lodash/isEqual'
 
 function sum (acc, val) {
   return acc + (val || 0)

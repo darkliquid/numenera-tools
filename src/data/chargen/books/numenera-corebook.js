@@ -909,7 +909,7 @@ var foci = [
       intellect: 5
     },
     equipment: [
-      'A book on the numenera'
+      'A book about the numenera'
     ],
     sources: [
       { sourcebook: 'Players Guide', page: 57 }
