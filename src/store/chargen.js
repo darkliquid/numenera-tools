@@ -177,11 +177,13 @@ export default {
         state.edges.points -= edges[pool]
       })
     },
-    addAbility (state, choice) {
-      state.abilities.push(choice)
-    },
-    removeAbility (state, choice) {
-      state.abilities.splice(state.abilities.findIndex((val) => val === choice), 1)
+    toggleAbility (state, choice) {
+      var idx = state.abilities.findIndex((val) => val === choice)
+      if (idx < 0) {
+        state.abilities.push(choice)
+      } else {
+        state.abilities.splice(state.abilities.findIndex((val) => val === choice), 1)
+      }
     }
   }
 }

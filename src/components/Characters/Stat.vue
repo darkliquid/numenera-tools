@@ -66,5 +66,6 @@ export default {
 .stat-counter {
   display: inline-block;
   margin: 0 5px;
+  line-height: 32px;
 }
 </style>
