@@ -18,12 +18,12 @@ export default {
         {
           text: 'Characters',
           href: 'characters',
-          icon: 'person'
+          icon: 'mdi-card-account-details'
         },
         {
           text: 'Creatures',
           href: 'creatures',
-          icon: 'bug_report'
+          icon: 'mdi-bug'
         },
         /* {
           text: 'Cyphers',
@@ -33,27 +33,27 @@ export default {
         {
           text: 'Names',
           href: 'names',
-          icon: 'face'
+          icon: 'mdi-face'
         },
         {
           text: 'Oddities',
           href: 'oddities',
-          icon: 'help'
+          icon: 'mdi-help'
         },
         {
           text: 'Rumours',
           href: 'rumours',
-          icon: 'speaker_notes'
+          icon: 'mdi-chat-alert'
         },
         {
           text: 'Philethis Phrases',
           href: 'philethis',
-          icon: 'chat_bubble'
+          icon: 'mdi-head-snowflake'
         },
         {
           text: 'Rust Cyphers',
           href: 'rust-cyphers',
-          icon: 'warning'
+          icon: 'mdi-cloud-alert'
         }
       ],
       topnav: [

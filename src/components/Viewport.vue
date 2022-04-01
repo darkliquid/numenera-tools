@@ -20,6 +20,9 @@
           :to="item.href"
           active-color="primary"
         >
+          <v-list-item-avatar start>
+            <v-icon :icon="item.icon"></v-icon>
+          </v-list-item-avatar>
           <v-list-item-title v-text="item.text"></v-list-item-title>
         </v-list-item>
       </v-list>
@@ -77,5 +80,9 @@ export default {
 <style lang="scss">
 #viewport {
   background: none;
+}
+
+.v-list-item-avatar {
+  margin-right: 8px;
 }
 </style>

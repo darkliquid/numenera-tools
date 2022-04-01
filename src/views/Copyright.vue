@@ -12,6 +12,8 @@
   </v-card>
 </template>
 
-<style>
-
+<style scoped>
+p {
+  margin-bottom: 1em;
+}
 </style>
