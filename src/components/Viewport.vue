@@ -6,7 +6,7 @@
       <v-btn
         v-for="(item, i) in topnav"
         :key="i"
-        :href="item.href"
+        :to="item.href"
         v-text="item.text"
         >
       </v-btn>
@@ -17,7 +17,7 @@
           v-for="(item, i) in sidenav"
           :key="i"
           :value="item"
-          :href="item.href"
+          :to="item.href"
           active-color="primary"
         >
           <v-list-item-title v-text="item.text"></v-list-item-title>
@@ -53,7 +53,16 @@ export default {
       }
     }
   },
-  computed: mapState(['drawerOpen']),
+  computed: {
+    drawerOpen: {
+      get() {
+        return this.$store.state.drawerOpen
+      },
+      set(value) {
+        this.$store.commit('setDrawerOpen', value)
+      },
+    }
+  },
   methods: mapMutations(['toggleDrawer']),
   watch: {
     '$route': function () {

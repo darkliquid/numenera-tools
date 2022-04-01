@@ -246,7 +246,7 @@ export default {
       this.$store.commit('chargen/updateStep', 1)
     },
     isChosen(choice) {
-      return this.allAbilities.choices.includes(choice)
+      return this.abilities.includes(choice)
     }
   }
 }

@@ -12,6 +12,9 @@ const store = createStore({
   mutations: {
     toggleDrawer (state) {
       state.drawerOpen = !state.drawerOpen
+    },
+    setDrawerOpen (state, value) {
+      state.drawerOpen = !!value
     }
   },
   modules: {

@@ -38,7 +38,8 @@ var templates = {
 export default {
   data () {
     return {
-      phrase: ''
+      phrase: '',
+      aside: ''
     }
   },
   mounted () {
