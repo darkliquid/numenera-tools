@@ -1,4 +1,5 @@
 import op from 'object-path'
+import isEqual from 'lodash/isEqual';
 
 function sum (acc, val) {
   return acc + (val || 0)
@@ -163,6 +164,10 @@ export default {
         state.edges.intellect = getters.minIntellectEdge(state)
         state.stats.points = getters.totalStatPoints(state)
         state.edges.points = getters.totalEdgePoints(state)
+      } else {
+        state.abilities = []
+        state.cyphers = []
+        state.oddities = []
       }
     },
     updateStats (state, stats) {
@@ -177,11 +182,13 @@ export default {
         state.edges.points -= edges[pool]
       })
     },
-    addAbility (state, choice) {
-      state.abilities.push(choice)
-    },
-    removeAbility (state, choice) {
-      state.abilities.splice(state.abilities.findIndex((val) => val === choice), 1)
+    toggleAbility (state, choice) {
+      var idx = state.abilities.findIndex((val) => isEqual(val, choice))
+      if (idx < 0) {
+        state.abilities.push(choice)
+      } else {
+        state.abilities.splice(idx, 1)
+      }
     }
   }
 }

@@ -1,70 +1,91 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Character Generator</h2>
-    </header>
-    <div class="mdl-card__supporting-text">
-      Choose your Descriptor, Type and Focus
-    </div>
-    <form>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
-          <span class="sentence-fragment">I am a</span>
-          <mdl-select-field id="descriptor" :value="descriptor" :options="groupedDescriptors" grouped label="Choose a Descriptor" @input="updateDescriptor"/>
-        </div>
-      </div>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
-          <mdl-select-field id="type" :value="type" :options="groupedTypes" grouped label="Choose a Type" @input="updateType"/>
-        </div>
-      </div>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
-          <span class="sentence-fragment">who</span>
-          <mdl-select-field id="focus" :value="focus" :options="groupedFoci" grouped label="Choose a Focus" @input="updateFocus"/>
-        </div>
-      </div>
-    </form>
-    <div class="mdl-card__actions">
-      <mdl-button @click.native="randomSelection">Random</mdl-button>
-      <mdl-button class="fr" colored @click.native="nextCharacterStep" :disabled="!allSelected">Next</mdl-button>
-    </div>
-  </mdl-card>
+  <v-card>
+    <v-card-header-text>
+      <v-card-title>Character Generator</v-card-title>
+      <v-card-subtitle>Choose your Descriptor, Type and Focus</v-card-subtitle>
+    </v-card-header-text>
+    <v-card-text>
+        <v-form>
+          <v-row>
+            <v-col>
+              <span class="sentence-fragment">I am a</span>
+              <MdlSelectField
+                id="descriptor"
+                :value="descriptor"
+                :options="groupedDescriptors"
+                label="Descriptor"
+                required
+                grouped
+                @input="updateDescriptor" />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <MdlSelectField
+                id="type"
+                :value="type"
+                :options="groupedTypes"
+                label="Type"
+                required
+                grouped
+                @input="updateType" />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <span class="sentence-fragment">who</span>
+            <MdlSelectField
+                id="focus"
+                :value="focus"
+                :options="groupedFoci"
+                label="Focus"
+                required
+                grouped
+                @input="updateFocus" />
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn @click="randomSelection">Random</v-btn>
+      <v-btn colored @click="nextCharacterStep" :disabled="!allSelected">Next</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
-import MdlSelectField from 'components/MdlSelectField'
+import MdlSelectField from '../MdlSelectField.vue';
 
 function groupedOptions (arr) {
   return function () {
     var grouping = {}
-    this[arr].forEach(function (item) {
+    this[arr].forEach(function (item, index) {
       if (!grouping[item.sourcebook]) {
-        grouping[item.sourcebook] = [{ label: item.name, value: item }]
+        grouping[item.sourcebook] = [{ label: item.name, value: index }]
       } else {
-        grouping[item.sourcebook].push({ label: item.name, value: item })
+        grouping[item.sourcebook].push({ label: item.name, value: index })
       }
     })
 
     var options = []
     Object.keys(grouping).sort().forEach(function (item) {
+      grouping[item].sort(function (a, b) {
+        if (a.label < b.label) {
+          return -1
+        }
+
+        if (a.label > b.label) {
+          return 1
+        }
+
+        return 0
+      });
+      
       options.push({
         label: item,
-        options: grouping[item].sort(function (a, b) {
-          if (a.label < b.label) {
-            return -1
-          }
-
-          if (a.label > b.label) {
-            return 1
-          }
-
-          return 0
-        })
-      })
-    })
+        options: grouping[item]
+      });
+    });
 
     return options
   }
@@ -73,6 +94,13 @@ function groupedOptions (arr) {
 export default {
   components: {
     MdlSelectField
+  },
+  data() {
+    return {
+      descriptor: null,
+      type: null,
+      focus: null,
+    }
   },
   props: {
     descriptors: {
@@ -99,31 +127,26 @@ export default {
   },
   methods: {
     randomSelection () {
-      this.updateDescriptor(this.descriptors[Math.floor(Math.random() * this.descriptors.length)])
-      this.updateType(this.types[Math.floor(Math.random() * this.types.length)])
-      this.updateFocus(this.foci[Math.floor(Math.random() * this.foci.length)])
+      this.descriptor = Math.floor(Math.random() * this.descriptors.length)
+      this.type = Math.floor(Math.random() * this.types.length)
+      this.focus = Math.floor(Math.random() * this.foci.length)
     },
     updateFocus (focus) {
-      this.$store.commit('chargen/updateFocus', focus)
+      this.$store.commit('chargen/updateFocus', this.foci[focus])
     },
     updateDescriptor (descriptor) {
-      this.$store.commit('chargen/updateDescriptor', descriptor)
+      this.$store.commit('chargen/updateDescriptor', this.descriptors[descriptor])
     },
     updateType (type) {
-      this.$store.commit('chargen/updateType', type)
+      this.$store.commit('chargen/updateType', this.types[type])
     },
     nextCharacterStep () {
       this.$store.commit('chargen/updateStep', 2)
     }
   },
   computed: {
-    ...mapState({
-      type: state => state.chargen.type,
-      focus: state => state.chargen.focus,
-      descriptor: state => state.chargen.descriptor
-    }),
     allSelected () {
-      return this.type && this.focus && this.descriptor
+      return this.type !== null && this.focus !== null && this.descriptor !== null
     },
     groupedTypes: groupedOptions('types'),
     groupedFoci: groupedOptions('foci'),
@@ -133,19 +156,6 @@ export default {
 </script>
 
 <style scoped>
-.mdl-card__media img {
-  max-width: 100%;
-}
-
-.label {
-  padding: 20px 0;
-  text-align: center;
-}
-
-.is-small-screen .label {
-  display: block;
-}
-
 .sentence-fragment {
   text-align: center;
   display: block;

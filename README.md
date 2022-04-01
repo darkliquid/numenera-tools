@@ -8,30 +8,15 @@
 # install dependencies
 yarn install
 
-# To build name markov model. For this (and build) to work,
-# there must be a src/data/names/names.txt file. One name per line.
-yarn run gen-names
-
 # serve with hot reload at localhost:8080
 yarn run dev
 
 # build for production with minification
 yarn run build
 
-# build for production and view the bundle analyzer report
-yarn run build --report
-
-# run unit tests
-yarn run unit
-
-# run e2e tests
-yarn run e2e
-
 # run all tests
 yarn test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Data Files
 
@@ -138,7 +123,7 @@ As you can see, a single sourcebook may have multiple extensions. Extensions bas
 
 Phrase-based generators like the rumour generator and the oddity generator use random, nested interpolation to generate their output. Writing the data for these generators is easy, but some care needs to be taken in writing the generator itself so that the interpolation placeholder names work correctly. 
 
-Each data file is a simple exported list of strings (or if you want, several lists exported however you like). Strings can have placeholder values noted by `{{placeholder}}`. A random string will be selected from the list and then each placeholder will be replaced by a random entry from the list named by the placeholder. If _that_ string has placeholders, those will be replaced too, ad-infintum until there are no more placeholders. For this reason it is a good idea not to use placeholders that refer to the same list they come from (or to other lists that refer to the one they come from), otherwise you can end up with endless recursion.
+Each data file is a simple exported list of strings (or if you want, several lists exported however you like). Strings can have placeholder values noted by `{{placeholder}}`. A random string will be selected from the list and then each placeholder will be replaced by a random entry from the list named by the placeholder. If _that_ string has placeholders, those will be replaced too, ad-infinitum until there are no more placeholders. For this reason it is a good idea not to use placeholders that refer to the same list they come from (or to other lists that refer to the one they come from), otherwise you can end up with endless recursion.
 
 #### Example data
 

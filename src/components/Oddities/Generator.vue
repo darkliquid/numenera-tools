@@ -1,24 +1,24 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Oddity Generator</h2>
-    </header>
-    <div class="mdl-card__supporting-text">
-      <p class="description">{{ phrase }}</p>
-    </div>
-    <div class="mdl-card__actions">
-      <mdl-button colored @click.native="generate">Random</mdl-button>
-    </div>
-  </div>
+  <v-card>
+    <v-card-header-text>
+      <v-card-title>Oddity Generator</v-card-title>
+    </v-card-header-text>
+    <v-card-text>
+      {{ phrase }}
+    </v-card-text>
+    <v-card-actions>
+      <v-btn colored @click="generate">Random</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
-import phrase from 'data/oddities/phrases'
-import effect from 'data/oddities/effects'
-import material from 'data/oddities/materials'
-import trigger from 'data/oddities/triggers'
-import object from 'data/oddities/objects'
-import utils from 'utils'
+import phrase from '../../data/oddities/phrases'
+import effect from '../../data/oddities/effects'
+import material from '../../data/oddities/materials'
+import trigger from '../../data/oddities/triggers'
+import object from '../../data/oddities/objects'
+import utils from '../../utils'
 
 var templates = {
   phrase,

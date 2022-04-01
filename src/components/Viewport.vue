@@ -1,43 +1,41 @@
 <template>
-  <mdl-layout class="viewport" :transparent-header="true">
-    <mdl-layout-header-row slot="header" :title="title">
-      <mdl-layout-spacer />
-      <mdl-nav v-if="topnav.length > 0">
-        <mdl-nav-router-link
-          v-for="link in topnav"
-          :to="link.href"
-          :icon="link.icon"
+  <v-app id="viewport" fill-height>
+    <v-app-bar app v-if="topnav.length > 0">
+      <v-app-bar-nav-icon @click.stop="toggleDrawer"></v-app-bar-nav-icon>
+      <v-app-bar-title>Numenera Playground</v-app-bar-title>
+      <v-btn
+        v-for="(item, i) in topnav"
+        :key="i"
+        :to="item.href"
+        v-text="item.text"
         >
-          {{ link.text }}
-        </mdl-nav-router-link>
-      </mdl-nav>
-    </mdl-layout-header-row>
-    <mdl-layout-drawer ref="drawer" :title="title" v-if="sidenav.length > 0">
-      <mdl-nav>
-        <mdl-nav-router-link
-          v-for="link in sidenav"
-          :to="link.href"
-          :icon="link.icon"
+      </v-btn>
+    </v-app-bar>
+    <v-navigation-drawer app v-model="drawerOpen" v-if="sidenav.length > 0">
+      <v-list nav>
+        <v-list-item
+          v-for="(item, i) in sidenav"
+          :key="i"
+          :value="item"
+          :to="item.href"
+          active-color="primary"
         >
-          {{ link.text }}
-        </mdl-nav-router-link>
-      </mdl-nav>
-    </mdl-layout-drawer>
-    <mdl-layout-content>
-      <slot></slot>
-    </mdl-layout-content>
-    <slot name="footer"></slot>
-  </mdl-layout>
+          <v-list-item-title v-text="item.text"></v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main fill-height>
+      <v-container fluid fill-height>
+        <slot></slot>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import MdlNavRouterLink from './MdlNavRouterLink'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
-  components: {
-    MdlNavRouterLink
-  },
   props: {
     title: {
       type: String
@@ -55,22 +53,21 @@ export default {
       }
     }
   },
-  mounted () {
-    this._toggleDrawer = this.$el.MaterialLayout.toggleDrawer.bind(this.$el.MaterialLayout)
-    this.$el.MaterialLayout.toggleDrawer = () => {
-      this.$store.commit('toggleDrawer')
+  computed: {
+    drawerOpen: {
+      get() {
+        return this.$store.state.drawerOpen
+      },
+      set(value) {
+        this.$store.commit('setDrawerOpen', value)
+      },
     }
   },
-  computed: mapState(['drawerOpen']),
+  methods: mapMutations(['toggleDrawer']),
   watch: {
     '$route': function () {
       if (this.drawerOpen) {
         this.$store.commit('toggleDrawer')
-      }
-    },
-    drawerOpen (newVal) {
-      if (this._toggleDrawer) {
-        this._toggleDrawer()
       }
     }
   }
@@ -78,17 +75,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../node_modules/material-design-lite/src/variables";
-
-.viewport {
+#viewport {
   background: url('../assets/images/MCG-Numenera-Obelisk-of-the-Water-God.jpg') center / cover;
-}
-
-.mdl-navigation__link i {
-  margin-right: 0.5em;
-}
-
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link.router-link-active {
-  color: $text-link-color;
+  background-attachment: fixed;
+  height: 100%;
 }
 </style>

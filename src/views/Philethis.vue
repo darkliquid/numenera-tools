@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PhilethisGenerator from 'components/Philethis/Generator'
+import PhilethisGenerator from '../components/Philethis/Generator.vue'
 
 export default {
   components: {

@@ -1,10 +1,10 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Rust Cypher Generator</h2>
-    </header>
-    <div class="mdl-card__supporting-text">
-      <h4>A level {{ level }} rust cypher that targets {{ typedesc }}</h4>
+  <v-card>
+    <v-card-header-text>
+      <v-card-title>Rust Cypher Generator</v-card-title>
+    </v-card-header-text>
+    <v-card-text>
+      <h3>A level {{ level }} rust cypher that targets {{ typedesc }}</h3>
       <dl>
         <dt>Description</dt>
         <dd>{{ description }}</dd>
@@ -13,18 +13,18 @@
         <dt>Operation</dt>
         <dd>{{ operation }}</dd>
       </dl>
-    </div>
-    <div class="mdl-card__actions">
-      <mdl-button colored @click.native="generate">Random</mdl-button>
-    </div>
-  </div>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn colored @click="generate">Random</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
-import abilities from 'data/rust-cyphers/abilities'
-import appearances from 'data/rust-cyphers/appearances'
-import operations from 'data/rust-cyphers/operations'
-import utils from 'utils'
+import abilities from '../../data/rust-cyphers/abilities'
+import appearances from '../../data/rust-cyphers/appearances'
+import operations from '../../data/rust-cyphers/operations'
+import utils from '../../utils'
 
 export default {
   computed: {
@@ -97,8 +97,13 @@ export default {
 </script>
 
 <style scoped>
-h4 {
+h3 {
   margin-top: 0;
+  margin-bottom: 1em;
+}
+
+dt {
+  font-weight: bold;
 }
 
 dd {

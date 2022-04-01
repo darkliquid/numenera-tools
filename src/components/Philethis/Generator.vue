@@ -1,28 +1,28 @@
 <template>
-  <div class="mdl-card">
-    <header class="mdl-card__title">
-      <h2 class="mdl-card__title-text">Numenera Philethis Phrase Generator</h2>
-    </header>
-    <div class="mdl-card__supporting-text">
-      <p class="description">{{ phrase }}</p>
-    </div>
-    <div class="mdl-card__actions">
-      <mdl-button colored @click.native="generate">Random</mdl-button>
-    </div>
-  </div>
+  <v-card>
+    <v-card-header-text>
+      <v-card-title>Philethis Phrase Generator</v-card-title>
+    </v-card-header-text>
+    <v-card-text>
+      {{ phrase }}
+    </v-card-text>
+    <v-card-actions>
+      <v-btn colored @click="generate">Random</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
-import action from 'data/philethis/actions'
-import adjective from 'data/philethis/adjectives'
-import creature from 'data/philethis/creatures'
-import location from 'data/philethis/locations'
-import mass from 'data/philethis/mass'
-import path from 'data/philethis/paths'
-import phrase from 'data/philethis/phrases'
-import thing from 'data/philethis/things'
-import time from 'data/philethis/times'
-import utils from 'utils'
+import action from '../../data/philethis/actions'
+import adjective from '../../data/philethis/adjectives'
+import creature from '../../data/philethis/creatures'
+import location from '../../data/philethis/locations'
+import mass from '../../data/philethis/mass'
+import path from '../../data/philethis/paths'
+import phrase from '../../data/philethis/phrases'
+import thing from '../../data/philethis/things'
+import time from '../../data/philethis/times'
+import utils from '../../utils'
 
 var templates = {
   action,

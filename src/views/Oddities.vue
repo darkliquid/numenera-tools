@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import OddityGenerator from 'components/Oddities/Generator'
+import OddityGenerator from '../components/Oddities/Generator.vue'
 
 export default {
   components: {

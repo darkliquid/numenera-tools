@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CreatureGenerator from 'components/Creatures/Generator'
+import CreatureGenerator from '../components/Creatures/Generator.vue'
 
 export default {
   components: {

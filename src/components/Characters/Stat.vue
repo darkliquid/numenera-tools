@@ -1,8 +1,8 @@
 <template>
   <div class="stat-editor">
-    <mdl-button colored icon="remove" @click.native.stop.prevent="remove" :disabled="!removable"/>
+    <v-btn size="x-small" colored icon="mdi-minus" @click.stop.prevent="remove" :disabled="!removable"/>
     <div :class="classes">{{ value }}</div>
-    <mdl-button colored icon="add" @click.native.stop.prevent="add" :disabled="!addable"/>
+    <v-btn size="x-small" colored icon="mdi-plus" @click.stop.prevent="add" :disabled="!addable"/>
   </div>
 </template>
 
@@ -59,60 +59,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import "../../../node_modules/material-design-lite/src/variables";
-@import "../../../node_modules/material-design-lite/src/color-definitions";
-
+<style scoped lang="scss">
+.stat-editor .v-btn {
+  display: inline-block;
+}
 .stat-counter {
   display: inline-block;
-  border-radius: 50%;
-  font-size: $button-fab-font-size;
-  font-weight: bold;
-  height: $button-fab-size;
-  margin: auto;
-  min-width: $button-fab-size;
-  width: $button-fab-size;
-  padding: 0;
-  overflow: hidden;
-  background: $button-primary-color;
-  box-shadow: 0 1px 1.5px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.24);
-  position: relative;
-  line-height: $button-fab-size+4;
-  color: $text-color-primary;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.stat-counter.might {
-  background: unquote("rgb(#{$palette-red-500})");
-  color: $button-secondary-color-alt;
-}
-
-.stat-counter.speed {
-  background: unquote("rgb(#{$palette-green-500})");
-  color: $button-secondary-color-alt;
-}
-
-.stat-counter.intellect {
-  background: unquote("rgb(#{$palette-blue-500})");
-  color: $button-secondary-color-alt;
-}
-
-.stat-editor {
-  padding: 16px;
-
-  /* Firefox */
-  display:-moz-box;
-  -moz-box-pack:center;
-  -moz-box-align:center;
-
-  /* Safari and Chrome */
-  display:-webkit-box;
-  -webkit-box-pack:center;
-  -webkit-box-align:center;
-
-  display:box;
-  box-pack:center;
-  box-align:center
+  margin: 0 5px;
+  line-height: 32px;
 }
 </style>

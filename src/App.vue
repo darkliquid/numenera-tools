@@ -1,20 +1,13 @@
 <template>
   <viewport :title="title" :sidenav="sidenav" :topnav="topnav">
     <router-view></router-view>
-    <footer class="mdl-mini-footer alt-footer" slot="footer">
-      <div class="mdl-mini-footer__right-section">
-        <ul class="mdl-mini-footer__link-list">
-          <li v-for="link in topnav">
-            <router-link :to="link.href">{{link.text}}</router-link>
-          </li>
-        </ul>
-      </div>
-    </footer>
   </viewport>
 </template>
 
 <script>
-import Viewport from 'components/Viewport'
+import Viewport from './components/Viewport.vue'
+
+const pathPrefix = import.meta.env.BASE_URL;
 
 export default {
   components: {
@@ -81,35 +74,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-html, body {
+<style>
+html, body, #app {
   height: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-.is-small-screen .mdl-mini-footer.alt-footer {
-  display: flex;
-}
-
-.mdl-mini-footer.alt-footer {
-  display: none;
-  margin-top: auto;
-}
-
-.fr {
-  float: right;
-}
-
-.mdl-card {
-  flex: none;
-  min-width: 50%;
-  overflow: initial;
-  margin-bottom: 4em;
-}
-
-.description {
-  font-size: 150%;
-  min-height: 50px;
 }
 </style>
