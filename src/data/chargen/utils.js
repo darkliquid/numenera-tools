@@ -7,12 +7,19 @@ function combineExtensions(items) {
     items.forEach(function (item) {
         if (!combined[item.name]) {
             combined[item.name] = item
+            return
         }
 
-        if (combined[item.name].hasOwnProperty('extensions') && item.hasOwnProperty('extensions')) {
-            combined[item.name].extensions = combined[item.name].extensions.concat(item.extensions)
+        var extensions = combined[item.name].extensions || [];
+        if (item.hasOwnProperty('extensions')) {
+            extensions = extensions.concat(item.extensions)
         }
+        Object.assign(combined[item.name], item)
+        combined[item.name].extensions = extensions
     })
-    
-    return keys.map(function (key) { return combined[key] })
+
+    items = keys.map((key) => { return combined[key] })
+    return items
 }
+
+export default combineExtensions

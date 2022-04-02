@@ -7,7 +7,6 @@ var descriptors = [
       speed: -2,
       might: 2
     },
-    shins: number,
     skills: {
       trained: [
         'All pleasant social interactions when you express a lighthearted, self-deprecating manner',
@@ -941,7 +940,15 @@ var foci = [{
     ],
     extras: [
       'Water Esoteries: If you perform esoteries, those that would normally use force or other energy instead use water or ice. For example, Onslaught might create a wave of water that crashes down on your target. In addition, you can swap out one of the esoteries you learned for the following',
-      'Create Water (2 Intellect points.) You cause water to bubble up from a spot on the ground you can see. The water flows from that spot for one minute, creating about 1 gallon (2.8 litres) by the time it stops'
+    ],
+    extensions: [
+      {
+        sourcebook: "Character Options 1",
+        page: 57,
+        abilities: [
+          'Create Water'
+        ]
+      }
     ]
   },
   {
@@ -1091,4 +1098,5 @@ var foci = [{
 export {
   descriptors,
   foci,
+  types
 }

@@ -37,7 +37,7 @@ export {
 }
 ```
 
-In the above example, this book is empty, but ready to be filled with information. As you'll notice, each symbol exports an array - these arrays should contain objects of the correct type. All of the types work the same way with the exception of Types, which have an extra field for allowing extensions (such as the extra options from the Character Options sourcebooks.
+In the above example, this book is empty, but ready to be filled with information. As you'll notice, each symbol exports an array - these arrays should contain objects of the correct type.
 
 #### Descriptors, Types and Foci
 
@@ -95,22 +95,13 @@ Here is an example object that includes every field. It could work as any type.
   abilities: [
     'Special abilities you start with (when specified in a focus or descriptor)',
     'Otherwise a list of multiple abilities from which you pick 2 when listed in a type.'
-  ]
-}
-```
-
-For sourcebooks that extend an existing type (like the Character Options books) there is a special extra field that can be used called `extensions`. It works like this:
-
-```javascript
-{
-  name: "Name of existing type",
-  sourcebook: "Original sourcebook of type",
+  ],
   extensions: [
     {
       sourcebook: "Character Options",
       page: 1,
       abilities: [
-        'A new ability to add to the type'
+        'A new ability that can be chosen instead of an existing type ability'
       ]
     }
   ]

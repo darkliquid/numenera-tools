@@ -1,9 +1,13 @@
 import { foci as corebook } from './books/numenera-corebook'
 import { foci as guidebook } from './books/ninth-world-guidebook'
 import { foci as rusthaven } from './books/rusthaven'
+import { foci as co1 } from './books/character-options-1'
 
-export default [
+import combineExtensions from './utils'
+
+export default combineExtensions([
   ...corebook,
   ...guidebook,
-  ...rusthaven
-]
+  ...rusthaven,
+  ...co1
+])
