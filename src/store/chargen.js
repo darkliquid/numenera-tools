@@ -96,19 +96,22 @@ const getters = {
     })
 
     // Now a special case to handle extensions (from player options, etc)
-    if (state.type.hasOwnProperty('extensions')) {
-      state.type.extensions.forEach(function (ext) {
-        if (ext.hasOwnProperty('abilities')) {
-          ext.abilities.forEach(function (ability) {
-            choices.push({
-              sourcebook: ext.sourcebook,
-              page: ext.page,
-              ability: ability
+    // added by types, descriptors or focus.
+    ['type', 'descriptor', 'focus'].forEach(function (key) {
+      if (state[key].hasOwnProperty('extensions')) {
+        state[key].extensions.forEach(function (ext) {
+          if (ext.hasOwnProperty('abilities')) {
+            ext.abilities.forEach(function (ability) {
+              choices.push({
+                sourcebook: ext.sourcebook,
+                page: ext.page,
+                ability: ability
+              })
             })
-          })
-        }
-      })
-    }
+          }
+        })
+      }
+    })
 
     return {
       fixed,
