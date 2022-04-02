@@ -205,6 +205,10 @@ var foci = [{
     oddities: [
       'A unique object that reacts in some way when placed near a cypher, artifact or oddity'
     ],
+    abilities: [
+      'Rustchaser',
+      'Cyphersense'
+    ]
   },
   {
     name: 'Commands Flesh',
@@ -212,12 +216,18 @@ var foci = [{
     page: 64,
     equipment: [
       '2 weeks of rations. Generating all this additional biomass is hungry work'
+    ],
+    abilities: [
+      'Spawn'
     ]
   },
   {
     name: 'Embraces Chaos',
     sourcebook: 'Rusthaven',
     page: 59,
+    abilities: [
+      'Warp'
+    ]
   },
   {
     name: 'Forever Changes',
@@ -225,6 +235,10 @@ var foci = [{
     page: 61,
     equipment: [
       'A small hand-mirror so you can see what you look like'
+    ],
+    abilities: [
+      'Forever Changing',
+      'Toolkit'
     ]
   },
   {
@@ -233,6 +247,9 @@ var foci = [{
     page: 60,
     equipment: [
       'A pair of black, synth gloves'
+    ],
+    abilities: [
+      'Withering Touch'
     ]
   },
   {
@@ -241,6 +258,14 @@ var foci = [{
     page: 62,
     equipment: [
       'An indestructible oddity that had a major role in you discovering your immortality. It never seems to be far from your grasp, even when you awake from total destruction'
+    ],
+    skills: {
+      trained: [
+        'Historical knowledge'
+      ]
+    },
+    abilities: [
+      'Undying'
     ]
   }
 ]
