@@ -886,6 +886,14 @@ var foci = [{
     name: 'Battles Automatons',
     sourcebook: 'Character Options 1',
     page: 51,
+    abilities: [
+      'Machine Vulnerabilities',
+    ],
+    skills: {
+      trained: [
+        'Trained in the knowledge of the numenera'
+      ]
+    },
     equipment: [
       'Bits and pieces that you tore from the husks of automatons you have destroyed in the past'
     ],
@@ -897,6 +905,9 @@ var foci = [{
     name: 'Consorts with the Dead',
     sourcebook: 'Character Options 1',
     page: 53,
+    abilities: [
+      'Speaker for the Dead',
+    ],
     equipment: [
       'An innocuous memento of someone close to you who died. It might be a locket, a ring, a letter, a coin, or something similar'
     ],
@@ -908,6 +919,9 @@ var foci = [{
     name: 'Constantly Evolves',
     sourcebook: 'Character Options 1',
     page: 55,
+    abilities: [
+      'Improved Mutation',
+    ],
     equipment: [
       'A variety of dangerous substances that you carefully expose yourself to in order to further your mutations'
     ]
@@ -916,6 +930,12 @@ var foci = [{
     name: 'Defends the Weak',
     sourcebook: 'Character Options 1',
     page: 56,
+    skills: {
+      trained: [
+        'Trained in intellect defense tasks',
+        'Trained in initiative tasks'
+      ]
+    },
     equipment: [
       'A shield'
     ],
@@ -927,6 +947,9 @@ var foci = [{
     name: 'Exists in Two Places at Once',
     sourcebook: 'Character Options 1',
     page: 56,
+    abilities: [
+      'Duplicate'
+    ],
     extras: [
       'Four Hands Are Better Than Two: When you and your duplicate work together to complete a task, the difficulty of that task is decreased by one step (if cooperation would be helpful)'
     ]
@@ -935,6 +958,16 @@ var foci = [{
     name: 'Explores Deep Waters',
     sourcebook: 'Character Options 1',
     page: 57,
+    abilities: [
+      'Diver',
+      'Hold Breath'
+    ],
+    skills: {
+      trained: [
+        'Trained in escaping, perception, sneaking and swimming tasks when underwater',
+        'Trained in tasks to identify aquatic creatures and geography'
+      ]
+    },
     oddities: [
       'A special oddity that, when fitted in your mouth, allows you to breathe underwater. The device functions for up to four hours at a time, after which you must wait four hours before you can use it again'
     ],
@@ -958,12 +991,28 @@ var foci = [{
     equipment: [
       'A weapon that is easily hidden',
       'A dose of level 3 poison that inflicts 6 points of damage'
-    ]
+    ],
+    abilities: [
+      'Taking Advantage'
+    ],
+    skills: {
+      trained: [
+        'Trained in all forms of deception'
+      ]
+    }
   },
   {
     name: 'Focuses Two Personalities (Lattimor characters only)',
     sourcebook: 'Character Options 1',
     page: 60,
+    abilities: [
+      'Easier Change'
+    ],
+    skills: {
+      trained: [
+        'Trained in breaking things and all interactions with others in fugue state'
+      ]
+    }
   },
   {
     name: 'Fuses Mind and Machine',
@@ -971,12 +1020,24 @@ var foci = [{
     page: 61,
     artifacts: [
       'An artifact that protects your implants and enhancements from disruption or intrusion. The difficulty of resisting such attacks is decreased by one step'
-    ]
+    ],
+    stats: {
+      intellect: 4
+    },
+    skills: {
+      trained: [
+        'Trained in one area of knowledge of your choice'
+      ]
+    }
   },
   {
     name: 'Hunts Abhumans',
     sourcebook: 'Character Options 1',
     page: 63,
+    abilities: [
+      'Tracker and Hunter',
+      'Abhuman Fighter'
+    ]
   },
   {
     name: 'Hunts Mutants',
@@ -984,6 +1045,9 @@ var foci = [{
     page: 64,
     equipment: [
       'A small collection of items, such as chemicals and nanites, that you believe aid you as you hunt and destroy mutants'
+    ],
+    abilities: [
+      'Mutant Fighter'
     ]
   },
   {
@@ -992,6 +1056,9 @@ var foci = [{
     page: 65,
     equipment: [
       'An oddity that makes random insect noises when you press a button'
+    ],
+    abilities: [
+      'Influence Insects'
     ]
   },
   {
@@ -1000,22 +1067,48 @@ var foci = [{
     page: 66,
     equipment: [
       'A shield to help protect yourself and the innocents you find'
-    ]
+    ],
+    abilities: [
+      'Designation'
+    ],
+    skills: {
+      trained: [
+        'Trained in discerning the truth, seeing through lies and overcoming deception'
+      ]
+    }
   },
   {
     name: 'Moves Like a Cat',
     sourcebook: 'Character Options 1',
     page: 68,
+    stats: {
+      speed: 3
+    },
+    skills: {
+      trained: [
+        'Trained in balancing'
+      ]
+    }
   },
   {
     name: 'Needs No Weapon',
     sourcebook: 'Character Options 1',
     page: 68,
+    abilities: [
+      'Fists of Fury'
+    ],
+    extras: [
+      '+1 Armour if not wearing physical armour'
+    ]
   },
   {
     name: 'Never Says Die',
     sourcebook: 'Character Options 1',
     page: 70,
+    abilities: [
+      'Rapid recovery',
+      'Push on through'
+    ]
   },
   {
     name: 'Performs Feats of Strength',
@@ -1023,7 +1116,15 @@ var foci = [{
     page: 71,
     equipment: [
       'A heavy weapon'
-    ]
+    ],
+    skills: {
+      trained: [
+        'Trained in carrying, climbing, jumping and smashing'
+      ]
+    },
+    edges: {
+      might: 1
+    }
   },
   {
     name: 'Possesses a Shard of the Sun',
@@ -1034,12 +1135,26 @@ var foci = [{
     ],
     extras: [
       'Radiant Esoteries: If you perform esoteries, those that would normally use force or other energy instead use light and heat. For example, when you use Ward, light dapples your body and flares when you would be attacked, preventing your enemies from landing a solid blow'
+    ],
+    skills: {
+      trained: [
+        'Trained in any perception task involving sight'
+      ]
+    },
+    abilities: [
+      'Illuminating Touch'
     ]
   },
   {
     name: 'Reforges Completely (Varjellan characters only)',
     sourcebook: 'Character Options 1',
     page: 73,
+    abilities: [
+      'Rapid Reforging'
+    ],
+    stats: {
+      points: 3
+    }
   },
   {
     name: 'Sees Beyond',
@@ -1047,6 +1162,9 @@ var foci = [{
     page: 74,
     equipment: [
       'A single item of your choosing - drugs, lenses or a piece of numenera - that helps you perceive things that others cannot'
+    ],
+    abilities: [
+      'See the Unseen'
     ]
   },
   {
@@ -1058,12 +1176,18 @@ var foci = [{
     ],
     extras: [
       'Mental Esoteries: If you have the Mind Reading or Sensor edotery, you are automatically trained in it. If you have both, you are trained in both. Enabler'
+    ],
+    abilities: [
+      'Third Eye'
     ]
   },
   {
     name: 'Siphons Power',
     sourcebook: 'Character Options 1',
     page: 77,
+    abilities: [
+      'Drain Machine'
+    ]
   },
   {
     name: 'Stands Like a Bastion',
@@ -1072,6 +1196,14 @@ var foci = [{
     equipment: [
       'Armour of your choice',
       'A shield'
+    ],
+    skills: {
+      practiced: [
+        'Practiced in Armour'
+      ]
+    },
+    extras: [
+      '+1 armour if wearing any armour'
     ]
   },
   {
@@ -1080,6 +1212,9 @@ var foci = [{
     page: 78,
     equipment: [
       '3 throwing weapons of your choice'
+    ],
+    abilities: [
+      'Precision'
     ]
   },
   {
@@ -1091,6 +1226,9 @@ var foci = [{
     ],
     extras: [
       'Temporal Esoteries: If you perform esoteries, time appears to slow down when you use them. You and everything around you moves in slow motion for a moment, and then time snaps back into place. The temporal distortion changes nothing about the effects of your esoteries except for the appearance of the world around you'
+    ],
+    abilities: [
+      'Anticipation'
     ]
   }
 ]
