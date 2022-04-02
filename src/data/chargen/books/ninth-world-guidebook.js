@@ -189,6 +189,9 @@ var foci = [
     abilities: [
       'Multilingual',
       'Connection'
+    ],
+    sources: [
+      { sourcebook: 'Numenera Character Options 2', page: 66 }
     ]
   }
 ]
