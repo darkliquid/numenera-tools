@@ -35,6 +35,23 @@ function collection (objpath) {
   }
 }
 
+function abilityList(state, objpath, srcpath) {
+  var results = [];
+  var abilities = (op.get(state, objpath) || []);
+  var src = state;
+  if (srcpath) {
+    src = op.get(state, srcpath);
+  }
+  abilities.forEach(function (ability) {
+    results.push({
+      sourcebook: src.sourcebook,
+      page: src.page,
+      ability: ability
+    })
+  });
+  return results;
+}
+
 const getters = {
   minMight: totaller('stats.might'),
   minSpeed: totaller('stats.speed'),
@@ -80,68 +97,57 @@ const getters = {
   },
   allAbilities: function (state) {
     // Get our list of fixed abilities here
-    var fixed = (op.get(state, 'focus.abilities') || []).concat(op.get(state, 'descriptor.abilities') || [])
-    fixed = [...new Set(fixed)]
+    var fixed = [
+      ...abilityList(state, 'type.abilities.fixed', 'type'),
+      ...abilityList(state, 'focus.abilities.fixed', 'focus'),
+      ...abilityList(state, 'descriptor.abilities.fixed', 'descriptor')
+    ];
 
     // Get our list of 'pick two' abilities
-    var choices = []
-    state.type.abilities.forEach(function (ability) {
-      if (!fixed.includes(ability)) {
-        choices.push({
-          sourcebook: state.type.sourcebook,
-          page: state.type.page,
-          ability: ability
-        })
-      }
-    })
+    var optional = [
+      ...abilityList(state, 'type.abilities.optional', 'type'),
+      ...abilityList(state, 'focus.abilities.optional', 'focus'),
+      ...abilityList(state, 'descriptor.abilities.optional', 'descriptor'),
+    ];
 
     // Now a special case to handle extensions (from player options, etc)
     // added by types, descriptors or focus.
-    if (state.type.hasOwnProperty('extensions')) {
-      state.type.extensions.forEach(function (ext) {
-        if (ext.hasOwnProperty('abilities')) {
-          ext.abilities.forEach(function (ability) {
-            choices.push({
-              sourcebook: ext.sourcebook,
-              page: ext.page,
-              ability: ability
-            })
-          })
-        }
-      })
-    }
+    (op.get(state, 'type.extensions') || []).forEach(function (ext) {
+      fixed = [
+        ...fixed,
+        ...abilityList(ext, 'abilities.fixed')
+      ]
+      optional = [
+        ...optional,
+        ...abilityList(ext, 'abilities.optional')
+      ]
+    });
 
-    if (state.focus.hasOwnProperty('extensions')) {
-      state.focus.extensions.forEach(function (ext) {
-        if (ext.hasOwnProperty('abilities')) {
-          ext.abilities.forEach(function (ability) {
-            choices.push({
-              sourcebook: ext.sourcebook,
-              page: ext.page,
-              ability: ability
-            })
-          })
-        }
-      })
-    }
+    (op.get(state, 'focus.extensions') || []).forEach(function (ext) {
+      fixed = [
+        ...fixed,
+        ...abilityList(ext, 'abilities.fixed')
+      ]
+      optional = [
+        ...optional,
+        ...abilityList(ext, 'abilities.optional')
+      ]
+    });
 
-    if (state.descriptor.hasOwnProperty('extensions')) {
-      state.descriptor.extensions.forEach(function (ext) {
-        if (ext.hasOwnProperty('abilities')) {
-          ext.abilities.forEach(function (ability) {
-            choices.push({
-              sourcebook: ext.sourcebook,
-              page: ext.page,
-              ability: ability
-            })
-          })
-        }
-      })
-    }
+    (op.get(state, 'descriptor.extensions') || []).forEach(function (ext) {
+      fixed = [
+        ...fixed,
+        ...abilityList(ext, 'abilities.fixed')
+      ]
+      optional = [
+        ...optional,
+        ...abilityList(ext, 'abilities.optional')
+      ]
+    });
 
     return {
       fixed,
-      choices
+      optional
     }
   }
 }

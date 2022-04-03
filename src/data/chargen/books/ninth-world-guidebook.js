@@ -186,10 +186,12 @@ var foci = [
     equipment: [
       'An explorer’s Pack, or an extra change of clothes, 2 days rations, and 2 minor glowglobes'
     ],
-    abilities: [
-      'Multilingual',
-      'Connection'
-    ],
+    abilities: {
+      fixed: [
+        'Multilingual',
+        'Connection'
+      ]
+    },
     sources: [
       { sourcebook: 'Numenera Character Options 2', page: 66 }
     ]
