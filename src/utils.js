@@ -1,3 +1,5 @@
+import 'core-js/es/typed-array/uint8-array'
+
 function randNum (limit) {
   return Math.floor(Math.random() * limit)
 }
@@ -62,6 +64,18 @@ function shuffle (a) {
   return a
 }
 
+function decodeURLSafeBase64ToArray (encodedData) {
+  encodedData += Array(5 - encodedData.length % 4).join('=');
+  encodedData = encodedData.replace(/\-/g, '+').replace(/\_/g, '/');
+  var raw = window.atob(encodedData);
+  var rawLength = raw.length;
+  var data = new Uint8Array(new ArrayBuffer(rawLength));
+  for(var i = 0; i < rawLength; i++) {
+    data[i] = raw.charCodeAt(i);
+  }
+  return Array.from(data)
+}
+
 export default {
   randItem,
   randomlyInterpolate,
@@ -69,5 +83,6 @@ export default {
   capitalise,
   randNum,
   arrayToSentence,
-  shuffle
+  shuffle,
+  decodeURLSafeBase64ToArray
 }

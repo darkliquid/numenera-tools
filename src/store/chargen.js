@@ -1,5 +1,8 @@
 import op from 'object-path'
 import isEqual from 'lodash/isEqual'
+import utils from '../utils'
+import 'core-js/es/typed-array/uint8-array'
+
 import descriptors from '../data/chargen/descriptors'
 import types from '../data/chargen/types'
 import foci from '../data/chargen/foci'
@@ -154,7 +157,10 @@ const getters = {
     }
   },
   shareData: function (state) {
-    return [
+    // none of our numbers are going to be greater than 255
+    // we simply don't have that many abilities/options/etc
+    // across all of our sources combined
+    var bytes = new Uint8Array([
       descriptors.findIndex((val) => isEqual(val, state.descriptor)),
       types.findIndex((val) => isEqual(val, state.type)),
       foci.findIndex((val) => isEqual(val, state.focus)),
@@ -167,7 +173,9 @@ const getters = {
       ...state.abilities.map((ability) => {
         return getters.allAbilities(state).optional.findIndex((val) => isEqual(val, ability))
       })
-    ]
+    ]);
+
+    return bytes
   }
 }
 
@@ -239,22 +247,24 @@ export default {
         state.abilities.splice(idx, 1)
       }
     },
-    setData (state, data) {
-        state.descriptor = descriptors[data[0]]
-        state.type = types[data[1]]
-        state.focus = foci[data[2]]
-        state.stats.might = getters.minMight(state) + data[3]
-        state.stats.speed = getters.minSpeed(state) + data[4]
-        state.stats.intellect = getters.minIntellect(state) + data[5]
-        state.stats.points = getters.totalStatPoints(state) - data[3] - data[4] - data[5]
-        state.edges.might = getters.minMightEdge(state) + data[6]
-        state.edges.speed = getters.minSpeedEdge(state) + data[7]
-        state.edges.intellect = getters.minIntellectEdge(state) + data[8]
-        state.edges.points = getters.totalEdgePoints(state) - data[6] - data[7] - data[8]
-        state.abilities = data.slice(9).map((idx) => {
-          return getters.allAbilities(state).optional[idx]
-        })
-        state.step = 2
+    setData (state, encodedData) {
+      var data = utils.decodeURLSafeBase64ToArray(encodedData);
+
+      state.descriptor = descriptors[data[0]]
+      state.type = types[data[1]]
+      state.focus = foci[data[2]]
+      state.stats.might = getters.minMight(state) + data[3]
+      state.stats.speed = getters.minSpeed(state) + data[4]
+      state.stats.intellect = getters.minIntellect(state) + data[5]
+      state.stats.points = getters.totalStatPoints(state) - data[3] - data[4] - data[5]
+      state.edges.might = getters.minMightEdge(state) + data[6]
+      state.edges.speed = getters.minSpeedEdge(state) + data[7]
+      state.edges.intellect = getters.minIntellectEdge(state) + data[8]
+      state.edges.points = getters.totalEdgePoints(state) - data[6] - data[7] - data[8]
+      state.abilities = data.slice(9).map((idx) => {
+        return getters.allAbilities(state).optional[idx]
+      })
+      state.step = 2
     }
   }
 }

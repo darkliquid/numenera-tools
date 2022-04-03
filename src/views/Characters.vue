@@ -12,7 +12,6 @@
 <script>
 import { mapState } from 'vuex'
 import store from '../store'
-import jsonurl from 'json-url'
 
 import CharacterSelect from '../components/Characters/Select.vue'
 import CharacterSheet from '../components/Characters/Sheet.vue'
@@ -46,9 +45,7 @@ export default {
     // does NOT have access to `this` component instance,
     // because it has not been created yet when this guard is called!
     if (to.params.data) {
-      jsonurl('lzma').decompress(to.params.data).then(function (json) {
-        store.commit('chargen/setData', json)
-      })
+      store.commit('chargen/setData', to.params.data)
     } else {
       store.commit('chargen/updateStep', 1)
     }

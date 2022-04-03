@@ -199,7 +199,6 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import jsonurl from 'json-url'
 import _some from 'lodash/some'
 
 import Stat from './Stat.vue'
@@ -278,13 +277,21 @@ export default {
     isChosen(choice) {
       return _some(this.abilities, choice)
     },
-    shareCharacter () {
-      jsonurl('lzma').compress(this.shareData).then(data => {
-        const pathPrefix = import.meta.env.BASE_URL;
-        this.dataUrl = `${window.origin}${pathPrefix}characters/${data}`
-        navigator.clipboard.writeText(this.dataUrl)
-        this.copied = true
-      })
+    async shareCharacter () {
+      const base64_arraybuffer = async (data) => {
+        // Use a FileReader to generate a base64 data URI
+        const base64url = await new Promise((r) => {
+            const reader = new FileReader()
+            reader.onload = () => r(reader.result)
+            reader.readAsDataURL(new Blob([data]))
+        })
+        return base64url.split(",", 2)[1].replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); // Remove ending '='
+      }
+      const data = await base64_arraybuffer(this.shareData)
+      const pathPrefix = import.meta.env.BASE_URL;
+      this.dataUrl = `${window.origin}${pathPrefix}characters/${data}`
+      navigator.clipboard.writeText(this.dataUrl)
+      this.copied = true
     }
   }
 }
@@ -292,7 +299,7 @@ export default {
 
 <style scoped lang="scss">
 .v-chip {
-  height: auto;
+  height: auto !important;
   min-height: calc(var(--v-chip-height) + 0px);
 }
 </style>
