@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-header-text>
-      <v-card-title>Character Generator</v-card-title>
+      <v-card-title>A {{ descriptor.name }} {{ type.name }} who {{ focus.name }}</v-card-title>
     </v-card-header-text>
     <v-card-text>
       <v-form>
