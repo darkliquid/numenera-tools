@@ -1,5 +1,8 @@
 import op from 'object-path'
 import isEqual from 'lodash/isEqual'
+import descriptors from '../data/chargen/descriptors'
+import types from '../data/chargen/types'
+import foci from '../data/chargen/foci'
 
 function sum (acc, val) {
   return acc + (val || 0)
@@ -152,9 +155,9 @@ const getters = {
   },
   shareData: function (state) {
     return {
-      descriptor: state.descriptor,
-      type: state.type,
-      focus: state.focus,
+      descriptor: descriptors.findIndex((val) => isEqual(val, state.descriptor)),
+      type: types.findIndex((val) => isEqual(val, state.type)),
+      focus: foci.findIndex((val) => isEqual(val, state.focus)),
       stats: {
         ...state.stats,
       },
@@ -169,7 +172,9 @@ const getters = {
         ...state.oddities,
       ],
       abilities: [
-        ...state.abilities,
+        ...state.abilities.map((ability) => {
+          return getters.allAbilities(state).optional.findIndex((val) => isEqual(val, ability))
+        }),
       ],
       cypherlimit: state.cypherlimit
     }
@@ -250,15 +255,17 @@ export default {
       }
     },
     setData (state, data) {
-        state.descriptor = data.descriptor
-        state.type = data.type
-        state.focus = data.focus
+        state.descriptor = descriptors[data.descriptor]
+        state.type = types[data.type]
+        state.focus = foci[data.focus]
         state.stats = data.stats
         state.edges = data.edges
         state.shins = data.shins
         state.cyphers = data.cyphers
         state.oddities = data.oddities
-        state.abilities = data.abilities
+        state.abilities = data.abilities.map((idx) => {
+          return getters.allAbilities(state).optional[idx]
+        })
         state.cypherlimit = data.cypherlimit
         state.step = 2
     }
