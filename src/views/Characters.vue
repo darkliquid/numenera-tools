@@ -11,6 +11,8 @@
 
 <script>
 import { mapState } from 'vuex'
+import store from '../store'
+import jsonurl from 'json-url'
 
 import CharacterSelect from '../components/Characters/Select.vue'
 import CharacterSheet from '../components/Characters/Sheet.vue'
@@ -28,20 +30,29 @@ export default {
     return {
       descriptors,
       types,
-      foci
+      foci,
     }
   },
   computed: {
     ...mapState({
-      step: state => state.chargen.step
+      step: state => state.chargen.step,
     }),
     transitionName () {
       return this.step === 1 ? 'slide-right' : 'slide-left'
     }
   },
-  mounted () {
-    this.$store.commit('chargen/updateStep', 1)
-  }
+  beforeRouteEnter(to, from) {
+    // called before the route that renders this component is confirmed.
+    // does NOT have access to `this` component instance,
+    // because it has not been created yet when this guard is called!
+    if (to.params.data) {
+      jsonurl('lzma').decompress(to.params.data).then(function (json) {
+        store.commit('chargen/setData', json)
+      })
+    } else {
+      store.commit('chargen/updateStep', 1)
+    }
+  },
 }
 </script>
 

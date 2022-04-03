@@ -149,6 +149,30 @@ const getters = {
       fixed,
       optional
     }
+  },
+  shareData: function (state) {
+    return {
+      descriptor: state.descriptor,
+      type: state.type,
+      focus: state.focus,
+      stats: {
+        ...state.stats,
+      },
+      edges: {
+        ...state.edges,
+      },
+      shins: state.shins,
+      cyphers: [
+        ...state.cyphers,
+      ],
+      oddities: [
+        ...state.oddities,
+      ],
+      abilities: [
+        ...state.abilities,
+      ],
+      cypherlimit: state.cypherlimit
+    }
   }
 }
 
@@ -224,6 +248,19 @@ export default {
       } else {
         state.abilities.splice(idx, 1)
       }
+    },
+    setData (state, data) {
+        state.descriptor = data.descriptor
+        state.type = data.type
+        state.focus = data.focus
+        state.stats = data.stats
+        state.edges = data.edges
+        state.shins = data.shins
+        state.cyphers = data.cyphers
+        state.oddities = data.oddities
+        state.abilities = data.abilities
+        state.cypherlimit = data.cypherlimit
+        state.step = 2
     }
   }
 }

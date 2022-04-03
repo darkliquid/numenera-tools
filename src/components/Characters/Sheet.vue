@@ -13,15 +13,15 @@
               <v-row no-gutters>
                 <v-col>
                   <h4 class="text-center">Might</h4>
-                  <stat class="d-flex justify-center" :min="minMight" :points="stats.points" pool="might" @add="incStat" @remove="decStat"/>
+                  <stat class="d-flex justify-center" :min="minMight" :points="stats.points" :value="stats.might" pool="might" @add="incStat" @remove="decStat"/>
                 </v-col>
                 <v-col>
                   <h4 class="text-center">Speed</h4>
-                  <stat class="d-flex justify-center" :min="minSpeed" :points="stats.points" pool="speed" @add="incStat" @remove="decStat"/>
+                  <stat class="d-flex justify-center" :min="minSpeed" :points="stats.points" :value="stats.speed" pool="speed" @add="incStat" @remove="decStat"/>
                 </v-col>
                 <v-col>
                   <h4 class="text-center">Intellect</h4>
-                  <stat class="d-flex justify-center" :min="minIntellect" :points="stats.points" pool="intellect" @add="incStat" @remove="decStat"/>
+                  <stat class="d-flex justify-center" :min="minIntellect" :points="stats.points" :value="stats.intellect" pool="intellect" @add="incStat" @remove="decStat"/>
                 </v-col>
               </v-row>
             </v-card-text>
@@ -34,15 +34,15 @@
               <v-row>
                 <v-col>
                   <h4 class="text-center">Might</h4>
-                  <stat class="d-flex justify-center" :min="minMightEdge" :points="edges.points" pool="might" @add="incEdge" @remove="decEdge"/>
+                  <stat class="d-flex justify-center" :min="minMightEdge" :points="edges.points" :value="edges.might" pool="might" @add="incEdge" @remove="decEdge"/>
                 </v-col>
                 <v-col>
                   <h4 class="text-center">Speed</h4>
-                  <stat class="d-flex justify-center" :min="minSpeedEdge" :points="edges.points" pool="speed" @add="incEdge" @remove="decEdge"/>
+                  <stat class="d-flex justify-center" :min="minSpeedEdge" :points="edges.points" :value="edges.speed" pool="speed" @add="incEdge" @remove="decEdge"/>
                 </v-col>
                 <v-col>
                   <h4 class="text-center">Intellect</h4>
-                  <stat class="d-flex justify-center" :min="minIntellectEdge" :points="edges.points" pool="intellect" @add="incEdge" @remove="decEdge"/>
+                  <stat class="d-flex justify-center" :min="minIntellectEdge" :points="edges.points" :value="edges.intellect" pool="intellect" @add="incEdge" @remove="decEdge"/>
                 </v-col>
               </v-row>
             </v-card-text>
@@ -171,18 +171,48 @@
     </v-card-text>
     <v-card-actions>
       <v-btn colored @click="prevCharacterStep">Back</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn
+        color="primary"
+        @click="shareCharacter"
+      >
+        Share
+      </v-btn>
+      <v-snackbar
+        v-model="copied"
+      >
+        Share URL copied to clipboard!
+        
+        <template v-slot:actions>
+          <v-btn
+            color="primary"
+            variant="text"
+            @click="copied = false"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import jsonurl from 'json-url'
+import _some from 'lodash/some'
 
 import Stat from './Stat.vue'
 
 export default {
   components: {
     Stat
+  },
+  data() {
+    return {
+      copied: false,
+      dataUrl: ''
+    }
   },
   computed: {
     ...mapState('chargen', [
@@ -214,10 +244,11 @@ export default {
       'allOddities',
       'totalArmor',
       'allArtifacts',
-      'allExtras'
+      'allExtras',
+      'shareData'
     ]),
     availableAbilities () {
-      return this.allAbilities.choices.filter(x => !this.abilities.includes(x))
+      return this.allAbilities.choices.filter(x => !_some(this.abilities, x))
     }
   },
   methods: {
@@ -241,15 +272,23 @@ export default {
       this.$store.commit('chargen/toggleAbility', choice)
     },
     prevCharacterStep () {
+      this.$router.replace({ path: '/characters' })
       this.$store.commit('chargen/updateStep', 1)
     },
     isChosen(choice) {
-      return this.abilities.includes(choice)
+      return _some(this.abilities, choice)
+    },
+    shareCharacter () {
+      jsonurl('lzma').compress(this.shareData).then(data => {
+        const pathPrefix = import.meta.env.BASE_URL;
+        this.dataUrl = `${window.origin}${pathPrefix}characters/${data}`
+        navigator.clipboard.writeText(this.dataUrl)
+        this.copied = true
+      })
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-
 </style>

@@ -49,7 +49,64 @@
     <v-card-actions>
       <v-btn @click="randomSelection">Random</v-btn>
       <v-btn colored @click="nextCharacterStep" :disabled="!allSelected">Next</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn
+        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+        @click="show = !show"
+      ></v-btn>
     </v-card-actions>
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+
+        <v-card-text>
+          <v-form>
+            <v-container fluid>
+              <v-row>
+                <v-col cols=12>
+                  Randomise
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col
+                  cols="12"
+                  sm="4"
+                  md="4"
+                >
+                  <v-checkbox
+                    v-model="randomiseDescriptor"
+                    color="primary"
+                    label="Descriptor"
+                  ></v-checkbox>
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="4"
+                  md="4"
+                >
+                  <v-checkbox
+                    v-model="randomiseType"
+                    color="primary"
+                    label="Type"
+                  ></v-checkbox>
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="4"
+                  md="4"
+                >
+                  <v-checkbox
+                    v-model="randomiseFocus"
+                    color="primary"
+                    label="Focus"
+                  ></v-checkbox>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-form>
+        </v-card-text>
+      </div>
+    </v-expand-transition>
   </v-card>
 </template>
 
@@ -100,6 +157,10 @@ export default {
       descriptor: null,
       type: null,
       focus: null,
+      show: false,
+      randomiseType: true,
+      randomiseDescriptor: true,
+      randomiseFocus: true,
     }
   },
   props: {
@@ -127,9 +188,15 @@ export default {
   },
   methods: {
     randomSelection () {
-      this.updateDescriptor(Math.floor(Math.random() * this.descriptors.length))
-      this.updateType(Math.floor(Math.random() * this.types.length))
-      this.updateFocus(Math.floor(Math.random() * this.foci.length))
+      if (this.randomiseDescriptor) {
+        this.updateDescriptor(Math.floor(Math.random() * this.descriptors.length))
+      }
+      if (this.randomiseType) {
+        this.updateType(Math.floor(Math.random() * this.types.length))
+      }
+      if (this.randomiseFocus) {
+        this.updateFocus(Math.floor(Math.random() * this.foci.length))
+      }
     },
     updateFocus (focus) {
       this.focus = focus
@@ -154,6 +221,22 @@ export default {
     groupedTypes: groupedOptions('types'),
     groupedFoci: groupedOptions('foci'),
     groupedDescriptors: groupedOptions('descriptors')
+  },
+  mounted () {
+    var tIdx = this.types.indexOf(this.$store.state.chargen.type);
+    if (tIdx > -1) {
+      this.type = tIdx
+    }
+    
+    var fIdx = this.foci.indexOf(this.$store.state.chargen.focus);
+    if (fIdx > -1) {
+      this.focus = fIdx
+    }
+    
+    var dIdx = this.descriptors.indexOf(this.$store.state.chargen.descriptor);
+    if (dIdx > -1) {
+      this.descriptor = dIdx
+    }
   }
 }
 </script>

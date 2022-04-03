@@ -12,7 +12,7 @@ var pools = ['might', 'speed', 'intellect']
 export default {
   computed: {
     addable () {
-      return this.value < this.max && this.points > 0
+      return this.value && this.points > 0
     },
     removable () {
       return this.value > this.min
@@ -21,8 +21,7 @@ export default {
   data () {
     return {
       classes: ['stat-counter', this.pool].join(' '),
-      max: this.min + this.points,
-      value: this.min
+      max: this.min + this.points
     }
   },
   props: {
@@ -40,19 +39,20 @@ export default {
       validator (val) {
         return pools.includes(val)
       }
+    },
+    value: {
+      type: Number
     }
   },
   methods: {
     add () {
       if (this.addable) {
         this.$emit('add', this.pool)
-        this.value++
       }
     },
     remove () {
       if (this.removable) {
         this.$emit('remove', this.pool)
-        this.value--
       }
     }
   }

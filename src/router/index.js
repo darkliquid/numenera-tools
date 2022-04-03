@@ -22,9 +22,9 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/characters',
+      path: '/characters/:data?',
       name: 'Characters',
-      component: Characters
+      component: Characters,
     },
     {
       path: '/creatures',
