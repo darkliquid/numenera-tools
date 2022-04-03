@@ -154,30 +154,20 @@ const getters = {
     }
   },
   shareData: function (state) {
-    return {
-      descriptor: descriptors.findIndex((val) => isEqual(val, state.descriptor)),
-      type: types.findIndex((val) => isEqual(val, state.type)),
-      focus: foci.findIndex((val) => isEqual(val, state.focus)),
-      stats: {
-        ...state.stats,
-      },
-      edges: {
-        ...state.edges,
-      },
-      shins: state.shins,
-      cyphers: [
-        ...state.cyphers,
-      ],
-      oddities: [
-        ...state.oddities,
-      ],
-      abilities: [
-        ...state.abilities.map((ability) => {
-          return getters.allAbilities(state).optional.findIndex((val) => isEqual(val, ability))
-        }),
-      ],
-      cypherlimit: state.cypherlimit
-    }
+    return [
+      descriptors.findIndex((val) => isEqual(val, state.descriptor)),
+      types.findIndex((val) => isEqual(val, state.type)),
+      foci.findIndex((val) => isEqual(val, state.focus)),
+      state.stats.might - getters.minMight(state),
+      state.stats.speed - getters.minSpeed(state),
+      state.stats.intellect - getters.minIntellect(state),
+      state.edges.might - getters.minMightEdge(state),
+      state.edges.speed - getters.minSpeedEdge(state),
+      state.edges.intellect - getters.minIntellectEdge(state),
+      ...state.abilities.map((ability) => {
+        return getters.allAbilities(state).optional.findIndex((val) => isEqual(val, ability))
+      })
+    ]
   }
 }
 
@@ -200,9 +190,6 @@ export default {
       intellect: 0,
       points: 0
     },
-    shins: 0,
-    cyphers: [],
-    oddities: [],
     abilities: [],
     cypherlimit: 0
   },
@@ -230,8 +217,6 @@ export default {
         state.edges.points = getters.totalEdgePoints(state)
       } else {
         state.abilities = []
-        state.cyphers = []
-        state.oddities = []
       }
     },
     updateStats (state, stats) {
@@ -255,18 +240,20 @@ export default {
       }
     },
     setData (state, data) {
-        state.descriptor = descriptors[data.descriptor]
-        state.type = types[data.type]
-        state.focus = foci[data.focus]
-        state.stats = data.stats
-        state.edges = data.edges
-        state.shins = data.shins
-        state.cyphers = data.cyphers
-        state.oddities = data.oddities
-        state.abilities = data.abilities.map((idx) => {
+        state.descriptor = descriptors[data[0]]
+        state.type = types[data[1]]
+        state.focus = foci[data[2]]
+        state.stats.might = getters.minMight(state) + data[3]
+        state.stats.speed = getters.minSpeed(state) + data[4]
+        state.stats.intellect = getters.minIntellect(state) + data[5]
+        state.stats.points = getters.totalStatPoints(state) - data[3] - data[4] - data[5]
+        state.edges.might = getters.minMightEdge(state) + data[6]
+        state.edges.speed = getters.minSpeedEdge(state) + data[7]
+        state.edges.intellect = getters.minIntellectEdge(state) + data[8]
+        state.edges.points = getters.totalEdgePoints(state) - data[6] - data[7] - data[8]
+        state.abilities = data.slice(9).map((idx) => {
           return getters.allAbilities(state).optional[idx]
         })
-        state.cypherlimit = data.cypherlimit
         state.step = 2
     }
   }

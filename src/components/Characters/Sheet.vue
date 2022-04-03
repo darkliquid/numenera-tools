@@ -291,4 +291,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.v-chip {
+  height: auto;
+  min-height: calc(var(--v-chip-height) + 0px);
+}
 </style>

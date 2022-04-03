@@ -12,7 +12,7 @@ var pools = ['might', 'speed', 'intellect']
 export default {
   computed: {
     addable () {
-      return this.value && this.points > 0
+      return this.points > 0
     },
     removable () {
       return this.value > this.min
