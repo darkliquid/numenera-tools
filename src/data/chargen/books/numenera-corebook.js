@@ -364,13 +364,15 @@ var types = [
     },
     shins: 5,
     cypherlimit: 2,
-    abilities: [
-      'Bash',
-      'No Need For Weapons',
-      'Pierce',
-      'Thrust',
-      'Trained Without Armor'
-    ],
+    abilities: {
+      optional: [
+        'Bash',
+        'No Need For Weapons',
+        'Pierce',
+        'Thrust',
+        'Trained Without Armor'
+      ],
+    },
     skills: {
       trained: [
         'One of: Balancing, Climbing, Jumping, Swimming'
@@ -411,13 +413,15 @@ var types = [
     },
     shins: 4,
     cypherlimit: 3,
-    abilities: [
-      'Hedge Magic',
-      'Onslaught',
-      'Push',
-      'Scan',
-      'Ward'
-    ],
+    abilities: {
+      optional: [
+        'Hedge Magic',
+        'Onslaught',
+        'Push',
+        'Scan',
+        'Ward'
+      ],
+    },
     skills: {
       trained: [
         'Understanding and identifying numenera'
@@ -456,16 +460,18 @@ var types = [
     },
     shins: 8,
     cypherlimit: 2,
-    abilities: [
-      'Flex Skill',
-      'Bash',
-      'Hedge Magic',
-      'Pierce',
-      'Practiced in Armour',
-      'Skill With Defense',
-      'Thrust',
-      'Trained Without Armour'
-    ],
+    abilities: {
+      fixed: ['Flex Skill'],
+      optional: [
+        'Bash',
+        'Hedge Magic',
+        'Pierce',
+        'Practiced in Armour',
+        'Skill With Defense',
+        'Thrust',
+        'Trained Without Armour'
+      ],
+    },
     skills: {
       trained: [
         'Any one non-attack/defense task of your choosing'
@@ -498,10 +504,9 @@ var foci = [
     equipment: [
       'An artifact that sprays inanimate objects to make them fire-resistant'
     ],
-    abilities: [
-      'Fire esoteries',
-      'Shroud of Flame'
-    ],
+    abilities: {
+      fixed: ['Fire esoteries', 'Shroud of Flame']
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 38 }
     ]
@@ -514,9 +519,11 @@ var foci = [
       'A well-made bow',
       'Two-dozen arrows'
     ],
-    abilities: [
-      'Archer'
-    ],
+    abilities: {
+      fixed: [
+        'Archer'
+      ]
+    },
     skills: {
       trained: [
         'Making arrows'
@@ -539,9 +546,11 @@ var foci = [
         'Mind Reading esoteries'
       ]
     },
-    abilities: [
-      'Telepathic'
-    ],
+    abilities: {
+      fixed: [
+        'Telepathic'
+      ],
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 41 }
     ]
@@ -554,9 +563,11 @@ var foci = [
       '3 days of animal feed',
       'Animal harness/collar/etc'
     ],
-    abilities: [
-      'Beast Companion'
-    ],
+    abilities: {
+      fixed: [
+        'Beast Companion'
+      ],
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 41 }
     ]
@@ -568,9 +579,11 @@ var foci = [
     oddities: [
       'Pen-sized oddity that displays the weight of objects it is pointed at in symbols only you can read'
     ],
-    abilities: [
-      'Hover'
-    ],
+    abilities: {
+      fixed: [
+        'Hover'
+      ],
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 42 }
     ]
@@ -582,10 +595,12 @@ var foci = [
     oddities: [
       'Oddity that looks like a clear glass panel. Manipulating switches on it shows strange, moving images'
     ],
-    abilities: [
-      'Psychedelic esoteries',
-      'Minor Illusion'
-    ],
+    abilities: {
+      fixed: [
+        'Psychedelic esoteries',
+        'Minor Illusion'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 43 }
     ]
@@ -616,9 +631,11 @@ var foci = [
     name: 'Employs Magnetism',
     sourcebook: 'Numenera Corebook',
     page: 59,
-    abilities: [
-      'Move Metal'
-    ],
+    abilities: {
+      fixed: [
+        'Move Metal'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 45 }
     ]
@@ -630,9 +647,11 @@ var foci = [
     equipment: [
       'A musical instrument or tools you need to perform'
     ],
-    abilities: [
-      'Levity'
-    ],
+    abilities: {
+      fixed: [
+        'Levity'
+      ],
+    },
     skills: {
       trained: [
         'All social interactions except coercion or intimidation'
@@ -646,9 +665,11 @@ var foci = [
     name: 'Exists Partially Out of Phase',
     sourcebook: 'Numenera Corebook',
     page: 60,
-    abilities: [
-      'Walk Through Walls'
-    ],
+    abilities: {
+      fixed: [
+        'Walk Through Walls'
+      ],
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 46 }
     ]
@@ -660,9 +681,11 @@ var foci = [
     equipment: [
       'An explorers pack or the following: 50ft rope, 2 days rations, two minor glowglobes'
     ],
-    abilities: [
-      'Dark esoteries'
-    ],
+    abilities: {
+      fixed: [
+        'Dark esoteries'
+      ]
+    },
     skills: {
       trained: [
         'Searching',
@@ -684,9 +707,11 @@ var foci = [
       'Extremely stylish clothing',
       'A jeweled weapon'
     ],
-    abilities: [
-      'Attack Flourish'
-    ],
+    abilities: {
+      fixed: [
+        'Attack Flourish'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 47 }
     ]
@@ -695,9 +720,11 @@ var foci = [
     name: 'Focuses Mind over Matter',
     sourcebook: 'Numenera Corebook',
     page: 63,
-    abilities: [
-      'Deflect Attacks'
-    ],
+    abilities: {
+      fixed: [
+        'Deflect Attacks'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 48 }
     ]
@@ -715,9 +742,11 @@ var foci = [
       'A bag of light tools',
       'Parts to repair yourself with'
     ],
-    abilities: [
-      'Special Healing'
-    ],
+    abilities: {
+      fixed: [
+        'Special Healing'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 49 }
     ]
@@ -729,9 +758,11 @@ var foci = [
     artifacts: [
       'A chronometer artifact that lets you know when the next change is coming'
     ],
-    abilities: [
-      'Beast Form'
-    ],
+    abilities: {
+      fixed: [
+        'Beast Form'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 50 }
     ]
@@ -765,9 +796,11 @@ var foci = [
         'Social interactions'
       ]
     },
-    abilities: [
-      'Good advice'
-    ],
+    abilities: {
+      fixed: [
+        'Good advice'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 51 }
     ]
@@ -798,9 +831,11 @@ var foci = [
     equipment: [
       'A shield'
     ],
-    abilities: [
-      'Shield Master'
-    ],
+    abilities: {
+      fixed: [
+        'Shield Master'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 52 }
     ]
@@ -812,10 +847,12 @@ var foci = [
     equipment: [
       'A high-quality weapon of your choosing'
     ],
-    abilities: [
-      'Weapon Esoteries',
-      'Weapon Master'
-    ],
+    abilities: {
+      fixed: [
+        'Weapon Esoteries',
+        'Weapon Master'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 53 }
     ]
@@ -828,9 +865,11 @@ var foci = [
       'A disguise kit',
       'Three doses of a level 2 blade poison that deals 5 damage'
     ],
-    abilities: [
-      'Surprise Attack'
-    ],
+    abilities: {
+      fixed: [
+        'Surprise Attack'
+      ]
+    },
     skills: {
       trained: [
         'Stealth and disguise'
@@ -844,9 +883,11 @@ var foci = [
     name: 'Rages',
     sourcebook: 'Numenera Corebook',
     page: 71,
-    abilities: [
-      'Frenzy'
-    ],
+    abilities: {
+      fixed: [
+        'Frenzy'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 54 }
     ]
@@ -858,11 +899,13 @@ var foci = [
     equipment: [
       'A bag of misc power cells'
     ],
-    abilities: [
-      'Electrical esoteries',
-      'Shock',
-      'Charge'
-    ],
+    abilities: {
+      fixed: [
+        'Electrical esoteries',
+        'Shock',
+        'Charge'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 55 }
     ]
@@ -874,9 +917,11 @@ var foci = [
     equipment: [
       'A bag of small tools'
     ],
-    abilities: [
-      'Distant Activation'
-    ],
+    abilities: {
+      fixed: [
+        'Distant Activation'
+      ]
+    },
     skills: {
       trained: [
         'All tasks involving electrical machines'
@@ -893,10 +938,12 @@ var foci = [
     equipment: [
       'A bladed weapon made of stronglass which looks like ice'
     ],
-    abilities: [
-      'Ice Armor',
-      'Ice Esoteries'
-    ],
+    abilities: {
+      fixed: [
+        'Ice Armor',
+        'Ice Esoteries'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 57 }
     ]
@@ -922,9 +969,11 @@ var foci = [
     equipment: [
       'A light melee weapon'
     ],
-    abilities: [
-      'Dual Light Wield'
-    ],
+    abilities: {
+      fixed: [
+        'Dual Light Wield'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 58 }
     ]
@@ -933,9 +982,11 @@ var foci = [
     name: 'Works Miracles',
     sourcebook: 'Numenera Corebook',
     page: 75,
-    abilities: [
-      'Healing Touch'
-    ],
+    abilities: {
+      fixed: [
+        'Healing Touch'
+      ]
+    },
     sources: [
       { sourcebook: 'Players Guide', page: 59 }
     ]

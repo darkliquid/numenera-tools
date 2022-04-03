@@ -83,16 +83,16 @@
                     :key="item"
                     class="ma-2"
                     color="primary">
-                    {{ item }}
+                    {{ item.ability }}
                   </v-chip>
                 </v-col>
-                <v-col v-if="allAbilities.choices.length > 0">
+                <v-col v-if="allAbilities.optional.length > 0">
                   <h4>
                     Chosen abilities
                     <span class="fr" v-if="abilities.length < 2">(choose {{ 2-abilities.length }})</span>
                   </h4>
                   <v-chip
-                    v-for="choice in allAbilities.choices"
+                    v-for="choice in allAbilities.optional"
                     @click="toggleAbility(choice)"
                     :key="choice"
                     class="ma-2"

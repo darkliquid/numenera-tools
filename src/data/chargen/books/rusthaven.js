@@ -217,17 +217,21 @@ var foci = [{
     equipment: [
       '2 weeks of rations. Generating all this additional biomass is hungry work'
     ],
-    abilities: [
-      'Spawn'
-    ]
+    abilities: {
+      fixed: [
+        'Spawn'
+      ]
+    }
   },
   {
     name: 'Embraces Chaos',
     sourcebook: 'Rusthaven',
     page: 59,
-    abilities: [
-      'Warp'
-    ]
+    abilities: {
+      fixed: [
+        'Warp'
+      ]
+    }
   },
   {
     name: 'Forever Changes',
@@ -236,10 +240,12 @@ var foci = [{
     equipment: [
       'A small hand-mirror so you can see what you look like'
     ],
-    abilities: [
-      'Forever Changing',
-      'Toolkit'
-    ]
+    abilities: {
+      fixed: [
+        'Forever Changing',
+        'Toolkit'
+      ]
+    }
   },
   {
     name: 'Taints',
@@ -248,9 +254,11 @@ var foci = [{
     equipment: [
       'A pair of black, synth gloves'
     ],
-    abilities: [
-      'Withering Touch'
-    ]
+    abilities: {
+      fixed: [
+        'Withering Touch'
+      ]
+    }
   },
   {
     name: 'Wakes from Death',
@@ -264,9 +272,11 @@ var foci = [{
         'Historical knowledge'
       ]
     },
-    abilities: [
-      'Undying'
-    ]
+    abilities: {
+      fixed: [
+        'Undying'
+      ]
+    }
   }
 ]
 

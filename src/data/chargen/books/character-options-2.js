@@ -63,9 +63,11 @@ var descriptors = [{
         'Pleasant social interactions'
       ],
     },
-    abilities: [
-      'Disarm With Humour'
-    ]
+    abilities: {
+      fixed: [
+        'Disarm With Humour'
+      ]
+    }
   },
   {
     name: 'Deliberate',
@@ -191,10 +193,12 @@ var descriptors = [{
         'All intimidation tasks'
       ]
     },
-    abilities: [
-      'Lower Morale',
-      'Cause Fear'
-    ]
+    abilities: {
+      fixed: [
+        'Lower Morale',
+        'Cause Fear'
+      ]
+    }
   },
   {
     name: 'Lonely',
@@ -582,16 +586,18 @@ var types = [{
     cyphers: [
       '2 Cyphers (chosen for you by the GM)'
     ],
-    abilities: [
-      'Coax Information',
-      'Connection With an Organisation',
-      'Contact',
-      'Encouragement',
-      'Fast Talk',
-      'Friendship',
-      'Influence',
-      'False Identity'
-    ],
+    abilities: {
+      optional: [
+        'Coax Information',
+        'Connection With an Organisation',
+        'Contact',
+        'Encouragement',
+        'Fast Talk',
+        'Friendship',
+        'Influence',
+        'False Identity'
+      ]
+    },
   },
   {
     name: 'Seeker',
@@ -635,16 +641,18 @@ var types = [{
     cyphers: [
       '3 Cyphers (chosen for you by the GM)'
     ],
-    abilities: [
-      'Battle Numenera',
-      'Danger Sense',
-      'Decipher',
-      'Knowledge Skills',
-      'Muscles of Iron',
-      'Physical Skills',
-      'Practised in Armour',
-      'Trained Without Armour'
-    ]
+    abilities: { 
+      optional: [
+        'Battle Numenera',
+        'Danger Sense',
+        'Decipher',
+        'Knowledge Skills',
+        'Muscles of Iron',
+        'Physical Skills',
+        'Practised in Armour',
+        'Trained Without Armour'
+      ]
+    }
   },
 ]
 
@@ -658,18 +666,22 @@ var foci = [{
     extras: [
       'Crystalline Esoteries:  If you perform esoteries, those that inflict damage do so hurled with great force. Protective esoteries use crystalline shields or armor. And so on.'
     ],
-    abilities: [
-      'Fuse Into Crystal'
-    ]
+    abilities: {
+      fixed: [
+        'Fuse Into Crystal'
+      ]
+    }
   },
   {
     name: 'Absorbs Energy',
     sourcebook: 'Character Options 2',
     page: 50,
-    abilities: [
-      'Absorb Kinetic Energy',
-      'Release Energy'
-    ]
+    abilities: {
+      fixed: [
+        'Absorb Kinetic Energy',
+        'Release Energy'
+      ]
+    }
   },
   {
     name: 'Abuses Alchemy',
@@ -680,18 +692,22 @@ var foci = [{
       'Journal containing your drug recipes',
       'Several weeks\' worth of your daily alchemical dose prepared, and ingredients to create several more weeks\' worth on hand'
     ],
-    abilities: [
-      'Alchemical Dependence'
-    ]
+    abilities: {
+      fixed: [
+        'Alchemical Dependence'
+      ]
+    }
   },
   {
     name: 'Becomes Energy',
     sourcebook: 'Character Options 2',
     page: 53,
-    abilities: [
-      'Energy Skin',
-      'Release Energy Blast'
-    ]
+    abilities: {
+      fixed: [
+        'Energy Skin',
+        'Release Energy Blast'
+      ]
+    }
   },
   {
     name: 'Charges Right In',
@@ -702,17 +718,21 @@ var foci = [{
         'Initiative tasks'
       ]
     },
-    abilities: [
-      'Charge Attack'
-    ]
+    abilities: {
+      fixed: [
+        'Charge Attack'
+      ]
+    }
   },
   {
     name: 'Conceals the Truth',
     sourcebook: 'Character Options 2',
     page: 55,
-    abilities: [
-      'Natural Born Liar'
-    ],
+    abilities: {
+      fixed: [
+        'Natural Born Liar'
+      ]
+    },
     skills: {
       trained: [
         'Trained in one of disguise, deception, lockpicking, pickpocketing, seeing through deception, sleight of hand, or stealth', 
@@ -759,9 +779,11 @@ var foci = [{
     name: 'Fell From Another World',
     sourcebook: 'Character Options 2',
     page: 59,
-    abilities: [
-      'Uncanny'
-    ],
+    abilities: {
+      fixed: [
+        'Uncanny'
+      ]
+    },
     skills: {
       trained: [
         'Trained in one esoteric skill'
@@ -775,18 +797,22 @@ var foci = [{
     equipment: [
       'A journal and quill where you can jot down your observations and analysis'
     ],
-    abilities: [
-      'Applied Observation'
-    ]
+    abilities: {
+      fixed: [
+        'Applied Observation'
+      ]
+    }
   },
   {
     name: 'Forges a Bond',
     sourcebook: 'Character Options 2',
     page: 63,
-    abilities: [
-      'Share Focus',
-      'Bond'
-    ]
+    abilities: {
+      fixed: [
+        'Share Focus',
+        'Bond'
+      ]
+    }
   },
   {
     name: 'Gazes Into the Abyss',
@@ -801,9 +827,11 @@ var foci = [{
     edges: {
       might: 1
     },
-    abilities: [
-      'Natural Weapons'
-    ]
+    abilities: {
+      fixed: [
+        'Natural Weapons'
+      ]
+    }
   },
   {
     name: 'Likes to Break Things',
@@ -812,9 +840,11 @@ var foci = [{
     equipment: [
       'A hammer'
     ],
-    abilities: [
-      'Feat of Strength'
-    ]
+    abilities: {
+      fixed: [
+        'Feat of Strength'
+      ]
+    }
   },
   {
     name: 'Makes Something Out of Nothing',
@@ -823,9 +853,11 @@ var foci = [{
     equipment: [
       'A pack of light tools'
     ],
-    abilities: [
-      'Improvise'
-    ],
+    abilities: {
+      fixed: [
+        'Improvise'
+      ]
+    },
     skills: {
       trained: [
         'Trained in a crafting skill not already trained in'
@@ -836,9 +868,11 @@ var foci = [{
     name: 'Manipulates Force',
     sourcebook: 'Character Options 2',
     page: 69,
-    abilities: [
-      'Bubble of Protection'
-    ]
+    abilities: {
+      fixed: [
+        'Bubble of Protection'
+      ]
+    }
   },
   {
     name: 'Plays Tricks',
@@ -848,9 +882,11 @@ var foci = [{
     equipment: [
       'A disguise of your choice'
     ],
-    abilities: [
-      'Legerdemain'
-    ],
+    abilities: {
+      fixed: [
+        'Legerdemain'
+      ]
+    },
     skills: {
       trained: [
         'Trained in either pleasant social interactions or negative social interactions'
@@ -866,17 +902,21 @@ var foci = [{
         'Healing'
       ]
     },
-    abilities: [
-      'Good Advice'
-    ]
+    abilities: {
+      fixed: [
+        'Good Advice'
+      ]
+    }
   },
   {
     name: 'Shapes Liquid',
     sourcebook: 'Character Options 2',
     page: 73,
-    abilities: [
-      'Create Liquid Item'
-    ]
+    abilities: {
+      fixed: [
+        'Create Liquid Item'
+      ]
+    }
   },
   {
     name: 'Speaks to the Datasphere',
@@ -888,10 +928,12 @@ var foci = [{
     extras: [
       'Scan Training: If you have the Scan esotery from your type, you\'re automatically trained in it. Enabler'
     ],
-    abilities: [
-      'Knowledge Tap',
-      'Machine Interface'
-    ]
+    abilities: {
+      fixed: [
+        'Knowledge Tap',
+        'Machine Interface'
+      ]
+    }
   },
   {
     name: 'Stares Down Adversity',
@@ -906,9 +948,11 @@ var foci = [{
         'Intimidation'
       ]
     },
-    abilities: [
-      'Rally on Me'
-    ]
+    abilities: {
+      fixed:[
+        'Rally on Me'
+      ]
+    }
   },
   {
     name: 'Steps Into the Outside',
@@ -917,9 +961,11 @@ var foci = [{
     equipment: [
       'Explorer\'s Pack'
     ],
-    abilities: [
-      'Walk Through Walls'
-    ],
+    abilities: {
+      fixed: [
+        'Walk Through Walls'
+      ]
+    },
     skills: {
       trained: [
         'Knowledge about alternate dimensions'
@@ -933,9 +979,11 @@ var foci = [{
     equipment: [
       'With your GM\'s approval, access to a small starcraft'
     ],
-    abilities: [
-      'Air Supply'
-    ],
+    abilities: {
+      fixed: [
+        'Air Supply'
+      ]
+    },
     skills: {
       trained: [
         'General knowledge of nearby planets and worlds'
@@ -946,9 +994,11 @@ var foci = [{
     name: 'Wields a Whip',
     sourcebook: 'Character Options 2',
     page: 81,
-    abilities: [
-      'Savage Whip'
-    ]
+    abilities: {
+      fixed: [
+        'Savage Whip'
+      ]
+    }
   },
   {
     name: 'Wonders',
@@ -957,9 +1007,11 @@ var foci = [{
     oddities: [
       '1 additional oddity'
     ],
-    abilities: [
-      'Asks the Question'
-    ],
+    abilities: {
+      fixed: [
+        'Asks the Question'
+      ]
+    },
     skills: {
       trained: [
         'Any one non-combat skill'
