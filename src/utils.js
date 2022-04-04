@@ -1,11 +1,38 @@
 import 'core-js/es/typed-array/uint8-array'
+import 'core-js/es/typed-array/int32-array'
+import { Random, createEntropy, MersenneTwister19937 } from 'random-js'
+
+// create our deterministic random source
+var array = new Int32Array(1);
+var randomSeed = self.crypto.getRandomValues(array)[0];
+var randomEngine = MersenneTwister19937.seed(randomSeed);
+var randomSrc = new Random(randomEngine);
+
+function getRandomState () {
+  return new Int32Array([randomSeed, randomEngine.getUseCount()])
+}
+
+function setRandomState (state) {
+  randomSeed = state[0]
+  randomEngine = MersenneTwister19937.seed(randomSeed)
+  randomEngine.discard(state[1])
+  randomSrc = new Random(randomEngine)
+}
+
+function setRandomStateFromBase64 (encodedData) {
+  setRandomState(decodeURLSafeBase64ToInt32Array(encodedData))
+}
 
 function randNum (limit) {
-  return Math.floor(Math.random() * limit)
+  return randomSrc.integer(0, limit)
+}
+
+function random () {
+  return randomSrc.realZeroToOneInclusive()
 }
 
 function randItem (arr) {
-  return arr[Math.floor(Math.random() * arr.length)]
+  return randomSrc.pick(arr)
 }
 
 const matcher = /\{\{([a-z]+)(\.([a-z]+))?\}\}/gi
@@ -54,17 +81,11 @@ function arrayToSentence (arr) {
 }
 
 function shuffle (a) {
-  for (let i = a.length; i; i--) {
-    let j = Math.floor(Math.random() * i)
-    let x = a[i - 1]
-    a[i - 1] = a[j]
-    a[j] = x
-  }
-
+  randomSrc.shuffle(a)
   return a
 }
 
-function decodeURLSafeBase64ToArray (encodedData) {
+function decodeURLSafeBase64ToUint8Array (encodedData) {
   encodedData += Array(5 - encodedData.length % 4).join('=');
   encodedData = encodedData.replace(/\-/g, '+').replace(/\_/g, '/');
   var raw = window.atob(encodedData);
@@ -76,6 +97,30 @@ function decodeURLSafeBase64ToArray (encodedData) {
   return Array.from(data)
 }
 
+function decodeURLSafeBase64ToInt32Array (encodedData) {
+  encodedData += Array(5 - encodedData.length % 4).join('=');
+  encodedData = encodedData.replace(/\-/g, '+').replace(/\_/g, '/');
+  var raw = window.atob(encodedData);
+  var rawLength = raw.length;
+  var data = new Uint8Array(new ArrayBuffer(rawLength));
+  for(var i = 0; i < rawLength; i++) {
+    data[i] = raw.charCodeAt(i);
+  }
+  return Array.from(new Int32Array(data.buffer, 0, data.length / 4))
+}
+
+function promiseBase64URL(data) {
+  return new Promise((r) => {
+    const reader = new FileReader()
+    reader.onload = () => r(reader.result)
+    reader.readAsDataURL(new Blob([data]))
+  })
+}
+
+function makeBase64URLSafeBase64(url) {
+  return url.split(",", 2)[1].replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+}
+
 export default {
   randItem,
   randomlyInterpolate,
@@ -84,5 +129,12 @@ export default {
   randNum,
   arrayToSentence,
   shuffle,
-  decodeURLSafeBase64ToArray
+  decodeURLSafeBase64ToUint8Array,
+  decodeURLSafeBase64ToInt32Array,
+  getRandomState,
+  setRandomState,
+  setRandomStateFromBase64,
+  promiseBase64URL,
+  makeBase64URLSafeBase64,
+  random
 }

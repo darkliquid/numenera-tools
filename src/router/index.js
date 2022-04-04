@@ -27,32 +27,32 @@ const router = createRouter({
       component: Characters,
     },
     {
-      path: '/creatures',
+      path: '/creatures/:data?',
       name: 'Creatures',
       component: Creatures
     },
     {
-      path: '/rumours',
+      path: '/rumours/:data?',
       name: 'Rumours',
       component: Rumours
     },
     {
-      path: '/oddities',
+      path: '/oddities/:data?',
       name: 'Oddities',
       component: Oddities
     },
     {
-      path: '/philethis',
+      path: '/philethis/:data?',
       name: 'Philethis',
       component: Philethis
     },
     {
-      path: '/names',
+      path: '/names/:data?',
       name: 'Names',
       component: Names
     },
     {
-      path: '/rust-cyphers',
+      path: '/rust-cyphers/:data?',
       name: 'Rust Cyphers',
       component: RustCyphers
     },

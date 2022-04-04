@@ -248,7 +248,7 @@ export default {
       }
     },
     setData (state, encodedData) {
-      var data = utils.decodeURLSafeBase64ToArray(encodedData);
+      var data = utils.decodeURLSafeBase64ToUint8Array(encodedData);
 
       state.descriptor = descriptors[data[0]]
       state.type = types[data[1]]

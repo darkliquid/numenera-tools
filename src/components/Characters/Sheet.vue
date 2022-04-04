@@ -280,12 +280,8 @@ export default {
     async shareCharacter () {
       const base64_arraybuffer = async (data) => {
         // Use a FileReader to generate a base64 data URI
-        const base64url = await new Promise((r) => {
-            const reader = new FileReader()
-            reader.onload = () => r(reader.result)
-            reader.readAsDataURL(new Blob([data]))
-        })
-        return base64url.split(",", 2)[1].replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); // Remove ending '='
+        const base64url = await utils.promiseBase64URL(data)
+        return utils.makeBase64URLSafeBase64(base64url)
       }
       const data = await base64_arraybuffer(this.shareData)
       const pathPrefix = import.meta.env.BASE_URL;

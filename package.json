@@ -12,6 +12,7 @@
     "@mdi/font": "5.9.55",
     "core-js": "^3.21.1",
     "object-path": "^0.11.8",
+    "random-js": "^2.1.0",
     "roboto-fontface": "*",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12",
