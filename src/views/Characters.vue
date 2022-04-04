@@ -1,7 +1,7 @@
 <template>
   <div id="characters">
     <transition :name="transitionName">
-      <character-select :types="types" :foci="foci" :descriptors="descriptors" v-if="step === 1"/>
+      <character-select :sourcebooks="sourcebooks" :types="types" :foci="foci" :descriptors="descriptors" v-if="step === 1"/>
     </transition>  
     <transition :name="transitionName">
       <character-sheet v-if="step === 2"/>
@@ -19,6 +19,7 @@ import CharacterSheet from '../components/Characters/Sheet.vue'
 import descriptors from '../data/chargen/descriptors'
 import foci from '../data/chargen/foci'
 import types from '../data/chargen/types'
+import sourcebooks from '../data/chargen/sourcebooks'
 
 export default {
   components: {
@@ -30,6 +31,7 @@ export default {
       descriptors,
       types,
       foci,
+      sourcebooks,
     }
   },
   computed: {

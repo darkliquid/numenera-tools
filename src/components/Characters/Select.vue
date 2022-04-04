@@ -77,6 +77,8 @@
                     v-model="randomiseDescriptor"
                     color="primary"
                     label="Descriptor"
+                    density="compact"
+                    hide-details="true"
                   ></v-checkbox>
                 </v-col>
                 <v-col
@@ -88,6 +90,8 @@
                     v-model="randomiseType"
                     color="primary"
                     label="Type"
+                    density="compact"
+                    hide-details="true"
                   ></v-checkbox>
                 </v-col>
                 <v-col
@@ -99,8 +103,32 @@
                     v-model="randomiseFocus"
                     color="primary"
                     label="Focus"
+                    density="compact"
+                    hide-details="true"
                   ></v-checkbox>
                 </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols=12>
+                  Sourcebooks
+                </v-col>
+              </v-row>
+              <v-row>
+                <template v-for="sourcebook in sourcebookSelections" :key="sourcebook">
+                  <v-col
+                    cols="12"
+                    sm="4"
+                    md="4"
+                  >
+                    <v-checkbox
+                      v-model="sourcebook.selected"
+                      color="primary"
+                      :label="sourcebook.name"
+                      density="compact"
+                      hide-details="true"
+                    ></v-checkbox>
+                  </v-col>
+                </template>
               </v-row>
             </v-container>
           </v-form>
@@ -116,7 +144,13 @@ import MdlSelectField from '../MdlSelectField.vue';
 function groupedOptions (arr) {
   return function () {
     var grouping = {}
+    var vm = this;
     this[arr].forEach(function (item, index) {
+      if (vm.sourcebookSelections.find(function (sourcebook) {
+        return sourcebook.name === item.sourcebook && !sourcebook.selected
+      })) {
+        return
+      }
       if (!grouping[item.sourcebook]) {
         grouping[item.sourcebook] = [{ label: item.name, value: index }]
       } else {
@@ -153,6 +187,13 @@ export default {
     MdlSelectField
   },
   data() {
+    var selections = [];
+    this.sourcebooks.forEach(function (item, index) {
+      selections[index] = {
+        name: item,
+        selected: true
+      }
+    })
     return {
       descriptor: null,
       type: null,
@@ -161,9 +202,17 @@ export default {
       randomiseType: true,
       randomiseDescriptor: true,
       randomiseFocus: true,
+      sourcebookSelections: selections
     }
   },
   props: {
+    sourcebooks: {
+      type: Array,
+      required: true,
+      default () {
+        return []
+      }
+    },
     descriptors: {
       type: Array,
       required: true,

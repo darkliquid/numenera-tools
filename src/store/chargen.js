@@ -199,7 +199,8 @@ export default {
       points: 0
     },
     abilities: [],
-    cypherlimit: 0
+    cypherlimit: 0,
+    excludedSourcebooks: []
   },
   getters,
   mutations: {
