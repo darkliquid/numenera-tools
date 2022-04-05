@@ -200,6 +200,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import _some from 'lodash/some'
+import utils from '../../utils'
 
 import Stat from './Stat.vue'
 

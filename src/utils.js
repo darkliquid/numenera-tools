@@ -1,6 +1,7 @@
 import 'core-js/es/typed-array/uint8-array'
 import 'core-js/es/typed-array/int32-array'
-import { Random, createEntropy, MersenneTwister19937 } from 'random-js'
+import { Random, MersenneTwister19937 } from 'random-js'
+import { Base64 } from 'js-base64';
 
 // create our deterministic random source
 var array = new Int32Array(1);
@@ -20,7 +21,14 @@ function setRandomState (state) {
 }
 
 function setRandomStateFromBase64 (encodedData) {
-  setRandomState(decodeURLSafeBase64ToInt32Array(encodedData))
+  var state = decodeURLSafeBase64ToInt32Array(encodedData)
+
+  // state could not be decoded, so do nothing
+  if (state.length < 1) {
+    return
+  }
+
+  setRandomState(state)
 }
 
 function randNum (limit) {
@@ -86,25 +94,23 @@ function shuffle (a) {
 }
 
 function decodeURLSafeBase64ToUint8Array (encodedData) {
-  encodedData += Array(5 - encodedData.length % 4).join('=');
-  encodedData = encodedData.replace(/\-/g, '+').replace(/\_/g, '/');
-  var raw = window.atob(encodedData);
-  var rawLength = raw.length;
-  var data = new Uint8Array(new ArrayBuffer(rawLength));
-  for(var i = 0; i < rawLength; i++) {
-    data[i] = raw.charCodeAt(i);
+  var raw;
+  try {
+    raw = Base64.toUint8Array(encodedData)
+  } catch (e) {
+    console.error(e)
+    return []
   }
-  return Array.from(data)
+  return Array.from(raw)
 }
 
 function decodeURLSafeBase64ToInt32Array (encodedData) {
-  encodedData += Array(5 - encodedData.length % 4).join('=');
-  encodedData = encodedData.replace(/\-/g, '+').replace(/\_/g, '/');
-  var raw = window.atob(encodedData);
-  var rawLength = raw.length;
-  var data = new Uint8Array(new ArrayBuffer(rawLength));
-  for(var i = 0; i < rawLength; i++) {
-    data[i] = raw.charCodeAt(i);
+  var data;
+  try {
+    data = Base64.toUint8Array(encodedData)
+  } catch (e) {
+    console.error(e)
+    return []
   }
   return Array.from(new Int32Array(data.buffer, 0, data.length / 4))
 }

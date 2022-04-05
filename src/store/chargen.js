@@ -254,6 +254,11 @@ export default {
     setData (state, encodedData) {
       var data = utils.decodeURLSafeBase64ToUint8Array(encodedData);
 
+      // Failed to decode data
+      if (data.length < 9) {
+        return
+      }
+
       state.descriptor = descriptors[data[0]]
       state.type = types[data[1]]
       state.focus = foci[data[2]]
@@ -268,6 +273,7 @@ export default {
       state.abilities = data.slice(9).map((idx) => {
         return getters.allAbilities(state).optional[idx]
       })
+      
       state.step = 2
     }
   }

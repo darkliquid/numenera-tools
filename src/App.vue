@@ -25,11 +25,6 @@ export default {
           href: '/creatures',
           icon: 'mdi-bug'
         },
-        /* {
-          text: 'Cyphers',
-          href: 'cyphers',
-          icon: 'build'
-        }, */
         {
           text: 'Names',
           href: '/names',
