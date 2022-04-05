@@ -76,23 +76,23 @@
             <v-card-title>Abilities</v-card-title>
             <v-card-text>
               <v-row>
-                <v-col v-if="allAbilities.fixed.length > 0">
+                <v-col v-if="availableFixedAbilities.length > 0">
                   <h4>Fixed abilities</h4>
                   <v-chip
-                    v-for="item in allAbilities.fixed"
+                    v-for="item in availableFixedAbilities"
                     :key="item"
                     class="ma-2"
                     color="primary">
                     {{ item.ability }}
                   </v-chip>
                 </v-col>
-                <v-col v-if="allAbilities.optional.length > 0">
+                <v-col v-if="availableOptionalAbilities.length > 0">
                   <h4>
                     Chosen abilities
                     <span class="fr" v-if="abilities.length < 2">(choose {{ 2-abilities.length }})</span>
                   </h4>
                   <v-chip
-                    v-for="choice in allAbilities.optional"
+                    v-for="choice in availableOptionalAbilities"
                     @click="toggleAbility(choice)"
                     :key="choice"
                     class="ma-2"
@@ -220,7 +220,8 @@ export default {
       'descriptor',
       'type',
       'focus',
-      'abilities'
+      'abilities',
+      'excludedSourcebooks'
     ]),
     ...mapGetters('chargen', [
       'minMight',
@@ -246,8 +247,17 @@ export default {
       'allExtras',
       'shareData'
     ]),
-    availableAbilities () {
-      return this.allAbilities.choices.filter(x => !_some(this.abilities, x))
+    availableFixedAbilities () {
+      return this.allAbilities.fixed.filter((x) => {
+        var notExcluded = [...this.excludedSourcebooks].indexOf(x.sourcebook) === -1
+        return notExcluded
+      })
+    },
+    availableOptionalAbilities () {
+      return this.allAbilities.optional.filter((x) => {
+        var notExcluded = [...this.excludedSourcebooks].indexOf(x.sourcebook) === -1
+        return notExcluded
+      })
     }
   },
   methods: {

@@ -139,6 +139,7 @@
 </template>
 
 <script>
+import utils from '../../utils'
 import MdlSelectField from '../MdlSelectField.vue';
 
 function groupedOptions (arr) {
@@ -188,10 +189,11 @@ export default {
   },
   data() {
     var selections = [];
+    var vm = this;
     this.sourcebooks.forEach(function (item, index) {
       selections[index] = {
         name: item,
-        selected: true
+        selected: vm.$store.state.chargen.excludedSourcebooks.indexOf(item) === -1
       }
     })
     return {
@@ -238,13 +240,16 @@ export default {
   methods: {
     randomSelection () {
       if (this.randomiseDescriptor) {
-        this.updateDescriptor(Math.floor(Math.random() * this.descriptors.length))
+        var descriptor = utils.randItem(this.groupedDescriptors.map(x => x.options).reduce((acc, val) => acc.concat(val), []))
+        this.updateDescriptor(descriptor.value)
       }
       if (this.randomiseType) {
-        this.updateType(Math.floor(Math.random() * this.types.length))
+        var type = utils.randItem(this.groupedTypes.map(x => x.options).reduce((acc, val) => acc.concat(val), []))
+        this.updateType(type.value)
       }
       if (this.randomiseFocus) {
-        this.updateFocus(Math.floor(Math.random() * this.foci.length))
+        var focus = utils.randItem(this.groupedFoci.map(x => x.options).reduce((acc, val) => acc.concat(val), []))
+        this.updateFocus(focus.value)
       }
     },
     updateFocus (focus) {
@@ -260,6 +265,11 @@ export default {
       this.$store.commit('chargen/updateType', this.types[type])
     },
     nextCharacterStep () {
+      this.$store.commit('chargen/updateExcludedSourcebooks', this.sourcebookSelections.filter(function (sourcebook) {
+        return !sourcebook.selected
+      }).map(function (sourcebook) {
+        return sourcebook.name
+      }))
       this.$store.commit('chargen/updateStep', 2)
     }
   },

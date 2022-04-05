@@ -204,6 +204,9 @@ export default {
   },
   getters,
   mutations: {
+    updateExcludedSourcebooks (state, excludedSourcebooks) {
+      state.excludedSourcebooks = excludedSourcebooks
+    },
     updateDescriptor (state, descriptor) {
       state.descriptor = descriptor
     },
