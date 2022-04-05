@@ -1,13 +1,16 @@
-import Home from '../views/Home.vue'
-import Characters from '../views/Characters.vue'
-import Oddities from '../views/Oddities.vue'
-import RustCyphers from '../views/RustCyphers.vue'
-import Philethis from '../views/Philethis.vue'
-import Rumours from '../views/Rumours.vue'
-import Names from '../views/Names.vue'
-import Creatures from '../views/Creatures.vue'
-import About from '../views/About.vue'
-import Copyright from '../views/Copyright.vue'
+// Main pages
+const Home = () => import('../views/Home.vue');
+const About = () => import('../views/About.vue');
+const Copyright = () => import('../views/Copyright.vue');
+
+// Generators
+const Characters = () => import('../views/Characters.vue');
+const Oddities = () => import('../views/Oddities.vue');
+const RustCyphers = () => import('../views/RustCyphers.vue');
+const Philethis = () => import('../views/Philethis.vue');
+const Rumours = () => import('../views/Rumours.vue');
+const Names = () => import('../views/Names.vue');
+const Creatures = () => import('../views/Creatures.vue');
 
 import { createRouter, createWebHistory } from 'vue-router'
 

@@ -12,6 +12,8 @@
 <script>
 import { mapState } from 'vuex'
 import store from '../store'
+import chargen from '../store/chargen'
+store.registerModule('chargen', chargen, { runInNewContext: false })
 
 import CharacterSelect from '../components/Characters/Select.vue'
 import CharacterSheet from '../components/Characters/Sheet.vue'
