@@ -3,8 +3,8 @@
     <label :for="id" v-if="label">
       {{ label }}
     </label>
-    <select :id="id" v-model="selected">
-      <option :value="null" hidden disabled v-if="label">{{ label }}</option>
+    <select :id="id" v-model="selected" required>
+      <option :value="null" :hidden="selected !== null" v-if="label">{{ label }}</option>
       <template v-if="grouped">
         <optgroup v-for="group in options" :key="group.label" :label="group.label">
           <option v-for="opt in group.options" :key="opt.label" :value="opt.value" :selected="isSelected(opt.value)">{{ opt.label }}</option>

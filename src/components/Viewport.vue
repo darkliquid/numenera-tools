@@ -13,14 +13,22 @@
           class="dark-mode-switch"
           :prepend-icon="darkMode ? 'mdi-weather-night' : 'mdi-white-balance-sunny'"
         ></v-switch>
-        <template v-if="topnav.length > 0">
-          <v-btn
-            v-for="(item, i) in topnav"
-            :key="i"
-            :to="item.href"
-            v-text="item.text"
-            >
-          </v-btn>
+        <template v-slot:append v-if="topnav.length > 0">
+          <v-menu anchor="start">
+            <template v-slot:activator="{ props }">
+              <v-btn icon="mdi-dots-vertical" v-bind="props"></v-btn>
+            </template>
+            <v-list border>
+              <v-list-item
+                v-for="(item, i) in topnav"
+                :key="i"
+                :to="item.to"
+                :href="item.href"
+              >
+                <v-list-item-title>{{ item.text }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>          
         </template>
       </v-app-bar>
       <v-navigation-drawer app v-model="drawerOpen" v-if="sidenav.length > 0">
@@ -29,10 +37,11 @@
             v-for="(item, i) in sidenav"
             :key="i"
             :value="item"
-            :to="item.href"
+            :to="item.to"
+            :href="item.href"
             active-color="primary"
           >
-            <v-list-item-avatar start>
+            <v-list-item-avatar start class="nav-icon">
               <v-icon :icon="item.icon"></v-icon>
             </v-list-item-avatar>
             <v-list-item-title v-text="item.text"></v-list-item-title>
@@ -100,16 +109,24 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 #viewport {
   background: none;
 }
 
-.v-list-item-avatar {
+#viewport .nav-icon {
   margin-right: 8px;
 }
 
-.dark-mode-switch {
+#viewport .dark-mode-switch {
   flex: none;
+}
+
+#viewport .dark-mode-switch .mdi-weather-night {
+  color: rgb(var(--v-theme-primary));
+}
+
+#viewport .dark-mode-switch .mdi-white-balance-sunny {
+  color: rgb(var(--v-theme-warning));
 }
 </style>

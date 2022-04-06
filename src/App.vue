@@ -17,48 +17,52 @@ export default {
       sidenav: [
         {
           text: 'Characters',
-          href: '/characters',
+          to: '/characters',
           icon: 'mdi-card-account-details'
         },
         {
           text: 'Creatures',
-          href: '/creatures',
+          to: '/creatures',
           icon: 'mdi-bug'
         },
         {
           text: 'Names',
-          href: '/names',
+          to: '/names',
           icon: 'mdi-face'
         },
         {
           text: 'Oddities',
-          href: '/oddities',
+          to: '/oddities',
           icon: 'mdi-help'
         },
         {
           text: 'Rumours',
-          href: '/rumours',
+          to: '/rumours',
           icon: 'mdi-chat-alert'
         },
         {
           text: 'Philethis Phrases',
-          href: '/philethis',
+          to: '/philethis',
           icon: 'mdi-head-snowflake'
         },
         {
           text: 'Rust Cyphers',
-          href: '/rust-cyphers',
+          to: '/rust-cyphers',
           icon: 'mdi-cloud-alert'
         }
       ],
       topnav: [
         {
           text: 'About',
-          href: '/about'
+          to: '/about'
         },
         {
           text: 'Copyright',
-          href: '/copyright'
+          to: '/copyright'
+        },
+        {
+          text: 'Feedback',
+          href: "https://github.com/darkliquid/numenera-tools/issues"
         }
       ]
     }

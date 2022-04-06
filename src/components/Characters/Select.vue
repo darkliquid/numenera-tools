@@ -126,6 +126,7 @@
                       :label="sourcebook.name"
                       density="compact"
                       hide-details="true"
+                      @change="updateExclusions"
                     ></v-checkbox>
                   </v-col>
                 </template>
@@ -188,14 +189,6 @@ export default {
     MdlSelectField
   },
   data() {
-    var selections = [];
-    var vm = this;
-    this.sourcebooks.forEach(function (item, index) {
-      selections[index] = {
-        name: item,
-        selected: vm.$store.state.chargen.excludedSourcebooks.indexOf(item) === -1
-      }
-    })
     return {
       descriptor: null,
       type: null,
@@ -204,7 +197,6 @@ export default {
       randomiseType: true,
       randomiseDescriptor: true,
       randomiseFocus: true,
-      sourcebookSelections: selections
     }
   },
   props: {
@@ -265,12 +257,24 @@ export default {
       this.$store.commit('chargen/updateType', this.types[type])
     },
     nextCharacterStep () {
-      this.$store.commit('chargen/updateExcludedSourcebooks', this.sourcebookSelections.filter(function (sourcebook) {
+      this.$store.commit('chargen/updateStep', 2)
+    },
+    updateExclusions () {
+      var excludedSourcebooks = this.sourcebookSelections.filter(function (sourcebook) {
         return !sourcebook.selected
       }).map(function (sourcebook) {
         return sourcebook.name
-      }))
-      this.$store.commit('chargen/updateStep', 2)
+      });
+      this.$store.commit('chargen/updateExcludedSourcebooks', excludedSourcebooks)
+      if (this.focus !== null && excludedSourcebooks.includes(this.foci[this.focus].sourcebook)) {
+        this.focus = null
+      }
+      if (this.descriptor !== null && excludedSourcebooks.includes(this.descriptors[this.descriptor].sourcebook)) {
+        this.descriptor = null
+      }
+      if (this.type !== null && excludedSourcebooks.includes(this.types[this.type].sourcebook)) {
+        this.type = null
+      }
     }
   },
   computed: {
@@ -279,7 +283,18 @@ export default {
     },
     groupedTypes: groupedOptions('types'),
     groupedFoci: groupedOptions('foci'),
-    groupedDescriptors: groupedOptions('descriptors')
+    groupedDescriptors: groupedOptions('descriptors'),
+    sourcebookSelections () {
+      var selections = [];
+      var vm = this;
+      this.sourcebooks.forEach(function (item, index) {
+        selections[index] = {
+          name: item,
+          selected: vm.$store.state.chargen.excludedSourcebooks.indexOf(item) === -1
+        }
+      })
+      return selections
+    }
   },
   mounted () {
     var tIdx = this.types.indexOf(this.$store.state.chargen.type);
