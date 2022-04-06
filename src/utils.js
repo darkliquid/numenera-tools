@@ -78,7 +78,7 @@ function capitalise (str) {
 function cleanSentence (str) {
   return capitalise(str.replace(/.*?[.?!]/g, function (match) {
     return capitalise(match)
-  })).replace(/\sa\s([aeiou])/gi, ' an $1')
+  })).replace(/\sa\s([aeiou])/gi, ' an $1').replace(/^a\s([aeiou])/gi, 'An $1')
 }
 
 function arrayToSentence (arr) {

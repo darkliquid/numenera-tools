@@ -1,7 +1,5 @@
 <template>
-  <div id="philethis">
-    <philethis-generator/>
-  </div>
+  <philethis-generator/>
 </template>
 
 <script>
@@ -24,11 +22,4 @@ export default {
 </script>
 
 <style>
-#philethis {
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  height: 100%;
-  margin-top: 5em;
-}
 </style>

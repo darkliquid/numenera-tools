@@ -1,7 +1,5 @@
 <template>
-  <div id="rust-cyphers">
-    <rust-cypher-generator/>
-  </div>
+  <rust-cypher-generator/>
 </template>
 
 <script>
@@ -24,11 +22,4 @@ export default {
 </script>
 
 <style>
-#rust-cyphers {
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  height: 100%;
-  margin-top: 5em;
-}
 </style>

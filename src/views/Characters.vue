@@ -1,12 +1,6 @@
 <template>
-  <div id="characters">
-    <transition :name="transitionName">
-      <character-select :sourcebooks="sourcebooks" :types="types" :foci="foci" :descriptors="descriptors" v-if="step === 1"/>
-    </transition>  
-    <transition :name="transitionName">
-      <character-sheet v-if="step === 2"/>
-    </transition>
-  </div>
+  <character-select :sourcebooks="sourcebooks" :types="types" :foci="foci" :descriptors="descriptors" v-if="step === 1"/>
+  <character-sheet v-if="step === 2"/>
 </template>
 
 <script>
@@ -39,10 +33,7 @@ export default {
   computed: {
     ...mapState({
       step: state => state.chargen.step,
-    }),
-    transitionName () {
-      return this.step === 1 ? 'slide-right' : 'slide-left'
-    }
+    })
   },
   beforeRouteEnter(to, from) {
     // called before the route that renders this component is confirmed.

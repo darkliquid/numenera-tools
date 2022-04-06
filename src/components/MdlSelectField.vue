@@ -64,20 +64,18 @@ export default {
 
 <style scoped lang="scss">
 $select-background-color: transparent;
-$select-border-color: rgba(0,0,0,0.12); //unquote("rgba(#{$color-black}, 0.12)") !default;
 $select-font-size: 16px;
-$select-color: rgba(0,0,0,0.26); // unquote("rgba(#{$color-black}, 0.26)") !default;
 $select-padding: 4px;
 
 .mdl-selectfield select {
   font-family: inherit;
-  background-color: transparent;
+  background: rgb(var(--v-theme-surface));
   width: 100%;
   padding: $select-padding 0;
   font-size: $select-font-size;
-  color: $select-color;
+  color: rgb(var(--v-theme-on-surface));
   border: none;
-  border-bottom: 1px solid $select-border-color;
+  border-bottom: 1px solid  rgba(var(--v-border-color), var(--v-border-opacity));
 }
 .mdl-selectfield select:focus {
   outline: none;
@@ -98,8 +96,11 @@ $select-padding: 4px;
         content: '';
         border-left: .25em solid transparent;
         border-right: .25em solid transparent;
-        border-top: .375em solid $select-border-color;
+        border-top: .375em solid  rgba(var(--v-border-color), var(--v-border-opacity));
         pointer-events: none;
     }
+}
+.mdl-selectfield select option {
+  background: rgb(var(--v-theme-surface));
 }
 </style>

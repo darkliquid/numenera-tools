@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-header-text>
-      <v-card-title>A {{ descriptor.name }} {{ type.name }} who {{ focus.name }}</v-card-title>
+      <v-card-title>{{ title }}</v-card-title>
     </v-card-header-text>
     <v-card-text>
       <v-form>
@@ -259,6 +259,9 @@ export default {
         var notExcluded = [...this.excludedSourcebooks].indexOf(x.sourcebook) === -1
         return notExcluded
       })
+    },
+    title () {
+      return utils.cleanSentence(`A ${this.descriptor.name} ${this.type.name} who ${this.focus.name}`)
     }
   },
   methods: {

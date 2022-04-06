@@ -4,9 +4,12 @@
       <v-card-header-text>Creature Generator</v-card-header-text>
     </v-card-header>
     <v-card-text>
-      <p class="powers">{{ powers }}</p>
-      <table>
+      <v-table>
         <tbody>
+          <tr>
+            <th>Powers</th>
+            <td>{{ powers }}</td>
+          </tr>
           <tr>
             <th>Level</th>
             <td>{{ level }}</td>
@@ -32,7 +35,7 @@
             <td>{{ maneuveringAttack }}</td>
           </tr>
         </tbody>
-      </table>
+      </v-table>
     </v-card-text>
     <v-card-actions>
       <v-btn colored @click="generate">Random</v-btn>
@@ -128,18 +131,8 @@ export default {
 </script>
 
 <style scoped>
-table {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.image, .attribution, .powers {
-  text-align: center;
-}
-
 th {
   text-align: left;
-  padding-right: 2em;
 }
 
 td {

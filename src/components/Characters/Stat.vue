@@ -1,8 +1,8 @@
 <template>
   <div class="stat-editor">
-    <v-btn size="x-small" colored icon="mdi-minus" @click.stop.prevent="remove" :disabled="!removable"/>
+    <v-btn size="x-small" :color="removable ? 'primary' : ''" icon="mdi-minus" @click.stop.prevent="remove" :disabled="!removable"/>
     <div :class="classes">{{ value }}</div>
-    <v-btn size="x-small" colored icon="mdi-plus" @click.stop.prevent="add" :disabled="!addable"/>
+    <v-btn size="x-small" :color="addable ? 'primary' : ''" icon="mdi-plus" @click.stop.prevent="add" :disabled="!addable"/>
   </div>
 </template>
 
