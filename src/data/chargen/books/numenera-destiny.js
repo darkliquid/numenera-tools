@@ -773,6 +773,48 @@ var types = [{
     name: 'Glaive',
     sourcebook: 'Numenera Destiny',
     page: 39,
+    stats: {
+      might: 11,
+      speed: 10,
+      intellect: 7,
+      points: 6
+    },
+    edges: {
+      might: 1,
+      speed: 1
+    },
+    shins: 5,
+    cypherlimit: 2,
+    abilities: {
+      optional: [
+        'Bash',
+        'No Need For Weapons',
+        'Pierce',
+        'Thrust',
+        'Trained Without Armor'
+      ],
+    },
+    skills: {
+      trained: [
+        'One of: Balancing, Climbing, Jumping, Swimming'
+      ],
+      practiced: [
+        'Using All Armor',
+        'All Weapons'
+      ]
+    },
+    equipment: [
+      'Clothing',
+      'Two weapons (or one weapon and a shield)',
+      'Light or medium armor',
+      'An explorer’s pack'
+    ],
+    cyphers: [
+      'Two cyphers (chosen for you by the GM)'
+    ],
+    oddities: [
+      'One oddity (chosen for you by the GM)'
+    ],
     extensions: [{
       abilities: {
         fixed: [
@@ -785,6 +827,50 @@ var types = [{
     name: 'Jack',
     sourcebook: 'Numenera Destiny',
     page: 39,
+    stats: {
+      might: 10,
+      speed: 10,
+      intellect: 10,
+      points: 6
+    },
+    edges: {
+      points: 1
+    },
+    shins: 8,
+    cypherlimit: 2,
+    abilities: {
+      fixed: ['Flex Skill'],
+      optional: [
+        'Bash',
+        'Hedge Magic',
+        'Pierce',
+        'Practiced in Armour',
+        'Skill With Defense',
+        'Thrust',
+        'Trained Without Armour'
+      ],
+    },
+    skills: {
+      trained: [
+        'Any one non-attack/defense task of your choosing'
+      ],
+      practiced: [
+        'Light and Medium Weapons'
+      ]
+    },
+    equipment: [
+      'Clothing',
+      'Two weapons',
+      'Light Armor',
+      'An explorers pack',
+      'A pack of light tools'
+    ],
+    cyphers: [
+      'Two cyphers (chosen for you by the GM)'
+    ],
+    oddities: [
+      'One oddity (chosen for you by the GM)'
+    ],
     extensions: [{
       abilities: {
         fixed: [
@@ -797,6 +883,45 @@ var types = [{
     name: 'Nano',
     sourcebook: 'Numenera Destiny',
     page: 39,
+    stats: {
+      might: 7,
+      speed: 9,
+      intellect: 12,
+      points: 6
+    },
+    edges: {
+      intellect: 1
+    },
+    shins: 4,
+    cypherlimit: 3,
+    abilities: {
+      optional: [
+        'Hedge Magic',
+        'Onslaught',
+        'Push',
+        'Scan',
+        'Ward'
+      ],
+    },
+    skills: {
+      trained: [
+        'Understanding and identifying numenera'
+      ],
+      practiced: [
+        'Light Weapons'
+      ]
+    },
+    equipment: [
+      'Clothing',
+      'One weapon',
+      'A book about the numenera'
+    ],
+    cyphers: [
+      'Three cyphers (chosen for you by the GM)'
+    ],
+    oddities: [
+      'One oddity (chosen for you by the GM)'
+    ],
     extensions: [{
       abilities: {
         fixed: [
