@@ -15,23 +15,40 @@
       >
         Share
       </v-btn>
-      <v-snackbar
-        v-model="copied"
-      >
-        Share URL copied to clipboard!
-        
-        <template v-slot:actions>
-          <v-btn
-            color="primary"
-            variant="text"
-            @click="copied = false"
-          >
-            Close
-          </v-btn>
-        </template>
-      </v-snackbar>
+      <v-btn
+        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+        @click="show = !show"
+        v-if="history.length > 0"
+      ></v-btn>
     </v-card-actions>
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+        <v-card-text>
+          <v-list>
+            <v-list-item v-for="item in history" :key="item">
+              {{ item }}
+            </v-list-item>
+          </v-list>
+        </v-card-text>
+      </div>
+    </v-expand-transition>
   </v-card>
+  <v-snackbar
+    v-model="copied"
+  >
+    Share URL copied to clipboard!
+    
+    <template v-slot:actions>
+      <v-btn
+        color="primary"
+        variant="text"
+        @click="copied = false"
+      >
+        Close
+      </v-btn>
+    </template>
+  </v-snackbar>
 </template>
 
 <script>
@@ -56,7 +73,9 @@ export default {
       phrase: '',
       randomState: null,
       dataUrl: '',
-      copied: false
+      copied: false,
+      show: false,
+      history: []
     }
   },
   mounted () {
@@ -77,6 +96,11 @@ export default {
     },
     generate () {
       this.randomState = utils.getRandomState()
+      if (this.phrase) {
+        if (this.history.unshift(this.phrase) > 10) {
+          this.history.pop()
+        }
+      }
       this.phrase = utils.cleanSentence(utils.randomlyInterpolate(templates, 'phrase'))
     }
   }
